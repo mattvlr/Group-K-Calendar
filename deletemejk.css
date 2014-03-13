@@ -1,0 +1,31 @@
+#colorCycle { background-color: #C30; 
+border: medium solid #FF0; 
+padding-top: 5px; padding-right: 7px; padding-bottom: 7px; padding-left: 7px; 
+color: #FFF;
+text-align: center; 
+animation-name: homeCycle; 
+animation-duration:6s; 
+animation-direction:alternate; 
+animation-iteration-count:infinite; 
+
+-webkit-animation-name: homeCycle; 
+-webkit-animation-duration:1s; 
+-webkit-animation-direction:alternate; 
+-webkit-animation-iteration-count:infinite; }	
+
+@keyframes homeCycle 
+{
+0% {background-color:#006;} 
+25% {background-color:#060;} 
+50% {background-color:#CC3200;} 
+75% {background-color:#603;} 
+} 
+
+@-webkit-keyframes homeCycle 
+{ 
+0% {background-color:#006;} 
+25% {background-color:#060;} 
+50% {background-color:#CC3200;} 
+75% {background-color:#603;} 
+}
+a:hover {color:white}
