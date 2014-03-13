@@ -1,18 +1,5 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="test.css">
-</head>
-<body>
-<a href="index.html"> Home </a>
-<p>Also as a little experiment I made the current day a different color from the rest, and fixed the height problem. Also the date is off by <b>one</b>, not really sure why.</p>
-<p>-Matt</p>
-<br>
-</body>
-</html>
-<?php
-
-/* draws a calendar */
-function draw_calendar($month,$year){
+<?php 
+	function draw_calendar($month,$year){
 
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
@@ -82,15 +69,5 @@ function draw_calendar($month,$year){
 	
 	/* all done, return result */
 	return $calendar;
-}
-
-/* sample usages */
-
-echo "Today's date is: ", date("M"), " ", date("d"), " ", date("Y");
-echo $date;
-echo '<h2>March 2014</h2>';
-echo draw_calendar(date("m"),date("Y"));
-
-
-
+	}
 ?>
