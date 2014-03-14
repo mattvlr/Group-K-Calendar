@@ -18,7 +18,7 @@ ul.MenuBarVertical
 	list-style-type: none;
 	font-size: 100%;
 	cursor: default;
-	width: 6em;
+	width: 100%;
 }
 /* Set the active Menu Bar with this class, currently setting z-index to accomodate IE rendering bug: http://therealcrisp.xs4all.nl/meuk/IE-zindexbug.html */
 ul.MenuBarActive
@@ -35,7 +35,7 @@ ul.MenuBarVertical li
 	position: relative;
 	text-align: left;
 	cursor: pointer;
-	width: 6em;
+	width: 100%;
 }
 /* Submenus should appear slightly overlapping to the right (95%) and up (-5%) with a higher z-index, but they are initially off the left side of the screen (-1000em) */
 ul.MenuBarVertical ul

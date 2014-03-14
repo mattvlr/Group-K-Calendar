@@ -14,7 +14,7 @@
 	$days_in_this_week = 1;
 	$day_counter = 0;
 	$dates_array = array();
-	$todaynum = date("d") - 1; 
+	$todaynum = date("d"); 
 
 	/* row for week one */
 	$calendar.= '<tr class="calendar-row">';

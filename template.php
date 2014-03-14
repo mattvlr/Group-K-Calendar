@@ -2,6 +2,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="template.css">
 		<script src="SidebarJavaScript/SpryMenuBar.js" type="text/javascript"></script>
+		<script src="CalendarJsFunctions.js"></script>
 		<link href="SidebarJavaScript/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
 		<title> Calendar </title>
 	</head>
@@ -39,15 +40,14 @@
             </ul><!-- end .sidebar1 -->
 		</div>
 		<div class="body">
-			<p>Also as a little experiment I made the current day a different color from the rest, and fixed the height problem. Also the date is off by <b>one</b>, not really sure why. And the solid color boxes are only for layout.</p>
-			<p>-Matt</p>
-			<br>
+			<p><br><a href="yeartest.php">Year Test</a> <- is where I'm currently working, going to use the small calendar below to make a year view.</p>
 
 <?php
 
-	include '../PhpFunctions/CalendarFunctions.php';
+	include 'CalendarFunctions.php';
 
 	echo "Today's date is: ", date("M"), " ", date("d"), " ", date("Y");
+	echo draw_small_month(date("m"));
 	echo '<h2>March 2014</h2>';
 	echo draw_calendar(date("m"),date("Y"));
 	print_r(getdate());
