@@ -19,25 +19,26 @@
                 </li>
 				
                 <li>
-				    <a href="index.html">Login</a>
+				    <a href="index.html">Login (Doesn't work)</a>
 				</li>
 				
                 <li>
-                    <a href="index.html">Resg</a>
+                    <a href="index.html">Resg (Doesn't work)</a>
                 </li>
 
                 <li>
-                    <a href="index.html">FAQ</a>
+                    <a href="index.html">FAQ (Doesn't work)</a>
                 </li>
 
 				<li>
-				    <a href="index.html">Help</a>
+				    <a href="index.html">Help (Doesn't work)</a>
 				</li>
 				
                 <li>
-                    <a href="index.html">Contact Us?</a>
+                    <a href="index.html">Contact Us? (Doesn't work)</a>
                 </li>
-            </ul><!-- end .sidebar1 -->
+            </ul><!-- end .sidebar1 --> 
+			 echo draw_small_month(date("m"),date("Y")); 
 		</div>
 		<div class="body">
 			<p><br><a href="yeartest.php">Year Test</a> <- is where I'm currently working, going to use the small calendar below to make a year view.</p>
@@ -47,7 +48,7 @@
 	include 'CalendarFunctions.php';
 
 	echo "Today's date is: ", date("M"), " ", date("d"), " ", date("Y");
-	echo draw_small_month(date("m"));
+	echo draw_small_month(date("m"),date("Y")); 
 	echo '<h2>March 2014</h2>';
 	echo draw_calendar(date("m"),date("Y"));
 	print_r(getdate());

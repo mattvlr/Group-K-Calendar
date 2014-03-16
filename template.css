@@ -73,9 +73,19 @@ th.monthtitle{
 	font-weight:bold;
 	text-align:center;
 	border:1px solid black;
+	background:#C2E0FF;
+}
+th.year-calendar-heading{
+	font-weight:bold;
+	text-align:center;
+	border:1px solid black;
+}
+td.year-table{
+	vertical-align: top;
+
 }
 td.year-calendar-day{ 
-	background:#eceff5; 
+	background:#eceff5; /* light gray */ 
 	padding: 0px; 
 	color:black; 
 	font-weight:bold; 
@@ -83,11 +93,27 @@ td.year-calendar-day{
 	font-size:11px;
 	border:1px solid black;
 	}
+td.year-today{ 
+	background: #C2E0FF; 
+	padding: 0px; 
+	color: black; 
+	font-weight:bold; 
+	text-align:center; 
+	font-size:11px;
+	border:1px solid black;
+	}
+td.year-today:hover{
+	background:#FFE1C2;
+}
 td.year-calendar-np{
-	background: blue;
+	background: white;
 	padding: 1px;
 	height: 26px;
-	
+	bo rder:1px solid black;
+}
+td.year-calendar-day:hover{
+	background:black;
+	color:white;
 }
 
 /* Standard included in example \/ */
