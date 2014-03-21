@@ -9,21 +9,21 @@ div.container {
 }
 div.title { 
     font: 'Arial Narrow', Arial, sans-serif;
-    color: white;
+    color: black;
 	float: top;
 	height: 10%;
 	width:100%;
 	overflow:hidden;
-	background: blue;
+	background: #CCCCFF;
 }
 div.sidebar{
 	float: left;
 	padding-left:5px;
 	padding-right:5px;
-	width: 10%;
+	wi dth: 10%;
 	height: 100%;
 	padding-bottom: 10px;
-	background: red;
+	background: #FFCCCC;
 	color:white;
 }
 div.body{
@@ -35,13 +35,6 @@ div.body{
  color:black;
  background:#CCC;	
 }
-
-/*test.css*/
-/* calendar */
-table.calendar { 
-
-	}
-tr.calendar-row	{  }
 
 /*Added my matt */
 td.today {
@@ -73,11 +66,12 @@ th.monthtitle{
 	font-weight:bold;
 	text-align:center;
 	border:1px solid black;
-	background:#C2E0FF;
+	background: #C2E0FF;
 }
 th.year-calendar-heading{
 	font-weight:bold;
 	text-align:center;
+	background: #C2E0FF;
 	border:1px solid black;
 }
 td.year-table{
