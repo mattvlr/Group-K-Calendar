@@ -38,7 +38,7 @@
                     <a href="index.html">Contact Us? (Doesn't work)</a>
                 </li>
             </ul><!-- end .sidebar1 --> 
-			 echo draw_small_month(date("m"),date("Y")); 
+	 
 		</div>
 		<div class="body">
 			<p><br><a href="yeartest.php">Year Test</a> <- is where I'm currently working, going to use the small calendar below to make a year view.</p>

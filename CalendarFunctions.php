@@ -118,9 +118,9 @@
 			
 			$calendar.= '</td>';
 			$days_in_this_week = 0;
-			$days_in_this_week++; $running_day++; $cur_day++; $day_counter++;
+			$days_in_this_week++; $running_day++; /*$cur_day++;*/ $day_counter++;
 		endfor;
-		$daysleft = (36-$cur_day-$x);
+		//$daysleft = (36-$cur_day-$x);
 		//if(($month == 2) && ($days_in_month != 29)): //fuck Feb
 		//$calendar.='<';
 		//endif;
