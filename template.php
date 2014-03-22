@@ -13,6 +13,10 @@
 		</div>
 		
 		<div class="sidebar">
+<<<<<<< HEAD
+=======
+			<br>
+>>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 		    <ul class="MenuBarVertical" id="sidebar">
                 <li>
                     <a class="MenuBarActive" href="template.php" id="current">Home</a>
@@ -38,6 +42,7 @@
                     <a href="index.html">Contact Us? (Doesn't work)</a>
                 </li>
             </ul><!-- end .sidebar1 --> 
+<<<<<<< HEAD
 	 
 		</div>
 		<div class="body">
@@ -49,6 +54,20 @@
 
 	echo "Today's date is: ", date("M"), " ", date("d"), " ", date("Y");
 	echo draw_small_month(date("m"),date("Y")); 
+=======
+		    <br>           
+		</html><?php include 'CalendarFunctions.php'; echo draw_small_month(date("m"),date("Y")); ?><html>
+		</div>
+		<div class="body">
+			<p><br><a href="yeartest.php">Year Test</a> Working on small month view atm.</p>
+
+<?php
+
+	//include 'CalendarFunctions.php';
+
+	echo "Today's date is: ", date("M"), " ", date("d"), " ", date("Y");
+	//echo draw_small_month(date("m"),date("Y")); 
+>>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 	echo '<h2>March 2014</h2>';
 	echo draw_calendar(date("m"),date("Y"));
 	print_r(getdate());

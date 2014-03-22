@@ -33,7 +33,11 @@ ul.MenuBarVertical li
 	list-style-type: none;
 	font-size: 100%;
 	position: relative;
+<<<<<<< HEAD
 	text-align: left;
+=======
+	text-align: center;
+>>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 	cursor: pointer;
 	width: 100%;
 }
