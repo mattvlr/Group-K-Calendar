@@ -31,17 +31,10 @@
 		
 		    /* ADDED BY MATT AS A TEST */
 			if($todaynum == $day_counter + 1):
-<<<<<<< HEAD
-				$calendar.= '<td class="today" id="daybox" onclick=clicked(13) >';
-				$calendar.= '<div class="current-day">'.$list_day.'</div>';
-			else:
-				$calendar.= '<td class="calendar-day" id="daybox" onclick=clicked(13) >';
-=======
 				$calendar.= '<td class="today" id="daybox" onclick=clicked('.$todaynum.') >';
 				$calendar.= '<div class="current-day">'.$list_day.'</div>';
 			else:
 				$calendar.= '<td class="calendar-day" id="daybox" onclick=clicked('.$list_day.') >';
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 				/* add in the day number */
 				$calendar.= '<div class="day-number">'.$list_day.'</div>';
 			endif;
@@ -80,7 +73,7 @@
 	}
 	
 	function draw_small_month($month,$year){ //this is a trimed down version of draw_month -Matt
-	
+	    //&#8678;&#8680;
 		$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" >';
 		$headings = array('Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec');
 		$days = array('Su','M','Tu','W','Th','F','Sa');

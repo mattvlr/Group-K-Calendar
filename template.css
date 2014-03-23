@@ -4,46 +4,24 @@ p {
 	padding-left: 15px; 
 }
 div.container {
-    width: 100%;
-	margin: 0 auto;
+    width: 1000px;
+	padding-left: 235px;
+	padding-top: 125px;
 }
 div.title { 
     font: 'Arial Narrow', Arial, sans-serif;
-<<<<<<< HEAD
-    color: white;
-=======
     color: black;
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
-	float: top;
-	height: 10%;
-	width:100%;
-	overflow:hidden;
-<<<<<<< HEAD
-	background: blue;
-=======
-	background: #CCCCFF;
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
-}
-div.sidebar{
 	float: left;
-	padding-left:5px;
-	padding-right:5px;
-<<<<<<< HEAD
-	width: 10%;
-	height: 100%;
-	padding-bottom: 10px;
-	background: red;
-=======
-	wi dth: 10%;
-	height: 100%;
-	padding-bottom: 10px;
-	background: #FFCCCC;
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
-	color:white;
+	height: 100px;
+	width: 100%;
+	background: #336EC6;
+	position: absolute;
+	z-index:-1;
 }
-div.body{
-	
 
+div.calendar{
+	height:800px;
+	width:1000px;
 }
 #current
 {
@@ -51,17 +29,7 @@ div.body{
  background:#CCC;	
 }
 
-<<<<<<< HEAD
-/*test.css*/
-/* calendar */
-table.calendar { 
-
-	}
-tr.calendar-row	{  }
-
-=======
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
-/*Added my matt */
+/*Added by matt */
 td.today {
 	background: #C2E0FF; 
 	min-height:180px; 
@@ -82,28 +50,21 @@ div.current-day{
 	}
 	
 div.current-day:hover {
-	background:black
+	background: #336EC6;
 	}
 td.today:hover {
-	background:#FFE1C2;
+	background: #FFE1C2;
 	}
 th.monthtitle{
 	font-weight:bold;
 	text-align:center;
 	border:1px solid black;
-<<<<<<< HEAD
-	background:#C2E0FF;
-=======
 	background: #C2E0FF;
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 }
 th.year-calendar-heading{
 	font-weight:bold;
 	text-align:center;
-<<<<<<< HEAD
-=======
 	background: #C2E0FF;
->>>>>>> 0ed250be309f4494fc408f49f8ad053a54a24138
 	border:1px solid black;
 }
 td.year-table{
@@ -162,9 +123,34 @@ td.calendar-day-np	{
 * html div.calendar-day-np { 
 	height:180px; 
 	}
-td.calendar-day-head { background:#ccc; font-weight:bold; text-align:center; width:120px; padding:5px; border-bottom:1px solid #999; border-top:1px solid #999; border-right:1px solid #999; }
-div.day-number		{ background:#999; padding:5px; color:#fff; font-weight:bold; float:right; margin:-55px -5px 0 0; width:20px; text-align:center; }
-div.day-number:hover{background:black}
+td.calendar-day-head { 
+	background:#ccc; 
+	font-weight:bold; 
+	text-align:center; 
+	width:120px; 
+	padding:5px; 
+	border-bottom:1px solid #999; 
+	border-top:1px solid #999; 
+	border-right:1px solid #999; 
+}
+div.day-number { 
+	background:#999; 
+	padding:5px; 
+	color:#fff; 
+	font-weight:bold; 
+	float:right; 
+	margin:-55px -5px 0 0; 
+	width:20px; 
+	text-align:center; 
+}
+div.day-number:hover {
+	background: #336EC6;
+}
 /* shared */
-td.calendar-day, td.calendar-day-np { width:120px; padding:5px; border-bottom:1px solid #999; border-right:1px solid #999; }
+td.calendar-day, td.calendar-day-np { 
+	width:120px; 
+	padding:5px; 
+	border-bottom:1px solid #999; 
+	border-right:1px solid #999; 
+}
 
