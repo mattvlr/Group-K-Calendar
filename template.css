@@ -8,28 +8,11 @@ div.container {
 	padding-left: 235px;
 	padding-top: 125px;
 }
-<<<<<<< HEAD
 div.calendar{
 	height:800px;
 	width:100%;
 	position:relative;
 	padding-left: 265px;
-=======
-div.title { 
-    font: 'Arial Narrow', Arial, sans-serif;
-    color: black;
-	float: left;
-	height: 100px;
-	width: 100%;
-	background: #336EC6;
-	position: absolute;
-	z-index:-1;
-}
-
-div.calendar{
-	height:800px;
-	width:1000px;
->>>>>>> FETCH_HEAD
 }
 #current
 {

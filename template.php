@@ -80,20 +80,11 @@
           <br>
           Check out the login form <a href="login.php">here.</a>
         </div>
-<<<<<<< HEAD
           <div class="calendar">
             <h1 class="page-header">
               <?php echo date("F"), " ", date("Y"); ?>
             </h1>
             <?php echo draw_calendar(date("m"),date("Y")); ?>
-=======
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Calendar - <?php echo date("F"), " ", date("Y"); ?></h1>
-          <div class="calendar">
-            <?php echo draw_calendar(date("m"),date("Y")); ?>
-            <br>
-          </div>
->>>>>>> FETCH_HEAD
           </div>
         </div>
       </div>
