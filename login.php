@@ -24,16 +24,68 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+	<?php
+	$email = "Email address";
+	$status = "";
+	$attempts = 0;
 
-  <body>
+
+	if($_POST["login"] == "true") {
+	$connection = mysqli_connect("localhost","root","K","calendar");  //Mysql information
+
+		if (mysqli_connect_errno()) {  //Check connection
+			echo "Failed to connect to MYSQL: " . mysqli_connect_error();
+		}
+
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$attempts = $_POST['attempts'];
+
+	$result = mysqli_query($connection, "SELECT passhash , salt FROM user WHERE email='$email'");
+
+	while($row = mysqli_fetch_array($result))
+	{
+	$passhash = $row['passhash'];
+	$salt = $row['salt'];
+	}
+	$testhash = crypt($password,$salt);
+
+	if($passhash == $testhash)
+	{
+	echo 'login success<br>Here we should redirect to the userpage.<br>';
+	}
+	else if($passhash == NULL)
+	{
+	$status = "<font color='red' size='3'>Email not found.</font>";
+	$email = "Email address";
+
+	}
+	else
+	{
+	$attempts = $attempts + 1;
+	$status = "<font color='red' size='3'>Incorrect Email/Password</font>";
+
+	}
+	mysqli_free_result($pass_enc);
+	mysqli_free_result($salt);
+	mysqli_close($con);
+	}
+	else
+	{
+	}
+	
+		$loginform = '<body>
 
     <div class="container">
 
-      <form class="form-signin" role="form">
-        <h1>Welcome to Group K's Group Scheduling System.</h1>
+      <form class="form-signin" role="form" action="login.php" method = "post">
+        <h1>Welcome to Group Ks Group Scheduling System.</h1>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+		<h3>' . $status . '</h3>
+        <input type="email" name = "email" class="form-control" value="' . $email . '" required autofocus>
+        <input type="password" name = "password" class="form-control" placeholder="Password" required>
+		<input type="hidden" name="login" value = "true">
+		<input type="hidden" name="attempts" value ="' . $attempts . '">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
@@ -42,11 +94,12 @@
 
       <center> Return to the template <a href="template.php">here.</a> </center>
 
-    </div> <!-- /container -->
-
+    </div> <!-- /container -->';
+	echo $loginform;
+	?>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  </body>
+	</body>
 </html>
