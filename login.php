@@ -86,7 +86,7 @@
 		if(!isset($body))
 		{
 		$body = '<div class="container">
-				<form class="form-signin" role="form" action="login.php" method = "post">
+				<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '" method = "post">
 				<h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
 				<h2 class="form-signin-heading">Please sign in</h2>
 				<h3>' . $status . '</h3>
