@@ -24,75 +24,89 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-	<?php
-	$email = "Email address";
-	$status = "";
-	$attempts = 0;
+	<body>
+		<?php
 
+		if(isset($_COOKIE["id"]))
+		{
+			$body = 'cookie check success<br>Here we should redirect to the userpage.<br>';
+		}
+		else if(isset($_COOKIE["wait"]))
+		{
+			$body =  "You have tried too many times to login. Please wait another " . floor(($_COOKIE["wait"]-time())/60)  . " minutes " . ($_COOKIE["wait"]-time())%60 . " seconds and try again.<br>";
+		}
+		if(!isset($_POST["login"]))
+		{
+			$email = 'Email Address';
+			$attempts = 0;
+		}
+		else
+		{
+			include 'db.php';
+			$email = $_POST["email"];
+			$attempts = $_POST["attempts"];
+			$password = $_POST["password"];
+			$result = mysqli_query($connection, "SELECT id, passhash , salt FROM user WHERE email='$email'");
 
-	if($_POST["login"] == "true") {
-	include 'db.php';
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$attempts = $_POST['attempts'];
+			while($row = mysqli_fetch_array($result))
+			{
+				$id = $row['id'];
+				$passhash = $row['passhash'];
+				$salt = $row['salt'];
+			}
+			$testhash = crypt($password,$salt);
 
-	$result = mysqli_query($connection, "SELECT passhash , salt FROM user WHERE email='$email'");
+			if($passhash == $testhash)
+			{
+				echo 'login success<br>Here we should redirect to the userpage.<br>';
+				$body = '';
+				if($_POST['remember'] == 'true')
+				{
+					setcookie("id", $id , false);
+				}
+			}
+			else if($passhash == NULL)
+			{
+				$status = "<font color='red' size='3'>Email not found.</font>";
+				$email = "Email address";
 
-	while($row = mysqli_fetch_array($result))
-	{
-	$passhash = $row['passhash'];
-	$salt = $row['salt'];
-	}
-	$testhash = crypt($password,$salt);
+			}
+			else if($attempts < 10)
+			{
+				$attempts = $attempts + 1;
+				$status = "<font color='red' size='3'>Incorrect email\password combination.</font>";
+			}
+			else if($attempts >= 10)
+			{
+				$body = "You have tried too many times to login. Please wait 15 minutes and try again.";
+				setcookie("wait", time()+60*15 ,time()+60*15);
+			}
+		}
 
-	if($passhash == $testhash)
-	{
-	echo 'login success<br>Here we should redirect to the userpage.<br>';
-	}
-	else if($passhash == NULL)
-	{
-	$status = "<font color='red' size='3'>Email not found.</font>";
-	$email = "Email address";
+		if(!isset($body))
+		{
+		$body = '<div class="container">
+				<form class="form-signin" role="form" action="login.php" method = "post">
+				<h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<h3>' . $status . '</h3>
+				<input type="email" name = "email" class="form-control" value="' . $email . '" required autofocus>
+				<input type="password" name = "password" class="form-control" placeholder="Password" required>
+				<input type="hidden" name="login" value = "true">
+				<input type="hidden" name="attempts" value ="' . $attempts . '">
+				<label class="checkbox">
+				<input type="checkbox" name = "remember" value="true"> Remember me
+				</label>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				</form>
 
-	}
-	else
-	{
-	$attempts = $attempts + 1;
-	$status = "<font color='red' size='3'>Incorrect Email/Password</font>";
+				<center>Return to the template <a href="template.php">here</a>.</center>
+				<center> Dont have an account? Register <a href="register.php">here</a>.</center>
 
-	}
-	mysqli_free_result($pass_enc);
-	mysqli_free_result($salt);
-	mysqli_close($con);
-	}
-	else
-	{
-	}
-	
-		$loginform = '<body>
-
-    <div class="container">
-
-      <form class="form-signin" role="form" action="login.php" method = "post">
-        <h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
-        <h2 class="form-signin-heading">Please sign in</h2>
-		<h3>' . $status . '</h3>
-        <input type="email" name = "email" class="form-control" value="' . $email . '" required autofocus>
-        <input type="password" name = "password" class="form-control" placeholder="Password" required>
-		<input type="hidden" name="login" value = "true">
-		<input type="hidden" name="attempts" value ="' . $attempts . '">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
-      <center>Return to the template <a href="template.php">here</a>.</center>
-	  <center> Dont have an account? Register <a href="register.php">here</a>.</center>
-
-    </div> <!-- /container -->';
-	echo $loginform;
-	?>
+				</div> <!-- /container -->';
+		}
+		echo $body;
+		?>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
