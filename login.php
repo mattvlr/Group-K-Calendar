@@ -31,12 +31,7 @@
 
 
 	if($_POST["login"] == "true") {
-	$connection = mysqli_connect("localhost","root","K","calendar");  //Mysql information
-
-		if (mysqli_connect_errno()) {  //Check connection
-			echo "Failed to connect to MYSQL: " . mysqli_connect_error();
-		}
-
+	include 'db.php';
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$attempts = $_POST['attempts'];

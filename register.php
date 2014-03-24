@@ -2,14 +2,9 @@
 
 <?php 
 //TODO: input validation for forms, make neat like login page ...
-
 if( $_POST["create"] == "true")
 {
-	$connection = mysqli_connect("localhost","root","K","calendar");  //Mysql information
-
-	if (mysqli_connect_errno()) {  //Check connection
-		echo "Failed to connect to MYSQL: " . mysqli_connect_error();
-		}
+	include 'db.php';
 
 	$username = $_POST['username'];  
 	$email = $_POST['email'];
