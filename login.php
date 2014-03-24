@@ -46,23 +46,30 @@
 			$email = $_POST["email"];
 			$attempts = $_POST["attempts"];
 			$password = $_POST["password"];
-			$result = mysqli_query($connection, "SELECT id, passhash , salt FROM user WHERE email='$email'");
+			$result = mysqli_query($connection, "SELECT id, passhash , salt, activated FROM user WHERE email='$email'");
 
 			while($row = mysqli_fetch_array($result))
 			{
 				$id = $row['id'];
 				$passhash = $row['passhash'];
 				$salt = $row['salt'];
+				$activated = $row['activated'];
 			}
 			$testhash = crypt($password,$salt);
 
 			if($passhash == $testhash)
 			{
-				echo 'login success<br>Here we should redirect to the userpage.<br>';
-				$body = '';
-				if($_POST['remember'] == 'true')
+				if($activated == '0')
 				{
-					setcookie("id", $id , false);
+				$body = 'login success<br>But it seems you havent verified your email yet. Please check and verify your email and then login.';
+				}
+				else
+				{
+					$body = 'login success<br>Here we should redirect to the userpage.<br>';
+					if($_POST['remember'] == 'true')
+					{
+						setcookie("id", $id , false);
+					}
 				}
 			}
 			else if($passhash == NULL)
@@ -101,7 +108,8 @@
 				</form>
 
 				<center>Return to the template <a href="template.php">here</a>.</center>
-				<center> Dont have an account? Register <a href="register.php">here</a>.</center>
+				<center><a href="forgot.php">Forgot Password?</a></center>
+				<center>Dont have an account? Register <a href="register.php">here</a>.</center>
 
 				</div> <!-- /container -->';
 		}
