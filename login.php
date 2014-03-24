@@ -26,26 +26,46 @@
   </head>
 	<body>
 		<?php
-
+		$status = '';
 		if(isset($_COOKIE["id"]))
 		{
 			$body = 'cookie check success<br>Here we should redirect to the userpage.<br>';
 		}
-		else if(isset($_COOKIE["wait"]))
+		if(isset($_COOKIE["wait"]))
 		{
 			$body =  "You have tried too many times to login. Please wait another " . floor(($_COOKIE["wait"]-time())/60)  . " minutes " . ($_COOKIE["wait"]-time())%60 . " seconds and try again.<br>";
 		}
-		if(!isset($_POST["login"]))
+		if(!isset($_POST["attempts"]))
 		{
-			$email = 'Email Address';
 			$attempts = 0;
 		}
 		else
 		{
-			include 'db.php';
+			$attempts = $_POST['attempts'] +1;
+		}
+		if(!isset($_POST["remember"]))
+		{
+			$remember = 'false';
+		}
+		else
+		{
+			$remember = $_POST["remember"];
+		}
+		if(!isset($_POST["email"]))
+		{
+			$email = "Email Address";
+		}
+		else
+		{
 			$email = $_POST["email"];
-			$attempts = $_POST["attempts"];
+		}
+		if(isset($_POST["password"]))
+		{
 			$password = $_POST["password"];
+		}
+		
+		{
+			include 'db.php';
 			$result = mysqli_query($connection, "SELECT id, passhash , salt, activated FROM user WHERE email='$email'");
 
 			while($row = mysqli_fetch_array($result))
@@ -55,38 +75,40 @@
 				$salt = $row['salt'];
 				$activated = $row['activated'];
 			}
-			$testhash = crypt($password,$salt);
-
-			if($passhash == $testhash)
+			
+			if(mysqli_num_rows($result) > 0)
 			{
-				if($activated == '0')
+				$testhash = crypt($password,$salt);
+				
+				if($passhash == $testhash)
 				{
-				$body = 'login success<br>But it seems you havent verified your email yet. Please check and verify your email and then login.';
-				}
-				else
-				{
-					$body = 'login success<br>Here we should redirect to the userpage.<br>';
-					if($_POST['remember'] == 'true')
+					if($activated == '0')
 					{
-						setcookie("id", $id , false);
+						$body = 'login success<br>But it seems you havent verified your email yet. Please check and verify your email and then login.';
+					}
+					else
+					{
+						$body = 'login success<br>Here we should redirect to the userpage.<br>';
+						if($remember == 'true')
+						{
+							setcookie("id", $id , false);
+						}
 					}
 				}
 			}
-			else if($passhash == NULL)
-			{
-				$status = "<font color='red' size='3'>Email not found.</font>";
-				$email = "Email address";
-
-			}
 			else if($attempts < 10)
 			{
-				$attempts = $attempts + 1;
 				$status = "<font color='red' size='3'>Incorrect email\password combination.</font>";
 			}
 			else if($attempts >= 10)
 			{
 				$body = "You have tried too many times to login. Please wait 15 minutes and try again.";
 				setcookie("wait", time()+60*15 ,time()+60*15);
+			}
+			else
+			{
+				$status = "<font color='red' size='3'>Email not found.</font>";
+				$email = "Email address";
 			}
 		}
 

@@ -1,5 +1,5 @@
 <?php
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '72.204.14.125');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'K');
 define('DB_DATABASE', 'calendar');
