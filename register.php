@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -52,7 +53,7 @@ if( isset($_POST["create"]))
 	$result = mysqli_query($connection, $query);
 	if(mysqli_affected_rows($connection) == 1) {  //Registration Successful, user row successfully added
 		echo 'Thanks for registering!<br>Check your Email for an activation Link!';
-		require 'Send_Mail.php';
+		require 'smtp/Send_Mail.php';
 		Send_Mail($email,"Email Verification",'Hello ' . $first_name . ' ' . $last_name . ', <br/> <br/> We need to confirm that this is your real email. To do so Click the link below. <br/> <br/> <a href="'.$base_url.'activate.php?code='.$activation.'">'.$base_url.'activate.php?code='.$activation.'</a>');
 		echo 'Email Success';
 	}
