@@ -92,8 +92,8 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
-      <center> Return to the template <a href="template.php">here.</a> </center>
-	  <center> Dont have an account? <a href="register.php">here.</a> </center>
+      <center>Return to the template <a href="template.php">here</a>.</center>
+	  <center> Dont have an account? Register<a href="register.php">here</a>.</center>
 
     </div> <!-- /container -->';
 	echo $loginform;
