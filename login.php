@@ -93,6 +93,7 @@
       </form>
 
       <center> Return to the template <a href="template.php">here.</a> </center>
+	  <center> Dont have an account? <a href="register.php">here.</a> </center>
 
     </div> <!-- /container -->';
 	echo $loginform;
