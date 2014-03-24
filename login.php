@@ -79,7 +79,7 @@
     <div class="container">
 
       <form class="form-signin" role="form" action="login.php" method = "post">
-        <h1>Welcome to Group Ks Group Scheduling System.</h1>
+        <h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
         <h2 class="form-signin-heading">Please sign in</h2>
 		<h3>' . $status . '</h3>
         <input type="email" name = "email" class="form-control" value="' . $email . '" required autofocus>
