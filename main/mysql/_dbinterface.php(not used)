@@ -1,0 +1,19 @@
+<?php
+interface db_interface
+{
+	public function delete( $table, $where='');
+	public function update( $table, $set, $where='');
+	public function insert( $table, $set);
+
+	public function query( $query);
+	public function getChangedRows();
+	public function getRow($query_id = null);
+	public function getArray($query_id=null); //get array containing results from set
+	
+	public function checkField( $table, $field); // returns whether a field exists in a table
+	public function checkTable( $table);  // checks if table exists
+	
+}
+
+
+?>
