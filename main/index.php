@@ -1,44 +1,40 @@
-<!DOCTYPE html>
 <?php
-include 'logout.php';
-require 'navbar.php';  //Generate Navbar
-include 'calendarFunctions.php';
-/////////////Select Body based on GET act
+//login script that checks for cookies or sessions and loads that data
+require_once('login.php');
+?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-$leftbar = '';
-if(isset($id)) //user is logged in
-{
-	//$body = require("logout.php");
-	$leftbar = '<div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="list-group-item">
-              <span class="badge">14</span>
-                Messages
-            <li class="list-group-item">
-               <span class="badge">3</span>
-                Upcoming Events
-            <li><a href="#">Group Invites</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="?act=month">Month</a></li>
-            <li><a href="?act=year">Year Test</a></li>
-            <li><a href="?act=day">Day Test</a></li> 
-          </ul>
-          '. draw_small_month(date("m"),date("Y")) .'
-          <br>
-          Check out the login form <a href="login.php">here.</a>
-		  </div>';
-}
-else
-{
-//no one logged in
-}
+    <link rel="stylesheet" type="text/css" href="template.css">
+    <script src="SidebarJavaScript/SpryMenuBar.js" type="text/javascript"></script>
+    <script src="CalendarJsFunctions.js"></script>
+    <link href="SidebarJavaScript/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
 
 
 
-echo $leftbar;
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<?php
+require_once('navbar.php');
+require_once('sidebar.php');
 
 if(isset($_GET['act']))
 {
@@ -57,12 +53,12 @@ if(isset($_GET['act']))
 	}
 		if($_GET['act']== 'login')
 	{
-		$body = require("login_inline.php");
+		$body = require("loginform.php");
 	}
 
 		if($_GET['act']== 'home')
 	{
-		$body = require("month.php");
+		$body = require("calendar/month.php");
 	}
 		if($_GET['act']== 'forgot')
 	{
@@ -70,11 +66,11 @@ if(isset($_GET['act']))
 	}
 	if($_GET['act']== 'month')
 	{
-		$body = require("month.php");
+		$body = require("calendar/month.php");
 	}
 	if($_GET['act']== 'year')
 	{
-		$body = require("year.php");
+		$body = require("calendar/year.php");
 	}
 	if($_GET['act']== 'day')
 	{
@@ -91,13 +87,3 @@ if(isset($_GET['act']))
 
 
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/bootstrap/js/docs.min.js"></script>
-    <script var MenuBar1 = new Spry.Widget.MenuBar("sidebar", {imgRight:"../SidebarJavaScript/SpryMenuBarRightHover.gif"});>
-  </body>
-</html>

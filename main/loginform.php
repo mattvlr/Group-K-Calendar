@@ -27,10 +27,6 @@
 	<body>
 		<?php
 		$status = '';
-		if(isset($_COOKIE["id"]))
-		{
-			$body = 'cookie check success<br>Here we should redirect to the userpage.<br>';
-		}
 		if(isset($_COOKIE["wait"]))
 		{
 			$body =  "You have tried too many times to login. Please wait another " . floor(($_COOKIE["wait"]-time())/60)  . " minutes " . ($_COOKIE["wait"]-time())%60 . " seconds and try again.<br>";
@@ -65,7 +61,6 @@
 		}
 		
 		{
-			include 'db.php';
 			$result = mysqli_query($connection, "SELECT id, passhash , salt, activated FROM user WHERE email='$email'");
 
 			while($row = mysqli_fetch_array($result))

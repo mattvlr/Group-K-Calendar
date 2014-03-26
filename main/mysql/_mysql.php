@@ -85,8 +85,6 @@ class mysql_driver extends db_info
 		{
 		$found = $row["$get"];
 		}
-		echo "GET: " . $get . "<br>";
-		echo "LOL: " . $found ."<br>";
 
 		if(mysqli_num_rows($query_id) > 0)
 		{
@@ -143,7 +141,6 @@ class mysql_driver extends db_info
 	}
 	public function query( $query)
 	{
-	echo "QUERY : '" . $query . "'<br>";
 	$this->query_id = mysqli_query($this->connection_id, $query);
 
 		if(! $this->query_id )
@@ -155,7 +152,6 @@ class mysql_driver extends db_info
 	
 	public function fetch($query)
 	{
-	echo "QUERY : '" . $query . "'<br";
 	$this->query_id = mysqli_fetch_field($this->connection_id, $query);
 		if(! $this->query_id )
 		{
@@ -166,7 +162,6 @@ class mysql_driver extends db_info
 	
 	public function fetchArray($query)
 	{
-	echo "QUERY : '" . $query . "'<br";
 	$this->query_id = mysqli_fetch_array($this->connection_id, $query);
 		if(! $this->query_id )
 		{
@@ -190,6 +185,40 @@ class mysql_driver extends db_info
 			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
 		}
 	return $data;
+	}
+	
+	public function getSessionInfo($id)  //take id from cookie and return array of session info
+	{
+	$query = "SELECT username, first_name, last_name, avatar, permission FROM user WHERE id=" . $id . ";";
+	$query_id = $this->query($query);
+
+	while($row = mysqli_fetch_array($query_id))
+	{
+
+	$session_info = array(	'username' => $row['username'],
+							'first_name' => $row['first_name'],
+							'last_name' => $row['last_name'],
+							'avatar' => $row['avatar'],
+							'permission' => $row['permission']
+						);
+
+	}
+	if(mysqli_num_rows($query_id) > 0)
+	{
+	return $session_info;
+	}
+	else
+	{
+    return false;
+	}
+	
+	}
+	
+	public function login($username, $password)
+	{
+	
+	
+	
 	}
 	
 	

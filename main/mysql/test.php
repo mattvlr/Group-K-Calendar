@@ -21,7 +21,7 @@ else
 {
 echo "Not working<br>";
 }
-
+setcookie('id', '1', time()+86400);
 echo "<br>done";
 
 $things = array(	'username' => 'testusername',
@@ -35,4 +35,6 @@ $things = array(	'username' => 'testusername',
 					'activated' => 1
 				);
 //$mysql->insert('user', $things);   //inserts the $things set
+
+
 ?>

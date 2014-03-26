@@ -1,6 +1,5 @@
 
 <!DOCTYPE html>
-<?php session_start(); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -76,7 +75,7 @@ if( isset($_POST["create"]))
 if(!isset($body))
 {
 $body = '<div class="container">
-	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '" method = "post">
+	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=register" method = "post">
 	<h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
 	<h2 class="form-signin-heading">Please Register</h2>
 	<h3><font color="red" size="3">' . $status . '</font></h3>
