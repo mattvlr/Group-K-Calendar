@@ -1,4 +1,6 @@
 <?php
+
+$base_url = 'http://www.csce.uark.edu/~pfeinber/';
 abstract class db_info
 {
 	const DB_SERVER = '72.204.14.125';
@@ -6,7 +8,7 @@ abstract class db_info
 	const DB_USERNAME = 'root';
 	const DB_PASSWORD = 'K';
 	const DB_DATABASE = 'calendar';
-    const BASE_URL = 'http://72.204.14.125:8080/';
+    const BASE_URL = 'http://www.csce.uark.edu/~pfeinber/';
 	
 	public $failed = false;
 	protected $cur_query = "";

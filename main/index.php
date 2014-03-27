@@ -1,6 +1,7 @@
 <?php
 //login script that checks for cookies or sessions and loads that data
 require_once('login.php');
+require_once('mysql/_db.php');
 ?>
 <html lang="en">
   <head>
@@ -44,12 +45,11 @@ if(isset($_GET['act']))
 	}
 	if($_GET['act']== 'help')
 	{
-		$body = "INSERT HELP PAGE";
-	//$body = require("help.php");
+		$body = require("help.php");
 	}
 		if($_GET['act']== 'groups')
 	{
-		//$body = require("groups.php");
+		$body = require("groups.php");
 	}
 		if($_GET['act']== 'login')
 	{
@@ -58,7 +58,7 @@ if(isset($_GET['act']))
 
 		if($_GET['act']== 'home')
 	{
-		$body = require("calendar/month.php");
+		$body = require("home.php");
 	}
 		if($_GET['act']== 'forgot')
 	{
@@ -80,9 +80,17 @@ if(isset($_GET['act']))
 	{
 	//body = require("login_inline.php");
 	}
+	if($_GET['act'] =='FAQ')
+	{
+	$body = require("faq.php");
+	}
+
 
 }
-
+else
+{
+	$body = require("calendar/month.php");
+}
 ?>
 
 

@@ -1,30 +1,33 @@
 <?php
-include 'db.php';
-if(!empty($_GET['code']) && isset($_GET['code']))
-{
-$code=$_GET['code'];
-$c=mysqli_query($connection,"SELECT id FROM user WHERE activation='$code'");
+require_once('mysql/_mysql.php');
+$mysql = new mysql_driver;
+$mysql->connect();
 
-if(mysqli_num_rows($c) > 0)
-{
-$count=mysqli_query($connection,"SELECT id FROM user WHERE activation='$code' and activated='0'");
+$msg = 'fail';
 
-if(mysqli_num_rows($count) == 1)
+$perm = $mysql->select('user','permission','activation="'.$_GET['code'].'"');
+if($perm > '0')
 {
-mysqli_query($connection,"UPDATE user SET activated='1' WHERE activation='$code'");
-$msg="Your account is activated"; 
+	$msg = 'Your account is now activated<br>
+			Login <a href="index.php?act=login">here</a>!';
+}
+else if($perm == '0')
+{
+	if($mysql->update('user',"permission='1'",'activation="'.$_GET['code'].'"'))
+	{ 
+		$msg = 'Your account is now activated<br>
+				Login <a href="index.php?act=login">here</a>!';
+	}
+	else
+	{
+		$msg = 'Failed';
+	}
 }
 else
 {
-$msg ="Your account is already active, no need to activate again";
+$msg = 'invalid activation, Please re-send your validation link';
 }
 
-}
-else
-{
-$msg ="Wrong activation code.";
-}
 
-}
 ?>
 <?php echo $msg; ?>

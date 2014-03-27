@@ -1,6 +1,6 @@
 <?php 
 //Check for sessions
-if(isset($_SESSION["first_name"]) && isset($_SESSION["first_name"]))
+if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
 {
 $introduction = $first_name . " " . $last_name;
 $nav_pages ='<li><a href="?act=home">Home</a></li>

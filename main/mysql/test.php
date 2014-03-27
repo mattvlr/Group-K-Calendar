@@ -1,7 +1,7 @@
 <?php
 require_once('_db.php');
 require_once('_mysql.php');
-
+/*
 echo "TESTING THE MYSQL DRIVER<BR>";
 
 $mysql = new mysql_driver;
@@ -36,5 +36,18 @@ $things = array(	'username' => 'testusername',
 				);
 //$mysql->insert('user', $things);   //inserts the $things set
 
+
+$getset = array( 'username','passhash','salt');
+$found = '';
+$found = $mysql->select('user',$getset,'id=1');
+
+//echo "FOUND : " . $found . "<br>";
+print_r($found);
+echo '<br>';
+
+$found = $mysql->getSessionInfo($_COOKIE['id']);  // example of loading session info fo user 1 this is used for loading userdata to a session when a cookie is present
+
+print_r($found);
+*/
 
 ?>

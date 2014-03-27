@@ -21,6 +21,12 @@ if(isset($_SESSION["id"]) && isset($_SESSION["username"]) && isset($_SESSION["fi
 else if(isset($_COOKIE['id']))
 {
 	$sess = $mysql->getSessionInfo($_COOKIE['id']);
+	if(!$sess)
+	{
+	echo "COOKIE ERROR!";
+	}
+	else
+	{
 	$username = $sess['username'];
 	$first_name = $sess['first_name'];
 	$last_name = $sess['last_name'];
@@ -34,6 +40,7 @@ else if(isset($_COOKIE['id']))
 	$_SESSION['last_name'] = $last_name;
 	$_SESSION['avatar'] = $avatar;
 	$_SESSION['permission'] = $permission;
+	}
 }
 else
 {

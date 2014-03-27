@@ -1,5 +1,5 @@
 <?php
-
+require_once('_db.php');
 class mysql_driver extends db_info
 {
 
@@ -45,7 +45,7 @@ class mysql_driver extends db_info
 				);
 	}
 	
-	/*public function arrayToQuery($set) //format array of fields to comma separated query string
+	public function arrayToQuery($set) //format array of fields to comma separated query string
 	{
 		$field_names = "";
 		
@@ -57,21 +57,79 @@ class mysql_driver extends db_info
 		
 	$field_names  = rtrim( $field_names, ","  ); //take space out
 	return $field_names;
-	}*/
+	}
 	
-	public function select( $table, $get, $where='') //can only select from single table atm
+	public function exists($what,$where) //format array of fields to comma separated query string
 	{
-	$query = "SELECT " . $get . " FROM " . $table;
+	$exists = false;
+	$query = "SELECT * FROM user WHERE " . $what . "='"	. $where. "';";
+	$query_id = $this->query( $query);
+	while($row = mysqli_fetch_array($query_id))
+	{
+	}
+	if(mysqli_num_rows($query_id) > 0)
+	{
+	$exists = true;
+	}
+	return $exists;
+	}
 	
+	
+	public function select( $table, $get, $where='') //SELECTs the fields designated in the array $get WHERE conditions..
+	{
+		$data = array();
+		if(is_array($get))
+		{
+			$getq = $this->arrayToQuery($get);
+		}
+		else
+		{
+			$getq = $get;
+		}
+		$query = "SELECT " . $getq . " FROM " . $table;
+		
 		if( $where != '')
 		{
-		$query .= " WHERE " . $where;
+			$query .= " WHERE " . $where;
 		}
-	$result = $this->getQuery($query,$get);
+		$query_id = $this->query($query,$get);
+		
+		if(is_array($get))
+		{
+		while($row = mysqli_fetch_array($query_id))
+		{
+			$i = 0;
+			while( $i < count($get))
+			{
+				$data[$get[$i]] = $row[$get[$i]];
+				$i++;
+			}
+		}
+		}
+		else  // handle single data returns
+		{
+		while($row = mysqli_fetch_array($query_id))
+		{
+
+				$data = $row[$get];
+		}
+		}
+		if(! $this->query_id )
+		{
+			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
+			return false;
+		}	
+		
+		
+		
+		
+		
+	return $data;
+	
 	
 	}
 	
-	public function compare( $table, $get, $value, $where='' )  // USE unique where or this wont work as desired
+	public function compare( $table, $get='', $value, $where='' ) // used like compare('user', 'passhash', $test_passhash, 'id') can also be used to see if 
 	{	//test a value against the db
 		$same = false;
 		$query = "SELECT " . $get . " FROM " . $table;
@@ -118,18 +176,28 @@ class mysql_driver extends db_info
 
 	public function update( $table, $set, $where='')
 	{
+	$query = "UPDATE " . $table . " SET " . $set;
 		if( $where )
 		{
-			$query .= "WHERE " . $where;
+			$query .= " WHERE " . $where;
 		}
-	return $this->query($query);
+	if($this->query($query))
+	{
+		return true;
+	}
+	return false;
 	}
 	
 	public function insert( $table, $set)
 	{
 	$q = $this->arrayPairToQuery( $set);
 	$query = "INSERT INTO " . $table .  " ({$q['FIELD_NAMES']}) VALUES({$q['FIELD_VALUES']})";
-	return $this->query($query);
+	$query_id = $this->query($query);
+	if(mysqli_affected_rows($this->connection_id) > 0)
+	{
+	return true;
+	}
+	return false;
 	}
 	
 	public function error( $err)
@@ -139,13 +207,13 @@ class mysql_driver extends db_info
 	echo 'alert("'.$err.'")';
 	echo '</script>';
 	}
-	public function query( $query)
+	public function query( $query_string)
 	{
-	$this->query_id = mysqli_query($this->connection_id, $query);
+	$this->query_id = mysqli_query($this->connection_id, $query_string);
 
 		if(! $this->query_id )
 		{
-			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
+			$this->error("MYSQL QUERY ERROR: QUERY = " . $query_string);
 		}
 	return $this->query_id;
 	}
@@ -160,9 +228,9 @@ class mysql_driver extends db_info
 	return $this->query_id;
 	}
 	
-	public function fetchArray($query)
+	public function fetchArray($query_id)
 	{
-	$this->query_id = mysqli_fetch_array($this->connection_id, $query);
+	mysqli_fetch_array($query_id);
 		if(! $this->query_id )
 		{
 			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
@@ -171,25 +239,21 @@ class mysql_driver extends db_info
 	}
 	
 	
-	public function getQuery( $query,$field_names)
-	{
-	$this->query_id = mysqli_query($this->connection_id, $query);
-		while($row = mysqli_fetch_array($result))
-		{
-		
-		
-		
-		}
-		if(! $this->query_id )
-		{
-			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
-		}
-	return $data;
-	}
 	
 	public function getSessionInfo($id)  //take id from cookie and return array of session info
 	{
-	$query = "SELECT username, first_name, last_name, avatar, permission FROM user WHERE id=" . $id . ";";
+		$fields = array('username','first_name','last_name','avatar','permission');
+		$where = "id='" . $id . "'";
+		$info = $this->select('user',$fields,$where);
+		if(!$info)
+		{
+		return false;
+		}
+		return $info;
+	
+	
+	/*
+	$query = "SELECT username, first_name, last_name, avatar, permission FROM user WHERE id=" . $id . ";";    //This is old code that was written before I finished the select function
 	$query_id = $this->query($query);
 
 	while($row = mysqli_fetch_array($query_id))
@@ -210,15 +274,25 @@ class mysql_driver extends db_info
 	else
 	{
     return false;
-	}
+	}*/
 	
 	}
 	
-	public function login($username, $password)
+	public function login($email, $password)
 	{
+		$what = array('id','passhash','salt','permission');
+		$where = 'email = "' . $email. '"';
+		$login = $this->select('user',$what,$where);
+		if($login != false)
+		{
+			$testhash = crypt($password,$login['salt']);
+			if($testhash == $login['passhash'])
+			{
+				return $login['id'];
+			}
+		}
 	
-	
-	
+	return false;
 	}
 	
 	

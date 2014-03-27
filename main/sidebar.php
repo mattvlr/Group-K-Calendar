@@ -1,6 +1,28 @@
 <?php 
 require_once('/calendar/CalendarFunctions.php');
 
+//highlight the currently selected view
+$m = '';
+$y = '';
+$d = '';
+
+if(isset($_GET['act']) && $_GET['act'] == 'year')
+{
+$y = 'class="active"';
+}
+else if(isset($_GET['act']) && $_GET['act'] == 'day')
+{
+$d = 'class="active"';
+}
+else if(isset($_GET['act']) && $_GET['act'] == 'month')
+{
+$m = 'class="active"';
+}
+
+$views= '<li '.$m.'><a href="?act=month">Month</a></li>
+         <li '.$y.'><a href="?act=year">Year Test</a></li>
+         <li '.$d.'><a href="?act=day">Day Test</a></li>';
+
 if(isset($_SESSION['id']))
 {
 	$sidebar = '<div class="container-fluid">
@@ -16,9 +38,7 @@ if(isset($_SESSION['id']))
             <li><a href="#">Group Invites</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="?act=month">Month</a></li>
-            <li><a href="?act=year">Year Test</a></li>
-            <li><a href="?act=day">Day Test</a></li> 
+		'.$views.'
           </ul>
           '. draw_small_month(date("m"),date("Y")) .'
           <br>
