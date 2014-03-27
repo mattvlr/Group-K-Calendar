@@ -28,7 +28,7 @@ $navbar = '<div class="navbar navbar-default navbar-fixed-top" role="navigation"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Welcome ' . $introduction .'</a>
+          <a class="navbar-brand" href="#">Welcome, ' . $introduction .'</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">

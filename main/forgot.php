@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <?php
-$body = strlen($_GET['code']);
 
-if(isset($_GET['code']) && strlen( $_GET['code']) == 13)
+$body = '';
+$status = '';
+
+if(isset($_GET['code']) )
 {
-$code = $_GET['code'];
-if($mysql->compare('user', 'activation', $code))
-{
-echo "A";
-$body = 'ACTIVATION CODE FOUND';
+	if(strlen( $_GET['code']) == 13)
+	{
+		$code = $_GET['code'];
+		if($mysql->exists('user', 'activation', $code, ''))
+		{
+			echo "A";
+			$form = '<h3>' . $status . '</font></h3>
+				<input type="email" name = "email" class="form-control" placeholder="Email Address" required autofocus>
+				<a id = "confirmMessage"></a>
+				<input type="hidden" name="forgot" value = "send">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>';
+		}
+		else
+		{
+			echo "B";
+			$body = 'ACTIVATION CODE NOT FOUND';
+		}
+	}
+	else
+	{
+		$body = 'Improper activation link format, try again.'; 
+	}
 }
-else
+else 
 {
-echo "B";
-$body = 'ACTIVATION CODE NOT FOUND';
+	if(isset($_POST['email']))
+	{
+		if($mysql->exists('email',$_POST['email']))
+		{
+			$status = "<font color ='green' size = 3>Check your email!</font>";
+		}
+		$status = "<font color ='red' size = 3>Email not found.</font>";
+	}
+	$form = '<h3>' . $status . '</font></h3>
+				<input type="email" name = "email" class="form-control" placeholder="Email Address" required autofocus>
+				<a id = "confirmMessage"></a>
+				<input type="hidden" name="forgot" value = "send">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Send Email</button>';
 }
+
+		$body = '<div class="container">
+		<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '"?act=forgot method = "post">
+		<h2 class="form-signin-heading">Forgot Password?</h2>
+		'.$form.'
+		</form>
+		</div> <!-- /container --> SERVER_PHP_SELF: ' . $_SERVER['PHP_SELF'] . '?act=forgot'; 
 
 ?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,10 +83,8 @@ $body = 'ACTIVATION CODE NOT FOUND';
   </head>
 	<body>
 	
-	<?php 
-	//echo $body;
-	?>
-	
-</body>
-
-
+<?php 
+	echo $body;
+?>
+	</body>
+</html>
