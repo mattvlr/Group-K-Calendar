@@ -6,13 +6,13 @@
 $status = '';
 if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password']))
 {  
-	$user_inuse = $mysql->exists('username',$_POST['username']);
-	$email_inuse = $mysql->exists('email',$_POST['email']);
+	$user_inuse = $mysql->exists('user',"username='".$_POST['username']."'");
+	$email_inuse = $mysql->exists('user',"email='".$_POST['email']."'");
 	if(!$user_inuse && !$email_inuse )
 	{
 	$salt = uniqid(mt_rand(0,61),true);
 	$passhash = crypt($_POST['password'],$salt);
-	$activation = crypt($_POST['email'],mt_rand(0,61));
+	$activation = crypt($_POST['email'],$salt);
 	$userinfo = array(	'username' => $_POST['username'],
 						'first_name' => $_POST['first_name'],
 						'last_name' => $_POST['last_name'],
@@ -27,7 +27,7 @@ if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password'
 	//USER ADDED SUCCESSFULLY
 		require_once('smtp/Send_Mail.php');
 		$activation_email = 'Hello ' . $_POST['first_name'] . ' ' . $_POST['last_name'] . ', <br/> <br/> We need to confirm that this is your real email. To do so Click the link below.<br/><br/>
-							<a href="'.$base_url.'/main/activate.php?code='.$activation.'">'.$base_url.'main/activate.php?code='.$activation.'</a>';
+							<a href="'.$base_url.'/main/activate.php?code='.$activation.'">'.$base_url.'/main/activate.php?code='.$activation.'</a>';
 		$status = '	<font color="green" size="5">Registration Successful<br></font>
 					<font color="green" size="3">Check your email for an activation link!';
 		Send_Mail($_POST['email'],"Email Verification",$activation_email);
@@ -48,9 +48,10 @@ if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password'
 
 }
 
-$body = '<div class="container">
+$body = '<center><h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1></center>
+<div class="container">
+	
 	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=register" method = "post">
-	<h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1>
 	<h2 class="form-signin-heading">Please Register</h2>
 	<h3>' . $status . '</font></h3>
 	<input type="email" name = "email" class="form-control" placeholder="Email Address" required autofocus>

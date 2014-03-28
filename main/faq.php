@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Help</title>
+<title>FAQ</title>
 <link rel="stylesheet" type="text/css" href="template.css">
 </head>
 <body><center><h1>FAQ</h1></center>

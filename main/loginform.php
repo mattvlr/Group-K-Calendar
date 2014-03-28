@@ -47,7 +47,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 	else  // not logged in
 	{
 		$status = "<font color='red'>Login failed!</font>";
-		if(!$mysql->exists('email',$_POST['email']))
+		if(!$mysql->exists('user',"email='".$_POST['email']."'"))
 		{
 			$status = "<font color='red'>Email Dosnt exist!</font>";
 		}

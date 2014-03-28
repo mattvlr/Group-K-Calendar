@@ -59,10 +59,10 @@ class mysql_driver extends db_info
 	return $field_names;
 	}
 	
-	public function exists($what,$where) //format array of fields to comma separated query string
+	public function exists($table,$where) //format array of fields to comma separated query string
 	{
 	$exists = false;
-	$query = "SELECT * FROM user WHERE " . $what . "='"	. $where. "';";
+	$query = "SELECT * FROM " . $table . " WHERE " . $where;
 	$query_id = $this->query( $query);
 	while($row = mysqli_fetch_array($query_id))
 	{
