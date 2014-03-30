@@ -1,6 +1,6 @@
 <?php
-require_once('_db.php');
-require_once('_mysql.php');
+//require_once('_db.php');
+//require_once('_mysql.php');
 /*
 echo "TESTING THE MYSQL DRIVER<BR>";
 
@@ -49,14 +49,6 @@ $found = $mysql->getSessionInfo($_COOKIE['id']);  // example of loading session 
 
 print_r($found);
 */
-for($i = 0; $i < 100; $i++)
-{
 
-$salt = uniqid(mt_rand(0,61),true);
-echo $salt;
-$hash = crypt('veronica',$salt);
-echo '&nbsp;&nbsp;&nbsp;@';
-echo $hash;
-echo '<br>';
-}
+
 ?>

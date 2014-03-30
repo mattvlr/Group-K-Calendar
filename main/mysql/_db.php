@@ -2,7 +2,11 @@
 
 $base_url = 'http://72.204.14.125:220';
 abstract class db_info
-{
+{	
+	////////////////////////////////////////////
+	// Our MySql Connection information
+	// $base_url - used for link generation
+	////////////////////////////////////////////
 	const DB_SERVER = '72.204.14.125';
 	const DB_PORT = '';
 	const DB_USERNAME = 'root';

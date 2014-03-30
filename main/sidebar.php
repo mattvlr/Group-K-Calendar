@@ -1,30 +1,32 @@
 <?php 
 require_once('/calendar/CalendarFunctions.php');
 
-//highlight the currently selected view
-$m = '';
-$y = '';
-$d = '';
 
-if(isset($_GET['act']) && $_GET['act'] == 'year')
-{
-$y = 'class="active"';
-}
-else if(isset($_GET['act']) && $_GET['act'] == 'day')
-{
-$d = 'class="active"';
-}
-else if(isset($_GET['act']) && $_GET['act'] == 'month')
-{
-$m = 'class="active"';
-}
-
-$views= '<li '.$m.'><a href="?act=month">Month</a></li>
-         <li '.$y.'><a href="?act=year">Year Test</a></li>
-         <li '.$d.'><a href="?act=day">Day Test</a></li>';
 
 if(isset($_SESSION['id']))
 {
+	//highlight the currently selected view
+	$m = '';
+	$y = '';
+	$d = '';
+
+	if(isset($_GET['act']) && $_GET['act'] == 'year')
+	{
+	$y = 'class="active"';
+	}
+	else if(isset($_GET['act']) && $_GET['act'] == 'day')
+	{
+	$d = 'class="active"';
+	}
+	else if(isset($_GET['act']) && $_GET['act'] == 'month')
+	{
+	$m = 'class="active"';
+	}
+	//Generate views section
+	$views= '<li '.$m.'><a href="?act=month">Month</a></li>
+			 <li '.$y.'><a href="?act=year">Year Test</a></li>
+			 <li '.$d.'><a href="?act=day">Day Test</a></li>';
+		 
 	$sidebar = '<div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -45,7 +47,7 @@ if(isset($_SESSION['id']))
           Check out the login form <a href="login.php">here.</a>
 		  </div>';
 }
-else
+else    //Sidebar only for logged in users?
 {
 $sidebar = '';
 }

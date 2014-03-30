@@ -34,7 +34,7 @@ if(isset($_GET['code']) )
 		}
 	
 	}
-	else if(strlen( $_GET['code']) == 13)
+	else if(strlen( $_GET['code']) == 13)   	//forgot password codes are 13 chars long
 	{
 		$code = $_GET['code'];
 		if($mysql->exists('user', "forgot='".$code."'"))
@@ -62,7 +62,7 @@ if(isset($_GET['code']) )
 }
 else 
 {
-	if(isset($_POST['email']))
+	if(isset($_POST['email']))   //for initial password reset email
 	{
 		$status = "<font color ='red' size = 3>Email not found.</font>";
 		if($mysql->exists('user',"email='" . $_POST['email'] ."'"))
