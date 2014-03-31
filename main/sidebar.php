@@ -45,6 +45,8 @@ if(isset($_SESSION['id']))
           '. draw_small_month(date("m"),date("Y")) .'
           <br>
           Check out the login form <a href="login.php">here.</a>
+		  <br><br>
+		  Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
 		  </div>';
 }
 else    //Sidebar only for logged in users?

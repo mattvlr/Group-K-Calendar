@@ -31,12 +31,14 @@
 		
 		    /* ADDED BY MATT AS A TEST */
 			if($todaynum == $day_counter + 1):
-				$calendar.= '<td class="today" id="daybox" onclick=clicked('.$todaynum.') >';
+				$calendar.= '<td class="today" id="daybox" onclick=create_event('.$todaynum.','.$month.','.$year.') >';
 				$calendar.= '<div class="current-day">'.$list_day.'</div>';
+				$calendar.= '<div class="event_box_no_event"></div>';
 			else:
-				$calendar.= '<td class="calendar-day" id="daybox" onclick=clicked('.$list_day.') >';
+				$calendar.= '<td class="calendar-day" id="daybox" onclick=create_event('.$list_day.','.$month.','.$year.') >';
 				/* add in the day number */
 				$calendar.= '<div class="day-number">'.$list_day.'</div>';
+				$calendar.= '<div class="event_box_no_event"></div>';
 			endif;
 
 

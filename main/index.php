@@ -13,7 +13,7 @@ require_once('mysql/_db.php');
 
     <link rel="stylesheet" type="text/css" href="template.css">
     <script src="SidebarJavaScript/SpryMenuBar.js" type="text/javascript"></script>
-    <script src="CalendarJsFunctions.js"></script>
+    <script src="/main/calendar/CalendarJsFunctions.js"></script>
     <link href="SidebarJavaScript/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
 
 
@@ -84,6 +84,7 @@ if(isset($_GET['act']))
 	{
 	$body = require("faq.php");
 	}
+
 
 
 }

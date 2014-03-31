@@ -1,4 +1,7 @@
 
-function clicked(day){
-    alert("Today is " + day);
+function create_event(day,month,year){
+    alert("Today is " + month + day + year);
+}
+function test(){
+	alert("It worked!");
 }
