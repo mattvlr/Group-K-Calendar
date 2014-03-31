@@ -136,9 +136,12 @@
 		
 		$table.= '<table border="1px"><tr><th colspan="4" class="monthtitle">'.$year.'</td></tr>';
 		
-		for($i = 1; $i < 4; ($i++)):
-			$table.='<tr><td class="year-table">'.draw_small_month($i*$i,$year).'</td><td class="year-table">'.draw_small_month($i*$i+1,$year).'</td><td class="year-table">'.draw_small_month($i*$i+2,$year).'</td><td class="year-table">'.draw_small_month($i*$i+3,$year).'</td></tr>';
-		endfor;
+		$table.='<tr><td class="year-table">'.draw_small_month(1,$year).'</td><td class="year-table">'.draw_small_month(2,$year).'</td><td class="year-table">'.draw_small_month(3,$year).'</td><td class="year-table">'.draw_small_month(4,$year).'</td></tr>';
+		
+		$table.='<tr><td class="year-table">'.draw_small_month(5,$year).'</td><td class="year-table">'.draw_small_month(6,$year).'</td><td class="year-table">'.draw_small_month(7,$year).'</td><td class="year-table">'.draw_small_month(8,$year).'</td></tr>';
+		
+		$table.='<tr><td class="year-table">'.draw_small_month(9,$year).'</td><td class="year-table">'.draw_small_month(10,$year).'</td><td class="year-table">'.draw_small_month(11,$year).'</td><td class="year-table">'.draw_small_month(12,$year).'</td></tr>';
+		
 		
 		$table.='</table>';
 		return $table;
