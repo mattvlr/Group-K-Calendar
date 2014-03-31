@@ -74,9 +74,9 @@ if(isset($_GET['act']))
 	}
 	if($_GET['act']== 'day')
 	{
-		//$body = require("day.php");
+		$body = require("calendar/day.php");
 	}
-		if($_GET['act']== 'messages')
+	if($_GET['act']== 'messages')
 	{
 	//body = require("login_inline.php");
 	}

@@ -149,4 +149,19 @@
 		return $table;
 	
 	}
+	
+	function draw_day($day){
+		$hour = date('h');
+		$table.= '<table border="1px" align="center" width="50%">';
+		$table.= '<tr><th><center>'.date("F"). " " . date("d") . " " . date("Y"). ' Current Time: '. date('h:i:s').'</center></th></tr>';
+		for($i = $hour; $i < $hour + 24; $i++):
+			if($i > 24):
+				$table.='<tr><td>'.($i-24).'</td></tr>';
+			else:
+				$table.='<tr><td>'.$i.'</td></tr>';
+			endif;
+		endfor;
+		$table.= '</table>';
+		return $table;
+	}
 ?>

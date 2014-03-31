@@ -1,5 +1,10 @@
 <title>Day</title>
-<html>
-<a href="template.php">Back</a>
-<p> Will get prototype later today. 3/23/14</p>
-</html>
+<?php
+require_once('CalendarFunctions.php');
+echo '<div class="day">
+            '. draw_day(date("d")) . '
+          </div>
+        </div>
+      </div>
+    </div>'
+?>
