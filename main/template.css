@@ -93,7 +93,16 @@ td.year-calendar-day:hover{
 	background:black;
 	color:white;
 }
-
+table.day{
+	border: 1px solid black;
+	width: 50%;
+	overflow: scroll;
+}
+td.day-small-time{
+	padding-left: .5em;
+	width:100%;
+	border: 1px solid black;
+}
 /* Standard included in example \/ */
 td.calendar-day	{ 
 	min-height:120px; 

@@ -152,13 +152,19 @@
 	
 	function draw_day($day){
 		$hour = date('h');
-		$table.= '<table border="1px" align="center" width="50%">';
-		$table.= '<tr><th><center>'.date("F"). " " . date("d") . " " . date("Y"). ' Current Time: '. date('h:i:s').'</center></th></tr>';
-		for($i = $hour; $i < $hour + 24; $i++):
+		$table.= '<table class="day" align="center">';
+		$table.= '<tr><th>'.date("F"). " " . date("d") . " " . date("Y"). '</th><th>Current Time: <div id="txt"></div></th></tr>';
+		for($i = $hour; $i < 24; $i++):
 			if($i > 24):
 				$table.='<tr><td>'.($i-24).'</td></tr>';
+				$table.='<tr><td class="day-small-time">:15</td></tr>';
+				$table.='<tr><td class="day-small-time">:30</td></tr>';
+				$table.='<tr><td class="day-small-time">:45</td></tr>';
 			else:
-				$table.='<tr><td>'.$i.'</td></tr>';
+					$table.='<tr><td>'.$i.'</td></tr>';
+					$table.='<tr><td class="day-small-time">:15</td></tr>';
+					$table.='<tr><td class="day-small-time">:30</td></tr>';
+					$table.='<tr><td class="day-small-time">:45</td></tr>';
 			endif;
 		endfor;
 		$table.= '</table>';
