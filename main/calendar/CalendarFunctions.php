@@ -153,8 +153,8 @@
 	function draw_day($day){
 		$hour = date('h');
 		$table.= '<table class="day" align="center">';
-		$table.= '<tr><th>'.date("F"). " " . date("d") . " " . date("Y"). '</th><th>Current Time: <div id="txt"></div></th></tr>';
-		for($i = $hour; $i < 24; $i++):
+		$table.= '<tr><th>'.date("F"). " " . date("d") . " " . date("Y"). '</th></tr>';
+		for($i = $hour; $i < $hour+24; $i++):
 			if($i > 24):
 				$table.='<tr><td>'.($i-24).'</td></tr>';
 				$table.='<tr><td class="day-small-time">:15</td></tr>';

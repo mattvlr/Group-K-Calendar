@@ -96,7 +96,6 @@ td.year-calendar-day:hover{
 table.day{
 	border: 1px solid black;
 	width: 50%;
-	overflow: scroll;
 }
 td.day-small-time{
 	padding-left: .5em;

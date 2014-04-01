@@ -33,6 +33,7 @@ require_once('mysql/_db.php');
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <body onload="startTime()"></body>
 <?php
 require_once('navbar.php');
 require_once('sidebar.php');
