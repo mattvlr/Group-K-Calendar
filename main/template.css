@@ -96,11 +96,28 @@ td.year-calendar-day:hover{
 table.day{
 	border: 1px solid black;
 	width: 50%;
+	margin-top: 3em;
+}
+td.day-time{
+	border: 1px solid black;
+	width: 10%;
 }
 td.day-small-time{
-	padding-left: .5em;
-	width:100%;
+	padding-right: .2em;
+	text-align: right;
+	width: 10%;
 	border: 1px solid black;
+	
+}
+td.day-event-content{
+	border: 1px solid black;
+}
+th.hourtitle{
+	padding-left: .2em;
+	font-weight:bold;
+	text-align:left;
+	border:1px solid black;
+	background: #ccc;
 }
 /* Standard included in example \/ */
 td.calendar-day	{ 

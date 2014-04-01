@@ -152,19 +152,25 @@
 	
 	function draw_day($day){
 		$hour = date('h');
+		$table = "";
 		$table.= '<table class="day" align="center">';
-		$table.= '<tr><th>'.date("F"). " " . date("d") . " " . date("Y"). '</th></tr>';
+		$table.= '<tr><th class="monthtitle" colspan="2">'.date("F"). " " . date("d") . " " . date("Y"). '</th></tr>';
 		for($i = $hour; $i < $hour+24; $i++):
 			if($i > 24):
-				$table.='<tr><td>'.($i-24).'</td></tr>';
-				$table.='<tr><td class="day-small-time">:15</td></tr>';
-				$table.='<tr><td class="day-small-time">:30</td></tr>';
-				$table.='<tr><td class="day-small-time">:45</td></tr>';
+				$table.='<tr><th class="hourtitle">'.($i-24).'</th><td class="day-event-content"></td></tr>';
+				$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
+				$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
+				$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
+			elseif($i > 12):
+					$table.='<tr><th class="hourtitle">'.($i-12).'</th><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 			else:
-					$table.='<tr><td>'.$i.'</td></tr>';
-					$table.='<tr><td class="day-small-time">:15</td></tr>';
-					$table.='<tr><td class="day-small-time">:30</td></tr>';
-					$table.='<tr><td class="day-small-time">:45</td></tr>';
+					$table.='<tr><th class="hourtitle">'.$i.'</th><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 			endif;
 		endfor;
 		$table.= '</table>';
