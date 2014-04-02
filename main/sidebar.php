@@ -1,8 +1,6 @@
 <?php 
 require_once('/calendar/CalendarFunctions.php');
 
-
-
 if(isset($_SESSION['id']))
 {
 	//highlight the currently selected view
@@ -43,9 +41,8 @@ if(isset($_SESSION['id']))
 		'.$views.'
           </ul>
           '. draw_small_month(date("m"),date("Y")) .'
-          <br>
-          Check out the login form <a href="login.php">here.</a>
-		  <br><br>
+		  <br>
+
 		  Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
 		  </div>';
 }

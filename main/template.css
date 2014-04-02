@@ -112,6 +112,10 @@ td.day-small-time{
 td.day-event-content{
 	border: 1px solid black;
 }
+td.current-minute{
+	border: 1px solid black;
+	background: blue;
+}
 th.hourtitle{
 	padding-left: .2em;
 	font-weight:bold;

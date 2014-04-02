@@ -67,7 +67,7 @@ $body = '<center><h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1
 	</form>
 
 	<center>Return to the template <a href="template.php">here</a>.</center>
-	<center> Already have an account? Login <a href="login.php">here</a>.</center>
+	<center> Already have an account? Login <a href="index.php?act=login">here</a>.</center>
 
 	</div> <!-- /container -->';
 	
