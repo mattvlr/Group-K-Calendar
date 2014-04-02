@@ -113,8 +113,14 @@ td.day-event-content{
 	border: 1px solid black;
 }
 td.current-minute{
+	text-align: right;
+	width: 10%;
 	border: 1px solid black;
-	background: blue;
+	background: gray;
+}
+th.current-minute{
+	border: 1px solid black;
+	background: gray;
 }
 th.hourtitle{
 	padding-left: .2em;
