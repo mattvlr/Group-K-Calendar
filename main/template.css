@@ -117,10 +117,14 @@ td.current-minute{
 	width: 10%;
 	border: 1px solid black;
 	background: gray;
+	color: white;
+	padding-right: .2em;
 }
 th.current-minute{
 	border: 1px solid black;
 	background: gray;
+	color: white;
+	padding-right: .2em;
 }
 th.hourtitle{
 	padding-left: .2em;
