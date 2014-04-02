@@ -129,6 +129,7 @@ else
 	<body>
 		<div="forgot">
 			<?php echo $body;?>
+			<center>Return to login <a href="?act=login">here</a>.</center>
 		</div>
 	</body>
 </html>
