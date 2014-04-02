@@ -56,7 +56,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
 }
 
 $form = '	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=login" method = "post">
-			<h2 class="form-signin-heading">Please sign in</h2>
+			<h1>Welcome to Kalendar.</h1>
+			<h2 class="form-signin-heading">Sign in:</h2>
 			<br>' . $status . 
 			'<input type="email" name = "email" class="form-control" ' . $email . '" required autofocus>
 			<input type="password" name = "password" class="form-control" placeholder="Password" required>
@@ -66,6 +67,9 @@ $form = '	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF']
 		<input type="checkbox" name = "rem" value="rem"'. $rem .'> Remember me
 		</label>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		<br>
+		<center>Dont have an account? <a href="?act=register">Register here.</a></center>
+		<center><a href="?act=forgot">Forgot Password?</a></center>
 		</form>';
 
 ?>
@@ -97,12 +101,8 @@ $form = '	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF']
 
   <body>
 
-    <div class="container">
-
-      
-        <h1>Welcome to Group K's Group Scheduling System.</h1>
+    <div class="login">
 		<?php echo $form;?>
-	<center><a href="?act=forgot">Forgot Password?</a></center>
      <!--<center> Return to the template <a href="template.php">here.</a> </center>-->
 
     </div> <!-- /container -->

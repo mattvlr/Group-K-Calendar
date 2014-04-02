@@ -75,7 +75,7 @@ else
 								<a href="'.$base_url.'/main/index.php?act=forgot&code='.$activation.'">'.$base_url.'/main/index.php?act=forgot&code='.$activation.'</a>';
 				Send_Mail($_POST['email'],"Password Change",$activation_email);
 				$status = '	<font color="green" size="5">Email Sent!<br></font>
-						<font color="green" size="3">Check your email for an password change link!';
+						<font color="green" size="3">Check your email for an password change link.<br></font>';
 			}
 			else
 			{
@@ -94,7 +94,7 @@ else
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Send Email</button>';
 }
 
-		$body = '<div class="container">
+		$body = '<div class="forgot">
 		'.$form.'
 		</form>'; 
 
@@ -127,9 +127,8 @@ else
 	<script src="functions.js"></script>
   </head>
 	<body>
-	
-<?php 
-	echo $body;
-?>
+		<div="forgot">
+			<?php echo $body;?>
+		</div>
 	</body>
 </html>

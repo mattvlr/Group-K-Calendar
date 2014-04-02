@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
 
-
-
 $status = '';
 if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password']))
 {  
@@ -48,11 +46,10 @@ if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password'
 
 }
 
-$body = '<center><h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1></center>
-<div class="container">
-	
+$body = '<div class="register">
 	<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=register" method = "post">
-	<h2 class="form-signin-heading">Please Register</h2>
+	<h1>Welcome to Kalendar.</h1>
+	<h2 class="form-signin-heading">Register:</h2>
 	<h3>' . $status . '</font></h3>
 	<input type="email" name = "email" class="form-control" placeholder="Email Address" required autofocus>
 	<input type="text" name = "username" class="form-control" placeholder="User Name" required>
@@ -61,21 +58,13 @@ $body = '<center><h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1
 	<a id = "confirmMessage"></a>
 	<input type=text name = "first_name" class="form-control" placeholder="First Name" required>
 	<input type=text name = "last_name" class="form-control" placeholder="Last Name" required>
-	Date of Birth : <input type="date" name = "dob" class="form-control">
+	<center>Date of Birth :</center> <input type="date" name = "dob" class="form-control">
 	<input type="hidden" name="create" value = "true">
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
 	</form>
+	<center> Already have an account? Login <a href="?act=login">here</a>.</center>
 
-	<center>Return to the template <a href="template.php">here</a>.</center>
-	<center> Already have an account? Login <a href="index.php?act=login">here</a>.</center>
-
-	</div> <!-- /container -->';
-	
-
-
-
-
-
+	</div> <!-- /register -->';
 
 ?>
 <html lang="en">
@@ -105,8 +94,8 @@ $body = '<center><h1>Welcome to Group K' . "'" . 's Group Scheduling System.</h1
 	<script src="functions.js"></script>
   </head>
 	<body>
-<?php 
-echo $body;
-?>
+		<div class="register">
+			<?php echo $body;?>
+		</div>
 	</body>
 </html>
