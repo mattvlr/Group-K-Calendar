@@ -12,7 +12,7 @@
 <div class="myModal" tabindex="1" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <p>This is some sample text.This is some sample text.This is some sample text.This is some sample text.This is some sample text.This is some sample text.</p>
+      <p>This is some ssdfsdfsdfstext.This is some sample text.This is some sample text.This is some sample text.This is some sample text.This is some sample text.</p>
 	      <p>This is some sample text.This is some sample text.This is some sample text.This is some sample text.This is some sample text.This is some sample text.</p>
     </div>
   </div>
