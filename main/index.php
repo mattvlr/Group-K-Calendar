@@ -12,9 +12,8 @@ require_once('mysql/_db.php');
     <meta name="author" content="">
 
     <link rel="stylesheet" type="text/css" href="template.css">
-    <script src="SidebarJavaScript/SpryMenuBar.js" type="text/javascript"></script>
     <script src="/main/calendar/CalendarJsFunctions.js"></script>
-    <link href="SidebarJavaScript/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
 

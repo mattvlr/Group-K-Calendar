@@ -43,6 +43,9 @@ div.current-day{
 div.current-day:hover {
 	background: #336EC6;
 	}
+div.arrow:{
+	width: 10px;
+}
 td.today:hover {
 	background: #FFE1C2;
 	}
