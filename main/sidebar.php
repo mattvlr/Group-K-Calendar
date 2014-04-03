@@ -40,9 +40,10 @@ if(isset($_SESSION['id']))
           <ul class="nav nav-sidebar">
 		'.$views.'
           </ul>
-          <div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div><div style="float:left;width:20px"><a id="loadleftmonth" href="#leftmonth">&#8592;</a></div><div style="float:right;"><a id="loadrightmonth" href="#rightmonth">&#8594;</a></div> 
+          <div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div><div style="float:left;width:20px"><a id="loadleftmonth" href="">&#8592;</a></div><div style="float:right;"><a id="loadrightmonth" href="#rightmonth">&#8594;</a></div> 
 		  <br>
-
+		  <br>
+		  AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
 		  Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
 		  </div>';
 }
