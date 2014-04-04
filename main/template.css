@@ -43,9 +43,6 @@ div.current-day{
 div.current-day:hover {
 	background: #336EC6;
 	}
-div.arrow:{
-	width: 10px;
-}
 td.today:hover {
 	background: #FFE1C2;
 	}
@@ -63,7 +60,7 @@ th.year-calendar-heading{
 }
 td.year-table{
 	vertical-align: top;
-
+	background: #f5f5f5;
 }
 td.year-calendar-day{ 
 	background:#eceff5; /* light gray */ 
@@ -87,14 +84,14 @@ td.year-today:hover{
 	background:#FFE1C2;
 }
 td.year-calendar-np{
-	background: #f9f2f4;
+	background: #f5f5f5;
 	padding: 1px;
 	height: 26px;
 	bo rder:1px solid black;
 }
 td.year-calendar-day:hover{
-	background:black;
-	color:white;
+	background:#FFE1C2;
+	color:black;
 }
 table.day{
 	border: 1px solid black;
