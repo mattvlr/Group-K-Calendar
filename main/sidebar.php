@@ -36,12 +36,15 @@ if(isset($_SESSION['id']))
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
+			<li class="list-group-item">
+              <span class="badge"><div id="time"></div></span>
+                Current Time:</li>
             <li class="list-group-item">
               <span class="badge">14</span>
-                Messages
+                Messages</li>
             <li class="list-group-item">
                <span class="badge">3</span>
-                Upcoming Events
+                Upcoming Events </li>
             <li><a href="#">Group Invites</a></li>
           </ul>
           <ul class="nav nav-sidebar">

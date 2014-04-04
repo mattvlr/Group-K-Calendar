@@ -16,10 +16,10 @@ m=checkTime(m);
 s=checkTime(s);
 	if(h > 12){
 		h = h - 12;	
-		document.getElementById('txt').innerHTML=h+":"+m+":"+s+" PM";
+		document.getElementById('time').innerHTML=h+":"+m+":"+s+" PM";
 	}
 	else {
-		document.getElementById('txt').innerHTML=h+":"+m+":"+s+" AM";
+		document.getElementById('time').innerHTML=h+":"+m+":"+s+" AM";
 	}
 t=setTimeout(function(){startTime()},500);
 
