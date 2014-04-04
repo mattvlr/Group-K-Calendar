@@ -37,28 +37,26 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("#right").click(function(){
-    $("#div1").load("test.txt");
-  });
+	<?php echo '$("#sidebar-small-month").load("sbsmi.php?month='.$mc.'&year='.$yc.'");'; ?>
+
 });
 </script>
 </head>
 <body>
 <a href="/main/index.php">Home</a>
 <br>
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-<button>Get External Content</button>
-<br>
 <br>
 <?php
 include('CalendarFunctions.php');
-
+if(!isset($_GET)):
+	echo "";
+else:
 echo 	'<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
-		<div id="left" style="float:left;width:20px">
+		<div id="left" onclick="loadurl("sbsmi.php")" style="float:left;width:20px">
 		<a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 		<div id="right" style="padding-left:100px">
 		<a href="?month='.$mc.'&year='.$yc.'&tar=f">&#8594;(next)</a></div>';
-print_r($_GET);
+endif;
 ?>
 </body>
 </html>

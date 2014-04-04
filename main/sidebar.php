@@ -21,11 +21,13 @@ if(isset($_SESSION['id']))
 	$m = 'class="active"';
 	}
 	//Generate views section
+	$views = "";
+	$sidebar = "";
 	$views= '<li '.$m.'><a href="?act=month">Month</a></li>
 			 <li '.$y.'><a href="?act=year">Year Test</a></li>
 			 <li '.$d.'><a href="?act=day">Day Test</a></li>';
 		 
-	$sidebar = '<div class="container-fluid">
+	$sidebar .= '<div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
@@ -38,14 +40,55 @@ if(isset($_SESSION['id']))
             <li><a href="#">Group Invites</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-		'.$views.'
-          </ul>
-          <div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div><div style="float:left;width:20px"><a id="loadleftmonth" href="">&#8592;</a></div><div style="float:right;"><a id="loadrightmonth" href="#rightmonth">&#8594;</a></div> 
-		  <br>
-		  <br>
-		  AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
-		  Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
-		  </div>';
+		'.$views.'</ul>';
+		
+		if(!isset($_GET['year'])){
+			$yc = date('Y');
+		}
+		else{
+			$yc = $_GET['year'];
+		}
+		//
+		if(!isset($_GET['month'])){
+			$mc = date('m');
+		}
+		else{
+			$mc = $_GET['month'];
+		}
+		//
+		if(isset($_GET['tar'])){
+			if($_GET['tar'] == 'f'){
+			$mc++;
+			if($mc > 12):
+				$mc = 1;		
+				$yc++;
+			endif;
+			}
+			elseif($_GET['tar'] == 'b'){
+			$mc--;
+			if($mc < 1):
+				$mc = 12;
+				$yc--;
+			endif;
+			}
+		}
+		$sidebar .= '<script>$(document).ready(function(){
+		 $("#sidebar-small-month").load("sbsmi.php?month='.$mc.'&year='.$yc.'") 
+
+		});</script>';
+		$sidebar .= '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
+			 <div id="left" onclick="loadurl("sbsmi.php")" style="float:left;width:20px">
+			 <a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
+			 <div id="right" style="float:right">
+			 <a href="?month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>';
+		
+
+	
+	$sidebar .= '<br>
+		 `	 	<br>
+				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
+				Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
+				</div>';
 }
 else    //Sidebar only for logged in users?
 {

@@ -89,6 +89,7 @@
 		$dates_array = array();
 		$todaymon = date("m");
 		$todaynum = date("d");
+		$todayyear = date("Y");
 		
 			 
 		/* row for week one */
@@ -109,7 +110,7 @@
 				$calendar.='<tr class="calendar-row">';
 			endif;
 			
-			if(($todaynum == $list_day) && ($todaymon == $month)):
+			if(($todaynum == $list_day) && ($todaymon == $month) && ($todayyear == $year)):
 				$calendar.= '<td class="year-today">'.$list_day;
 			else:
 				$calendar.= '<td class="year-calendar-day" id="daybox">'.$list_day;
