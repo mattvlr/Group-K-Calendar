@@ -18,29 +18,48 @@ CREATE TABLE user (
 	forgot VARCHAR(13) NOT NULL UNIQUE DEFAULT 0,
 	activation VARCHAR(13) NOT NULL UNIQUE,
 	permission TINYINT(1) NOT NULL DEFAULT 0    
+	// more settings to add
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
 CREATE TABLE pm (
-  id bigint(20) NOT NULL,
+  id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id2 int(11) NOT NULL,
   title varchar(256) NOT NULL,
   user1 bigint(20) NOT NULL,
   user2 bigint(20) NOT NULL,
   message text NOT NULL,
   timestamp int(10) NOT NULL,
-  user1read varchar(3) NOT NULL,
+  user1read varchar(3) NOT NULL,  -- these could be BOOL
   user2read varchar(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE events (
 	eid BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	gid BIGINT(20) NOT NULL,
-	ownerid BIGINT(20) NOT NULL UNIQUE,
-	priority TINYINT(1) NOT NULL UNIQUE,
+	gid BIGINT(20) ,  -- maybe just use null here and not have a personal events table
+	ownerid BIGINT(20) NOT NULL,
+	priority TINYINT(1) NOT NULL,
+	date_created TIMESTAMP default now(),
 	when DATETIME NOT NULL,
 	repeat_style VARCHAR(6),
 	repeat_until DATE, 
 	title VARCHAR(256) NOT NULL,
 	location TEXT,
 	description TEXT NOT NULL,
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE groups (
+	gid BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ownerid BIGINT(20) NOT NULL,
+	date_created TIMESTAMP default now(),
+	priority TINYINT(1) NOT NULL UNIQUE,
+	title VARCHAR(256) NOT NULL,
+	description TEXT NOT NULL,
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE group_user (
+	gid BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	userid BIGINT(20) NOT NULL,
+	date_joined TIMESTAMP default now(),
+	permission TINYINT(1) NOT NULL UNIQUE,
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
