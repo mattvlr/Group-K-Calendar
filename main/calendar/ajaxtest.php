@@ -24,11 +24,7 @@
 			elseif($_GET['tar'] == 'b'){
 			$mc--;
 			if($mc < 1):
-<<<<<<< HEAD
 				$mc = 12;
-=======
-				$mc = 12;v5tgdfg
->>>>>>> 3e120b4b77d3e91c044ca3e8ff979fdc8d21ec4b
 				$yc--;
 			endif;
 			}
