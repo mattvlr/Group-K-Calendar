@@ -9,6 +9,10 @@ $nav_pages ='<li><a href="?act=home">'. $_SESSION['username'] .'</a>
             <li><a href="?act=Help">Help</a></li>
             <li><a href="?act=logout">Logout</a></li>';
 }
+else
+{
+  $nav_pages = '';
+}
 
 $navbar = '<div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">

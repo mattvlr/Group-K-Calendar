@@ -28,9 +28,9 @@ if(isset($_SESSION['id']))
 	//Generate views section
 	$views = "";
 	$sidebar = "";
-	$views= '<li '.$m.'><a href="?act=month">Month</a></li>
-			 <li '.$y.'><a href="?act=year">Year Test</a></li>
-			 <li '.$d.'><a href="?act=day">Day Test</a></li>';
+	$views= '<li '.$d.'><a href="?act=day">Today</a></li>
+			 <li '.$m.'><a href="?act=month">Month</a></li>
+			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 
 	$sidebar .= '<div class="container-fluid">
       <div class="row">
@@ -85,7 +85,7 @@ if(isset($_SESSION['id']))
 			 <a href="?month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
 		
 				<br>
-		 `	 	<br>
+		 	 	<br>
 				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
 				Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
 				</div>';
