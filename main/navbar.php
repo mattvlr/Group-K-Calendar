@@ -3,22 +3,11 @@
 if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
 {
 //$introduction = ", " . $first_name . " " . $last_name;
-$nav_pages ='<li><font color="white"><div id="txt"></div></font></li>
-			      <li><a href="?act=home">Home</a></li>
-            <li><a href="?act=help">Help</a></li>
-            <li><a href="?act=FAQ">FAQ</a></li>
+$nav_pages ='<li><a href="?act=home">'. $_SESSION['username'] .'</a>
             <li><a href="?act=groups">Groups</a></li>
-            <li><a href="?act=logout">Logout</a></li>
-			<li><a href="?act=settings">'. $_SESSION['username'] .'</a></li>';
-}
-else
-{
-//$introduction = " to team K's Scheduler";
-$nav_pages ='<li><a href="?act=home">Home</a></li>
-            <li><a href="?act=help">Help</a></li>
-            <li><a href="?act=FAQ">FAQ</a></li>
-            <li><a href="?act=register">Register</a></li>
-            <li><a href="?act=login">Login</a></li>';
+            <li><a href="?act=settings">Settings</a></li>
+            <li><a href="?act=Help">Help</a></li>
+            <li><a href="?act=logout">Logout</a></li>';
 }
 
 $navbar = '<div class="navbar navbar-default navbar-fixed-top" role="navigation">
