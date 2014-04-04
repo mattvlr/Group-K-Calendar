@@ -1,8 +1,4 @@
-<html><script>
-$(document).ready(function(){
-	<?php echo '$("#sidebar-small-month").load("sbsmi.php?month='.$mc.'&year='.$yc.'");'; ?>
-});
-</script></html>
+
 <?php 
 require_once('/calendar/CalendarFunctions.php');
 

@@ -14,7 +14,11 @@ require_once('mysql/_db.php');
     <link rel="stylesheet" type="text/css" href="template.css">
     <script src="/main/calendar/CalendarJsFunctions.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+	<script>
+		$(document).ready(function(){
+			<?php echo '$("#sidebar-small-month").load("/main/calendar/sbsmi.php?month='.$mc.'&year='.$yc.'");'; ?>
+		});
+	</script>
 
 
     <!-- Bootstrap core CSS -->
