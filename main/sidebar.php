@@ -24,7 +24,7 @@ if(isset($_SESSION['id']))
 	//Generate views section
 	$views = "";
 	$sidebar = "";
-	$views= '<li '.$d.'><a href="?act=day">Today</a></li>
+	$views= '<li '.$d.'><a href="?act=day&m='.date("m")."&d=" . date("d") . "&y=" . date("Y").'">Today</a></li>
 			 <li '.$m.'><a href="?act=month">Month</a></li>
 			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 

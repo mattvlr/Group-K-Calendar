@@ -20,7 +20,35 @@ div.calendar{
  background:#CCC;	
 }
 
-/*Added by matt */
+/*Added by matt*/ 
+a.no-link:link{
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+}
+a.no-link:visited{
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+}
+a.no-link:active{
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+}
+a.no-link:hover{
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+}
 td.today {
 	background: #C2E0FF; 
 	min-height:180px; 
@@ -34,10 +62,12 @@ div.current-day{
 	padding:5px; 
 	color:#fff; 
 	font-weight:bold; 
-	float:right; 
+	float:right;	
 	margin:-55px 0px 0px -5px; 
 	width:20px; 
 	text-align:center; 
+	position: relative;
+	top:-60px;
 	}
 	
 div.current-day:hover {
@@ -51,12 +81,15 @@ th.monthtitle{
 	text-align:center;
 	border:1px solid black;
 	background: #C2E0FF;
+	height: 30px;
 }
 th.year-calendar-heading{
 	font-weight:bold;
 	text-align:center;
 	background: #C2E0FF;
 	border:1px solid black;
+		width: 30px;
+	height: 30px;
 }
 td.year-table{
 	vertical-align: top;
@@ -67,9 +100,11 @@ td.year-calendar-day{
 	padding: 0px; 
 	color:black; 
 	font-weight:bold; 
-	text-align:center; 
+	text-align: center;
 	font-size:11px;
 	border:1px solid black;
+	width: 30px;
+	height: 30px;
 	}
 td.year-today{ 
 	background: #C2E0FF; 
@@ -79,6 +114,8 @@ td.year-today{
 	text-align:center; 
 	font-size:11px;
 	border:1px solid black;
+	width: 30px;
+	height: 30px;
 	}
 td.year-today:hover{
 	background:#FFE1C2;
@@ -86,8 +123,9 @@ td.year-today:hover{
 td.year-calendar-np{
 	background: #f5f5f5;
 	padding: 1px;
-	height: 26px;
 	bo rder:1px solid black;
+	width: 30px;
+	height: 30px;
 }
 td.year-calendar-day:hover{
 	background:#FFE1C2;
@@ -172,6 +210,8 @@ div.day-number {
 	margin:-55px -5px 0 0; 
 	width:20px; 
 	text-align:center; 
+	position: relative;
+	top:-55px;
 }
 div.day-number:hover {
 	background: #336EC6;

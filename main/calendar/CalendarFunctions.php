@@ -31,11 +31,11 @@
 		
 		    /* ADDED BY MATT AS A TEST */
 			if($todaynum == $day_counter + 1):
-				$calendar.= '<td class="today" id="daybox" onclick=create_event('.$todaynum.','.$month.','.$year.') >';
+				$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
 				$calendar.= '<div class="current-day">'.$list_day.'</div>';
 				$calendar.= '<div class="event_box_no_event"></div>';
 			else:
-				$calendar.= '<td class="calendar-day" id="daybox" onclick=create_event('.$list_day.','.$month.','.$year.') >';
+				$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
 				/* add in the day number */
 				$calendar.= '<div class="day-number">'.$list_day.'</div>';
 				$calendar.= '<div class="event_box_no_event"></div>';
@@ -114,13 +114,13 @@
 			endif;
 			
 			if(($todaynum == $list_day) && ($todaymon == $month) && ($todayyear == $year)):
-				$calendar.= '<td class="year-today">'.$list_day;
+				$calendar.= '<td class="year-today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
 			else:
-				$calendar.= '<td class="year-calendar-day" id="daybox">'.$list_day;
+				$calendar.= '<td class="year-calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
 			endif;
 			
 			/** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-			$calendar.= str_repeat('<p> </p>',2);
+			//$calendar.= str_repeat('<p> </p>',2);
 			
 			$calendar.= '</td>';
 			$days_in_this_week = 0;
@@ -153,12 +153,12 @@
 		return $table;
 	}
 	
-	function draw_day($day){
+	function draw_day($day,$month,$year){
 		$hour = date('g');
 		$minutes = date('i');
 		$table = "";
 		$table.= '<table class="day" align="center">';
-		$table.= '<tr><th class="monthtitle" colspan="2">'.date("F"). " " . date("d") . " " . date("Y").'</th></tr>';
+		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
 		
 		if(($hour >= 1) && ($hour <= 11)):
 			$table.='<tr><th class="hourtitle">'.($hour).' pm</th><td class="day-event-content"></td></tr>';
