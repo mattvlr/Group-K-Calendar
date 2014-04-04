@@ -1,4 +1,5 @@
 <?php
+	
 		if(!isset($_GET['year'])){
 			$yc = date('Y');
 		}
@@ -48,15 +49,13 @@ $(document).ready(function(){
 <br>
 <?php
 include('CalendarFunctions.php');
-if(!isset($_GET)):
-	echo "";
-else:
-echo 	'<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
-		<div id="left" onclick="loadurl("sbsmi.php")" style="float:left;width:20px">
+
+   echo '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y"),1) .'</div>
+		<div id="left" style="float:left;width:20px">
 		<a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 		<div id="right" style="padding-left:100px">
 		<a href="?month='.$mc.'&year='.$yc.'&tar=f">&#8594;(next)</a></div>';
-endif;
+
 ?>
 </body>
 </html>

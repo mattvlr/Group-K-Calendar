@@ -1,3 +1,8 @@
+<html><script>
+$(document).ready(function(){
+	<?php echo '$("#sidebar-small-month").load("sbsmi.php?month='.$mc.'&year='.$yc.'");'; ?>
+});
+</script></html>
 <?php 
 require_once('/calendar/CalendarFunctions.php');
 
@@ -72,19 +77,14 @@ if(isset($_SESSION['id']))
 			endif;
 			}
 		}
-		$sidebar .= '<script>$(document).ready(function(){
-		 $("#sidebar-small-month").load("sbsmi.php?month='.$mc.'&year='.$yc.'") 
 
-		});</script>';
-		$sidebar .= '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
-			 <div id="left" onclick="loadurl("sbsmi.php")" style="float:left;width:20px">
+		$sidebar .= '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y"),1).'</div>
+			 <div id="left" style="float:left;width:20px">
 			 <a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 			 <div id="right" style="float:right">
-			 <a href="?month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>';
+			 <a href="?month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
 		
-
-	
-	$sidebar .= '<br>
+				<br>
 		 `	 	<br>
 				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
 				Modal Test  <a href="/main/calendar/modaltest.php">Link</a>

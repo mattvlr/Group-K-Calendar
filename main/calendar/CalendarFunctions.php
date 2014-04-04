@@ -74,13 +74,16 @@
 	return $calendar;
 	}
 	
-	function draw_small_month($month,$year){ //this is a trimed down version of draw_month -Matt
+	function draw_small_month($month,$year,$yflag){ //this is a trimed down version of draw_month -Matt
 	    //&#8678;&#8680;
 		$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" >';
 		$headings = array('Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec');
 		$days = array('Su','M','Tu','W','Th','F','Sa');
-
+		if($yflag == 1):
+		$calendar.= '<th class="monthtitle" colspan="7">'.$headings[$month-1]." ".$year.'</th>';
+		else:
 		$calendar.= '<th class="monthtitle" colspan="7">'.$headings[$month-1].'</th>';
+		endif;
 		$calendar.= '<tr><th class="year-calendar-heading">'.implode('</th><th class="year-calendar-heading">',$days).'</th></tr>';
 		$days_in_month = date('t',mktime(0,0,0,$month,1,$year));
 		$running_day = date('w',mktime(0,0,0,$month,1,$year));
@@ -139,11 +142,11 @@
 		$table = '<br><br>';
 		$table.= '<table border="1px"><tr><th colspan="4" class="monthtitle">'.$year.'</td></tr>';
 		
-		$table.='<tr><td class="year-table">'.draw_small_month(1,$year).'</td><td class="year-table">'.draw_small_month(2,$year).'</td><td class="year-table">'.draw_small_month(3,$year).'</td><td class="year-table">'.draw_small_month(4,$year).'</td></tr>';
+		$table.='<tr><td class="year-table">'.draw_small_month(1,$year,0).'</td><td class="year-table">'.draw_small_month(2,$year,0).'</td><td class="year-table">'.draw_small_month(3,$year,0).'</td><td class="year-table">'.draw_small_month(4,$year,0).'</td></tr>';
 		
-		$table.='<tr><td class="year-table">'.draw_small_month(5,$year).'</td><td class="year-table">'.draw_small_month(6,$year).'</td><td class="year-table">'.draw_small_month(7,$year).'</td><td class="year-table">'.draw_small_month(8,$year).'</td></tr>';
+		$table.='<tr><td class="year-table">'.draw_small_month(5,$year,0).'</td><td class="year-table">'.draw_small_month(6,$year,0).'</td><td class="year-table">'.draw_small_month(7,$year,0).'</td><td class="year-table">'.draw_small_month(8,$year,0).'</td></tr>';
 		
-		$table.='<tr><td class="year-table">'.draw_small_month(9,$year).'</td><td class="year-table">'.draw_small_month(10,$year).'</td><td class="year-table">'.draw_small_month(11,$year).'</td><td class="year-table">'.draw_small_month(12,$year).'</td></tr>';
+		$table.='<tr><td class="year-table">'.draw_small_month(9,$year,0).'</td><td class="year-table">'.draw_small_month(10,$year,0).'</td><td class="year-table">'.draw_small_month(11,$year,0).'</td><td class="year-table">'.draw_small_month(12,$year,0).'</td></tr>';
 		
 		
 		$table.='</table>';
