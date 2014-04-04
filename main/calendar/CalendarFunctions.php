@@ -154,6 +154,7 @@
 	}
 	
 	function draw_day($day,$month,$year){
+		$month = month_convert($month);
 		$hour = date('g');
 		$minutes = date('i');
 		$table = "";
@@ -236,5 +237,48 @@
 		endfor;
 		$table.= '</table>';
 		return $table;
+	}
+	function month_convert($a){ // purely for formatting
+		switch($a){
+		case ($a == "01"):
+			$a = "January";
+			break;
+		case ($a == "02"):
+			$a = "February";
+			break;
+		case ($a == "03"):
+			$a = "March";
+			break;
+		case ($a == "04"):
+			$a = "April";
+			break;
+		case ($a == "05"):
+			$a = "May";
+			break;
+		case ($a == "06"):
+			$a = "June";
+			break;
+		case ($a == "07"):
+			$a = "July";
+			break;
+		case ($a == "08"):
+			$a = "August";
+			break;
+		case ($a == "09"):
+			$a = "September";
+			break;
+		case ($a == "10"):
+			$a = "October";
+			break;
+		case ($a == "11"):
+			$a = "November";
+			break;
+		case ($a == "12"):
+			$a = "December";
+			break;
+		default:
+			break;
+		}
+		return $a;
 	}
 ?>
