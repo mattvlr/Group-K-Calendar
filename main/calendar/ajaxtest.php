@@ -1,19 +1,44 @@
+<?php
+		if(!isset($_GET['year'])){
+			$yc = date('Y');
+		}
+		else{
+			$yc = $_GET['year'];
+		}
+		//
+		if(!isset($_GET['month'])){
+			$mc = date('m');
+		}
+		else{
+			$mc = $_GET['month'];
+		}
+		//
+		if(isset($_GET['tar'])){
+			if($_GET['tar'] == 'f'){
+			$mc++;
+			if($mc > 12):
+				$mc = 1;		
+				$yc++;
+			endif;
+			}
+			elseif($_GET['tar'] == 'b'){
+			$mc--;
+			if($mc < 1):
+				$mc = 12;v5tgdfg
+				$yc--;
+			endif;
+			}
+		}
 
+	?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/main/template.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
-
+$(document).ready(function(){
   $("#right").click(function(){
-	<?php 
-		$mc = $_GET['month'] + 1;
-			if($mc > 12):
-				$mc = 1;
-				$yc = $_GET['year'];
-			endif;
-	?>
-    $("#sidebar-small-month").load("test.txt");
+    $("#div1").load("test.txt");
   });
 });
 </script>
@@ -28,8 +53,11 @@
 <?php
 include('CalendarFunctions.php');
 
-echo '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
-<div id="left" style="float:left;width:20px"><a href="?month='.$mc.'#?year='.$yc.'">&#8592;</a></div><div id="right" style=""><a href="?month='.$mc.'#?year='.$yc.'">&#8594;</a></div>';
+echo 	'<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y")) .'</div>
+		<div id="left" style="float:left;width:20px">
+		<a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
+		<div id="right" style="padding-left:100px">
+		<a href="?month='.$mc.'&year='.$yc.'&tar=f">&#8594;(next)</a></div>';
 print_r($_GET);
 ?>
 </body>
