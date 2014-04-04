@@ -1,5 +1,7 @@
-<?php function draw_small_month($month,$year){ //this is a trimed down version of draw_month -Matt
+<?php //this is a trimed down version of draw_month -Matt
 	    //&#8678;&#8680;
+		$month = 5;
+		$year = 2014;
 		$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" >';
 		$headings = array('Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec');
 		$days = array('Su','M','Tu','W','Th','F','Sa');
@@ -57,4 +59,4 @@
 			$calendar.='</tr>';
 			$calendar.='</table>';
 		return $calendar;
-	}?>
+	?>
