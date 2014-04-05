@@ -3,6 +3,10 @@ This is just so that everyone can know how I created the tables and their dimens
 Please not this isnt current as of 4/4/2014 and most of this isnt set in stone yet so if there are problems we can fix them, before
 there is a lot of data in the DB.
 
+
+Ok I've gone ahead and added in some tables, the user table
+
+//user table not up to date
 CREATE TABLE user (
 	id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(15) NOT NULL UNIQUE,
@@ -21,7 +25,7 @@ CREATE TABLE user (
 	// more settings to add
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
+// Up to date..
 CREATE TABLE pm (
   id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id2 int(11) NOT NULL,
@@ -34,18 +38,19 @@ CREATE TABLE pm (
   user2read varchar(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
 CREATE TABLE events (
 	eid BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	gid BIGINT(20) ,  -- maybe just use null here and not have a personal events table
+	gid BIGINT(20), 
 	ownerid BIGINT(20) NOT NULL,
 	priority TINYINT(1) NOT NULL,
 	date_created TIMESTAMP default now(),
-	when DATETIME NOT NULL,
+	event_date DATETIME,
 	repeat_style VARCHAR(6),
 	repeat_until DATE, 
 	title VARCHAR(256) NOT NULL,
 	location TEXT,
-	description TEXT NOT NULL,
+	description TEXT NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE groups (
@@ -54,12 +59,12 @@ CREATE TABLE groups (
 	date_created TIMESTAMP default now(),
 	priority TINYINT(1) NOT NULL UNIQUE,
 	title VARCHAR(256) NOT NULL,
-	description TEXT NOT NULL,
+	description TEXT NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE group_user (
 	gid BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	userid BIGINT(20) NOT NULL,
 	date_joined TIMESTAMP default now(),
-	permission TINYINT(1) NOT NULL UNIQUE,
+	permission TINYINT(1) NOT NULL UNIQUE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
