@@ -17,6 +17,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["username"]) && isset($_SESSION["fi
 	$last_name = $_SESSION['last_name'];
 	$avatar = $_SESSION['avatar'];
 	$permission = $_SESSION['permission'];
+	$id = $_SESSION['id'];
 }
 else if(isset($_COOKIE['id']))
 {
@@ -34,7 +35,7 @@ else if(isset($_COOKIE['id']))
 	$permission = $sess['permission'];
 	
 
-	$_SESSION['id'] = $username;
+	$_SESSION['id'] = $_COOKIE['id'];
 	$_SESSION['username'] = $username;
 	$_SESSION['first_name'] = $first_name;
 	$_SESSION['last_name'] = $last_name;

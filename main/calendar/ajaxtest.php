@@ -49,6 +49,7 @@ $(document).ready(function(){
 <br>
 <?php
 include('CalendarFunctions.php');
+   print_r($_COOKIE);
    echo month_convert("01");
    echo '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y"),1) .'</div>
 		<div id="left" style="float:left;width:20px">
