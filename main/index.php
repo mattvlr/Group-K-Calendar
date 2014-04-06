@@ -82,7 +82,7 @@ if(isset($_GET['act']))
 	}
 	if($_GET['act']== 'messages')
 	{
-	//body = require("login_inline.php");
+	$body = require("messages.php");
 	}
 	if($_GET['act'] =='FAQ')
 	{
@@ -92,8 +92,10 @@ if(isset($_GET['act']))
 	{
 	$body = require("logout.php");
 	}
-
-
+	if($_GET['act']== 'settings')
+	{
+	$body = require("usersettings.php");
+	}
 
 }
 else
