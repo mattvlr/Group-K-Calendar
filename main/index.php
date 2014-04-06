@@ -51,20 +51,20 @@ if(isset($_GET['act']))
 	{
 		$body = require("help.php");
 	}
-		if($_GET['act']== 'groups')
+	if($_GET['act']== 'groups')
 	{
 		$body = require("groups.php");
 	}
-		if($_GET['act']== 'login')
+	if($_GET['act']== 'login')
 	{
 		$body = require("loginform.php");
 	}
 
-		if($_GET['act']== 'home')
+	if($_GET['act']== 'home')
 	{
 		$body = require("home.php");
 	}
-		if($_GET['act']== 'forgot')
+	if($_GET['act']== 'forgot')
 	{
 		$body = require("forgot.php");
 	}
@@ -82,19 +82,19 @@ if(isset($_GET['act']))
 	}
 	if($_GET['act']== 'messages')
 	{
-	$body = require("messages.php");
+		$body = require("messages.php");
 	}
 	if($_GET['act'] =='FAQ')
 	{
-	$body = require("faq.php");
+		$body = require("faq.php");
 	}
 	if($_GET['act'] =='logged')
 	{
-	$body = require("logout.php");
+		$body = require("logout.php");
 	}
 	if($_GET['act']== 'settings')
 	{
-	$body = require("usersettings.php");
+		$body = require("usersettings.php");
 	}
 
 }
