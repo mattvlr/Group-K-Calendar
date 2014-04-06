@@ -98,7 +98,8 @@ if(isset($_GET['act']))
 }
 else
 {
-	$body = require("calendar/month.php");
+	//$body = require("calendar/month.php");
+	$body = require('loginform.php');
 }
 ?>
 
