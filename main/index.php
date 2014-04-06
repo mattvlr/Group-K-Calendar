@@ -88,6 +88,10 @@ if(isset($_GET['act']))
 	{
 	$body = require("faq.php");
 	}
+	if($_GET['act'] =='logged')
+	{
+	$body = require("logout.php");
+	}
 
 
 
