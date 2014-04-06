@@ -1,24 +1,19 @@
 <?php
 // make welcome header
-if(isset($_SESSION['first_name']) && isset($_SESSION['last_name']))
-{
-$body= '<center><h1>WELCOME '. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h1></center>';
-}
-else
-{
-$body="<center><h1>Welcome to group K's calendar Project<h1></center>";
-}
+$body = '<center><div class="jumbotron" align="left" style="padding-left:300px;">
+  <h1>Welcome '. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '!</h1>
+  <p>This is Group Ks Kalendar project.</p>
+  <p><a class="btn btn-primary btn-lg">Get started</a></p>
+</div></center>'
 
 ?>
 
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" type="text/css" href="template.css">
-</head>
+</head> 
 <body>
 <?php
 echo $body;
 ?>
-Get started by logging in or registering.
 </div></body></html>
