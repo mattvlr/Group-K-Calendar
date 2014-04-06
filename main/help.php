@@ -5,9 +5,9 @@
 </head>
 <body><center><h1>HELP PAGE</h1></center></br></br>
 
-<div class="container" align="left">
+<center><div class="container">
 	<div align="left">
-		<h3>About</h3>
+		<h3>About Kalendar</h3>
 		<div class="about-box">
 		<p>Tell about the calendar...</p>
 		</div></br></br>
@@ -36,5 +36,5 @@
 		<h4><b>What do I do if I forgot my password?</b></h4>
 		<p id="how_to_reset_password">To reset your password, click here...</p>
 	</div>
-</div>
+</div></center>
 </body></html>

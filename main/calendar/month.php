@@ -1,7 +1,7 @@
 <title>Month</title>
 <?php
 require_once('CalendarFunctions.php');
-echo '<div class="calendar">
+echo '<center><div class="calendar">
             <h1 class="page-header">
             '. date("F"). " " . date("Y"). '
             </h1>
@@ -9,5 +9,5 @@ echo '<div class="calendar">
           </div>
         </div>
       </div>
-    </div>'
+    </div></center>'
 ?>
