@@ -6,7 +6,7 @@ if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
 $nav_pages ='<li><a href="?act=home">'. $_SESSION['username'] .'</a>
             <li><a href="?act=groups">Groups</a></li>
             <li><a href="?act=settings">Settings</a></li>
-            <li><a href="?act=Help">Help</a></li>
+            <li><a href="?act=help">Help</a></li>
             <li><a href="?act=logout">Logout</a></li>';
 }
 else
