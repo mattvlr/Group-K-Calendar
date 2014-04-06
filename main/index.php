@@ -40,7 +40,6 @@ require_once('mysql/_db.php');
 <?php
 require_once('navbar.php');
 require_once('sidebar.php');
-
 if(isset($_GET['act']))
 {
 	if($_GET['act']== 'register')
@@ -105,5 +104,6 @@ else
 }
 ?>
 
+</html>
 
 

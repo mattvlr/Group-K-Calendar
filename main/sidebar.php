@@ -93,6 +93,5 @@ else    //Sidebar only for logged in users?
 {
 $sidebar = '';
 }
-
 echo $sidebar;
 ?>

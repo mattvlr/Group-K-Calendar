@@ -12,7 +12,9 @@ div.calendar{
 	height:800px;
 	width:100%;
 	position:relative;
+	display: inline;
 	padding-left: 265px;
+	overflow-y: scroll;
 }
 #current
 {
