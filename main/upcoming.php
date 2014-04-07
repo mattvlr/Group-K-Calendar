@@ -1,24 +1,21 @@
 <?php
 
-$messagelist = "A<br>B<br>";
-$msgs = 0;
 
-if($msgs == 0);
+$num_events = 0;
+
+if($num_events == 0);
 {
-$msgs = 'no';
+$num_events = 'no';
 }
 ?>
 
 <html>
 <head>
-<title>Messaging</title>
+<title>Upcoming Events</title>
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/bootstrap/css/signin.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="template.css">
 </head>
-<body><center><h1>Messaging</h1></center>
-<br> You have <?php echo $msgs; ?> unread messages<br>
-<?php
-echo $messagelist;
-?>
+<body><center><h1>Upcoming Events</h1></center>
+<br> There are <?php echo $num_events; ?> upcoming events in the next 3 days.<br>
 </div></body></html>

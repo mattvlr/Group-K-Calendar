@@ -38,10 +38,10 @@ if(isset($_SESSION['id']))
                 Current Time:</li>
             <li class="list-group-item">
               <span class="badge">14</span>
-                Messages</li>
+                <a href="index.php?act=pm">Messages</a></li>
             <li class="list-group-item">
                <span class="badge">3</span>
-                Upcoming Events </li>
+                <a href="index.php?act=upcoming">Upcoming Events<a></li>
             <li><a href="#">Group Invites</a></li>
           </ul>
           <ul class="nav nav-sidebar">

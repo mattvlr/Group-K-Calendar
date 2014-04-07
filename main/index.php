@@ -79,7 +79,7 @@ if(isset($_GET['act']))
 	{
 		$body = require("calendar/day.php");
 	}
-	if($_GET['act']== 'messages')
+	if($_GET['act']== 'pm')
 	{
 		$body = require("messages.php");
 	}
@@ -94,6 +94,10 @@ if(isset($_GET['act']))
 	if($_GET['act']== 'settings')
 	{
 		$body = require("usersettings.php");
+	}
+	if($_GET['act']== 'upcoming')
+	{
+		$body = require("upcoming.php");
 	}
 
 }
