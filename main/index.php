@@ -58,7 +58,6 @@ if(isset($_GET['act']))
 	{
 		$body = require("loginform.php");
 	}
-
 	if($_GET['act']== 'home')
 	{
 		$body = require("home.php");
@@ -104,7 +103,7 @@ if(isset($_GET['act']))
 else
 {
 	//$body = require("calendar/month.php");
-	$body = require('loginform.php');
+	$body = require('home.php');
 }
 ?>
 
