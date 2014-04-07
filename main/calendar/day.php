@@ -42,6 +42,21 @@ echo '
 			  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>
 			</ul></div>
             '. 	$draw .'';
+			
+			
+			
+			
+			
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//The data for the event creation needs to be sent somewhere to be processed into the database
+//I am not sure how to do this within the modal, Until now I have just been sending the data though a form with method="post"
+//We need to:
+//1. 
+//2. check the data and make sure it is formatted correctly for the database
+//3. send it to the database
+//4. Confirm that the database has been changed and let the user know
+//x. query the db and enumerate the groups a user is in and has permissions to create events in. Then display this as a dropdown select.
+
 ?>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -201,19 +216,19 @@ echo '
 		      <div class="col-lg-10">
 		        <div class="radio">
 		          <label>
-		            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+		            <input type="radio" name="optionsRadios" id="optionsRadios1" value="1">
 		            Highest
 		          </label>
 		        </div>
 		        <div class="radio">
 		          <label>
-		            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+		            <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">
 		            Middle
 		          </label>
 		        </div>
 		        <div class="radio">
 		          <label>
-		            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+		            <input type="radio" name="optionsRadios" id="optionsRadios3" value="3" checked>
 		            Lowest
 		          </label>
 		        </div>
