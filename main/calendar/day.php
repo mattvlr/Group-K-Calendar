@@ -29,62 +29,14 @@
 	else{
 			$day = $_GET['d'];
 	}
-	$draw = draw_day($day,$month,$year);
-	$pday = $day-1;
-	$nday = $day+1;
 	
-	$pmonth = $month;
-	$nmonth = $month;
-	
-	$pyear = $year;
-	$nyear = $year;
-	
-	if($nday > date('t', mktime(0,0,0,$month,1,$year))){
-		$nmonth = $nmonth+1;
-		$nday = 1;		
-	}
-	elseif($nday < 1)
-	{
-		$nmonth = $month-1;
-		$nday = date('t', mktime(0,0,0,$month,1,$year));
-	}
-	
-	if($pday > date('t', mktime(0,0,0,$month,1,$year))){
-		$pmonth = $month+1;
-		$pday = 1;		
-	}
-	elseif($pday < 1)
-	{
-		$pmonth = $month-1;
-		$pday = date('t', mktime(0,0,0,$month,1,$year));
-	}
-	
-	if($pmonth < 1)
-	{
-		$pyear = $year - 1;
-		$pmonth = 12;
-	}
-	elseif($pmonth > 12)
-	{
-		$pyear = $year + 1;
-		$pmonth = 1;
-	}
-	
-	if($nmonth < 1)
-	{
-		$nyear = $year - 1;
-		$nmonth = 12;
-	}
-	elseif($nmonth > 12)
-	{
-		$nyear = $year + 1;
-		$nmonth = 1;
-	}
+	$draw = draw_day($day,$month,$year);  // draw calendar
+	$nav = dayNav($day,$month,$year);  //generate navigation
 
 echo '
 			<div style="padding-left:48%;"><ul class="pager" style="width: 300px; height: 100px; display:block;">
-			  <li><a href="/main/index.php?act=day&m='. $pmonth .'&d='. $pday .'&y='. $pyear .'">Previous Day</a></li>
-			  <li><a href="/main/index.php?act=day&m='. $nmonth .'&d='. $nday .'&y='. $nyear .'">Next Day</a></li>
+			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
+			  <li><a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'">Tomorrow</a></li>
 			  <br>
 			  <br>
 			  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>

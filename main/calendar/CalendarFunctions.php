@@ -290,7 +290,7 @@
 // Also its possible that we just take in day and initialize month and year as the current
 // to make them optional paramters.
 ///////////////////////////////////////////////////////////////////////
-	function nav($day,$month,$year)
+	function dayNav($day,$month,$year)
 {
 
 	//next and prev days +1 -1
