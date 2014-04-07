@@ -29,8 +29,6 @@ if(isset($_SESSION['id']))
 			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 
 	$sidebar .= '
-	<div class="container-fluid">
-      <div class="row">
         <div class="col-sm-4 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 			<li class="list-group-item">
@@ -87,7 +85,7 @@ if(isset($_SESSION['id']))
 				<br>
 		 	 	<br>
 				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
-				Modal Test  <a href="/main/calendar/modaltest.php">Link</a>
+				Modal Test  <a href="/main/calendar/modaltest.php">Link</a><br>
 				</div>';
 }
 else    //Sidebar only for logged in users?
