@@ -281,4 +281,74 @@
 		}
 		return $a;
 	}
+	
+	////////////////////////////////////////////////////////////////////By peter
+//Function nav($day,$month, $year);  Takes in day month and year, returns
+// the previous day month and year, and next day month and year
+// Accounting for month and year changes
+//If week view is added then this will need to be implemented here
+// Also its possible that we just take in day and initialize month and year as the current
+// to make them optional paramters.
+///////////////////////////////////////////////////////////////////////
+	function nav($day,$month,$year)
+{
+
+	//next and prev days +1 -1
+	$pday = $day-1;
+	$nday = $day+1;
+	
+	$pmonth = $month;
+	$nmonth = $month;
+	
+	$pyear = $year;
+	$nyear = $year;
+	
+	//Is the next day within the current month?
+	if($nday > date('t', mktime(0,0,0,$month,1,$year))){
+		$nmonth = $nmonth+1;
+		$nday = 1;		
+	}
+	elseif($nday < 1)
+	{
+		$nmonth = $month-1;
+		$nday = date('t', mktime(0,0,0,$month,1,$year));
+	}
+	//is the previous day within the current month?
+	if($pday > date('t', mktime(0,0,0,$month,1,$year))){
+		$pmonth = $month+1;
+		$pday = 1;		
+	}
+	elseif($pday < 1)
+	{
+		$pmonth = $month-1;
+		$pday = date('t', mktime(0,0,0,$month,1,$year));
+	}
+	
+	//is the prev month within the current year
+	if($pmonth < 1)
+	{
+		$pyear = $year - 1;
+		$pmonth = 12;
+	}
+	elseif($pmonth > 12)
+	{
+		$pyear = $year + 1;
+		$pmonth = 1;
+	}
+	//is the next month within the year
+	if($nmonth < 1)
+	{
+		$nyear = $year - 1;
+		$nmonth = 12;
+	}
+	elseif($nmonth > 12)
+	{
+		$nyear = $year + 1;
+		$nmonth = 1;
+	}
+	
+	//format data in assoc array and return it.
+	$arr = array("pday" => $pday,"pmonth" => $pmonth,"pyear" => $pyear,"nday" => $nday,"nmonth" => $nmonth, "nyear" => $nyear);
+	return $arr;
+}
 ?>
