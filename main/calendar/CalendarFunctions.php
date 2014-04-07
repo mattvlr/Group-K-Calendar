@@ -158,7 +158,7 @@
 		$hour = date('g');
 		$minutes = date('i');
 		$table = "";
-		$table.= '<table class="day" align="center">';
+		$table.= '<table class="day">';
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
 		
 		if(($hour >= 1) && ($hour <= 11)):

@@ -136,9 +136,12 @@ td.year-calendar-day:hover{
 }
 table.day{
 	border: 1px solid black;
-	width: 50%;
+	min-width:20%;
+	max-width: 50%;
 	display: block;
 	margin-top: 3em;
+	min-padding-right: 260px;
+	min-padding-left: 260px;
 }
 td.day-time{
 	border: 1px solid black;
