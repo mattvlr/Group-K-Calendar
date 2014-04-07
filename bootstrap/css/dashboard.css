@@ -34,11 +34,7 @@ body {
 .sidebar {
   display: none;
 }
-@media (min-height: 1200) {
-  .sidebar {
-   height: 1200;
-   }
- }
+
 @media (min-width: 768px) {
   .sidebar {
 	min-height: 100%;

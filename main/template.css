@@ -16,6 +16,7 @@ div.calendar{
 	padding-left: 265px;
 	overflow-y: scroll;
 }
+
 #current
 {
  color:black;
@@ -136,6 +137,7 @@ td.year-calendar-day:hover{
 table.day{
 	border: 1px solid black;
 	width: 50%;
+	display: block;
 	margin-top: 3em;
 }
 td.day-time{

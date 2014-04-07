@@ -28,9 +28,10 @@ if(isset($_SESSION['id']))
 			 <li '.$m.'><a href="?act=month">Month</a></li>
 			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 
-	$sidebar .= '<div class="container-fluid">
+	$sidebar .= '
+	<div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-4 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 			<li class="list-group-item">
               <span class="badge"><div id="time"></div></span>

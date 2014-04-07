@@ -21,7 +21,6 @@
 	else{
 			$day = $_GET['d'];
 	}
-	
 	$draw = draw_day($day,$month,$year);
 	$pday = $day-1;
 	$nday = $day+1;
@@ -79,12 +78,11 @@
 
 	
 
-echo '<div class="day">
-			<ul class="pager">
+echo '
+			<center><ul class="pager" style="width: 200px; height: 100px; display:block;">
 			  <li><a href="/main/index.php?act=day&m='. $pmonth .'&d='. $pday .'&y='. $pyear .'">Yesterday</a></li>
 			  <li><a href="/main/index.php?act=day&m='. $nmonth .'&d='. $nday .'&y='. $nyear .'">Tomorrow</a></li>
-			</ul>
-            '. 	$draw . '
-          </div>';
+			</ul></center>
+            '. 	$draw .'';
 ?>
 </html>
