@@ -5,6 +5,12 @@ require_once('/calendar/CalendarFunctions.php');
 if(isset($_SESSION['id']))
 {
 	//highlight the currently selected view
+	
+	$today = date("Y-m-d H:i:s");
+	$events = $mysql->getEvents( "NULL", $today ,"day");
+	$num_events = count($events);
+	
+	
 	$m = '';
 	$y = '';
 	$d = '';
@@ -38,7 +44,7 @@ if(isset($_SESSION['id']))
               <span class="badge">14</span>
                 <a href="index.php?act=pm">Messages</a></li>
             <li class="list-group-item">
-               <span class="badge">3</span>
+               <span class="badge">'. $num_events .'</span>
                 <a href="index.php?act=upcoming">Upcoming Events<a></li>
             <li><a href="#">Group Invites</a></li>
           </ul>
