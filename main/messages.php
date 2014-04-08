@@ -15,10 +15,11 @@ $msgs = 'no';
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/bootstrap/css/signin.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="template.css">
+<link href="/bootstrap/css/dashboard.css" rel="stylesheet">
 </head>
-<body><center><h1>Messaging</h1></center>
+<body><center><h1>Messaging</h1>
 <br> You have <?php echo $msgs; ?> unread messages<br>
 <?php
 echo $messagelist;
 ?>
-</div></body></html>
+</center></div></body></html>
