@@ -110,22 +110,25 @@ class mysql_driver extends db_info
 
 		if(is_array($get))
 		{
+			$i = 0;
 			while($row = mysqli_fetch_array($query_id))
 			{
-				$i = 0;
-				while( $i < count($get))
+				$j = 0;
+				while( $j < count($get))
 				{
-					$data[$get[$i]] = $row[$get[$i]];
-					$i++;
+					$data[$i][$get[$j]] = $row[$get[$j]];
+					$j++;
 				}
+			$i++;
 			}
 		}
 		else  // handle single data returns
 		{
+			$i = 0;
 			while($row = mysqli_fetch_array($query_id))
 			{
-
-				$data = $row[$get];
+				$data[$i] = $row[$get];
+				$i++;
 			}
 		}
 		if(! $this->query_id )
@@ -133,9 +136,6 @@ class mysql_driver extends db_info
 			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
 			return false;
 		}	
-
-
-
 
 
 		return $data;
@@ -230,7 +230,11 @@ class mysql_driver extends db_info
 		echo '<script language="javascript">';
 		echo 'alert("'.$err.'")';
 		echo '</script>';
-	}
+		
+
+		printf("Error: %s\n", mysqli_error($this->connection_id));
+		exit();
+    }
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//query(  query string ) - Query the database with input query string
@@ -300,6 +304,39 @@ class mysql_driver extends db_info
 			}
 		}
 
+		return false;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//getEvents(group id, start time, repeat period(day/week/month/year views) ) - Returns all events from a specific group in the time $period that starts at $start 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public function getEvents($group, $start, $period)
+	{
+		$table = "events";
+		$get =  array('eid','gid','ownerid','priority','date_created','event_date','repeat_style','repeat_until','title','location','description');
+		$where = "event_date >= '".$start."' AND event_date  <= DATE_ADD(event_date , ";
+		if($period == "day")
+		{
+		$where .= "INTERVAL 1 DAY)";
+		}
+		else if($period == "week")
+		{
+		$where .= "INTERVAL 7 DAY)";
+		}
+		else if($period == "month")
+		{
+		$where = "INTERVAL 1 MONTH)";
+		}
+		else if($period == "year")
+		{
+		$where .= "INTERVAL 1 YEAR)";
+		}
+		$info = $this->select('events',$get,$where);
+		
+		if($info)
+		{
+			return $info;
+		}
 		return false;
 	}
 

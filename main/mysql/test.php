@@ -1,7 +1,7 @@
 <?php
-//require_once('_db.php');
-//require_once('_mysql.php');
-/*
+require_once('_db.php');
+require_once('_mysql.php');
+
 echo "TESTING THE MYSQL DRIVER<BR>";
 
 $mysql = new mysql_driver;
@@ -10,7 +10,7 @@ if($mysql->connect())
 {
 echo "MYSQL connected!<br>";
 }
-
+/*
 echo "CHECKING IF THE USER WITH LAST NAME TESTLASNTAME HAS A FIRSTNAME OF TESTFIRSTNAME<BR>";
 
 if($mysql->compare('user','first_name', "testfirstname", "last_name = 'testlastname'"))
@@ -51,4 +51,12 @@ print_r($found);
 */
 
 
+//lets load some events from our db...
+
+$events = $mysql->getEvents( "NULL", "2014-04-12 00:00:00","day");
+
+echo "events : ";
+print_r($events);
+
+echo "<br>__________DONE.";
 ?>
