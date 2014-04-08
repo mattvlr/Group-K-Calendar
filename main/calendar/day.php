@@ -152,7 +152,7 @@ echo '
 
 		<div class="form-group">
      		<label for="select" class="col-lg-2 control-label">Time:</label>
-      			<div class="col-lg-10" style="width:90px;display:inline-block;">
+      			<div class="col-lg-10" style="width:120px;display:inline-block;">
       				<label for="select" class="col-lg-2 control-label">From:</label>
 			        <select class="form-control" id="hour" style="display:inline-block;">
 			          <option>1</option>

@@ -57,7 +57,9 @@ if(isset($_SESSION['id']))
 	else{
 			$mc = $_GET['m'];
 	}
-	$acts = $_GET['act']; 
+	if(isset($_GET['act'])):
+		$acts = $_GET['act']; 
+	endif;
 	
 	
 		if(isset($_GET['tar'])){
