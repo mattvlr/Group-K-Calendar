@@ -45,20 +45,21 @@ if(isset($_SESSION['id']))
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
 		
-		if(!isset($_GET['year'])){
+	if(!isset($_GET['y'])){
 			$yc = date('Y');
-		}
-		else{
-			$yc = $_GET['year'];
-		}
-		//
-		if(!isset($_GET['month'])){
+	}
+	else{
+			$yc = $_GET['y'];
+	}
+	if(!isset($_GET['m'])){
 			$mc = date('m');
-		}
-		else{
-			$mc = $_GET['month'];
-		}
-		//
+	}
+	else{
+			$mc = $_GET['m'];
+	}
+	$acts = $_GET['act']; 
+	
+	
 		if(isset($_GET['tar'])){
 			if($_GET['tar'] == 'f'){
 			$mc++;
@@ -75,18 +76,20 @@ if(isset($_SESSION['id']))
 			endif;
 			}
 		}
-
-		$sidebar .= '<div id="sidebar-small-month">'. draw_small_month(date("m"),date("Y"),1).'</div>
+		$drawsc = draw_small_month($mc,$yc,1);
+		
+		$sidebar .= '<div id="sidebar-small-month">'. $drawsc.'</div>
 			 <div id="left" style="float:left;width:20px">
-			 <a href="?month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
+			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 			 <div id="right" style="float:right">
-			 <a href="?month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
+			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
 		
 				<br>
 		 	 	<br>
 				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
 				Modal Test  <a href="/main/calendar/modaltest.php">Link</a><br>
 				</div>';
+
 }
 else    //Sidebar only for logged in users?
 {
