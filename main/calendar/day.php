@@ -76,7 +76,7 @@ echo '
 			  <br>
 			  <br>
 			  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>
-			  </ul>.'.$draw.'</center></div>';
+			  </ul>'.$draw.'</center></div>';
 
 if (!isset($status)){echo '';}
 else {echo ''.$status.'';}
