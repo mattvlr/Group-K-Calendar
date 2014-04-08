@@ -1,6 +1,9 @@
 <?php 
-	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
+	require_once($_SERVER['DOCUMENT_ROOT'] .'/main/mysql/_mysql.php');
 
+	
+	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
+	
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
 
@@ -154,12 +157,26 @@
 	}
 	
 	function draw_day($day,$month,$year){
+		$mysql = new mysql_driver;
+		$mysql->connect();
+		
+		$monthnum = $month;
 		$month = month_convert($month);
 		$hour = date('g');
 		$minutes = date('i');
 		$table = "";
 		$table.= '<table class="day">';
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
+		
+		$events = '';
+		$start = $year . '-' . $monthnum . '-' . $day . ' 00:00:00';
+		$events = $mysql->getEvents("NULL", $start, "day");
+		$num_events = count($events);
+		echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
+
+		print_r($events);
+		
+
 		
 		if(($hour >= 1) && ($hour <= 11)):
 			$table.='<tr><th class="hourtitle">'.($hour).' pm</th><td class="day-event-content"></td></tr>';

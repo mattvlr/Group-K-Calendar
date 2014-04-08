@@ -57,9 +57,7 @@ if(isset($_SESSION['id']))
 	else{
 			$mc = $_GET['m'];
 	}
-	if(isset($_GET['act'])):
-		$acts = $_GET['act']; 
-	endif;
+	$acts = $_GET['act']; 
 	
 	
 		if(isset($_GET['tar'])){
@@ -88,8 +86,9 @@ if(isset($_SESSION['id']))
 		
 				<br>
 		 	 	<br>
-				AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
+				<!--AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
 				Modal Test  <a href="/main/calendar/modaltest.php">Link</a><br>
+				-->
 				</div>';
 
 }

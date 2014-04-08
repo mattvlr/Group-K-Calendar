@@ -2,8 +2,6 @@
 require_once('_db.php');
 require_once('_mysql.php');
 
-echo "TESTING THE MYSQL DRIVER<BR>";
-
 $mysql = new mysql_driver;
 
 if($mysql->connect())
@@ -52,11 +50,31 @@ print_r($found);
 
 
 //lets load some events from our db...
-
+/*
 $events = $mysql->getEvents( "NULL", "2014-04-12 00:00:00","day");
 
 echo "events : ";
 print_r($events);
 
 echo "<br>__________DONE.";
+*/
+
+$today = date("Y-m-d H:i:s");
+$events = $mysql->getEvents( "NULL", $today ,"day");
+$num_events = count($events);
+
+echo "<br><br><br><br>______________________________---------------------num = ".$num_events;
+
+if($num_events == '0')
+{
+$num_events = 'no';
+}
+
+$eventlist = '';
+for($i = 0; $i < $num_events; $i++)
+{
+$eventlist .= $events[$i]["title"] . '<br>';
+}
+
+echo $eventlist;
 ?>

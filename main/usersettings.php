@@ -42,7 +42,6 @@ $form = '
 <head>
 <title>Settings</title>
 <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
-<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/bootstrap/css/signin.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="template.css">
  

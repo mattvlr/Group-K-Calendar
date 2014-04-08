@@ -110,6 +110,56 @@ class mysql_driver extends db_info
 
 		if(is_array($get))
 		{
+			while($row = mysqli_fetch_array($query_id))
+			{
+				$i = 0;
+				while( $i < count($get))
+				{
+					$data[$get[$i]] = $row[$get[$i]];
+					$i++;
+				}
+			}
+		}
+		else  // handle single data returns
+		{
+			while($row = mysqli_fetch_array($query_id))
+			{
+				$data = $row[$get];
+			}
+		}
+		if(! $this->query_id )
+		{
+			$this->error("MYSQL QUERY ERROR: QUERY = " . $query);
+			return false;
+		}	
+
+
+		return $data;
+
+
+	}
+	
+		public function selectMany( $table, $get, $where='') //SELECTs the fields designated in the array $get WHERE conditions..
+	{
+		$data = array();
+		if(is_array($get))
+		{
+			$getq = $this->arrayToQuery($get);
+		}
+		else
+		{
+			$getq = $get;
+		}
+		$query = "SELECT " . $getq . " FROM " . $table;
+
+		if( $where != '')
+		{
+			$query .= " WHERE " . $where;
+		}
+		$query_id = $this->query($query,$get);
+
+		if(is_array($get))
+		{
 			$i = 0;
 			while($row = mysqli_fetch_array($query_id))
 			{
@@ -331,7 +381,7 @@ class mysql_driver extends db_info
 		{
 		$where .= "INTERVAL 1 YEAR)";
 		}
-		$info = $this->select('events',$get,$where);
+		$info = $this->selectMany('events',$get,$where);
 		
 		if($info)
 		{

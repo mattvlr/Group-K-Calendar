@@ -1,11 +1,19 @@
 <?php
+$today = date("Y-m-d H:i:s");
+$events = $mysql->getEvents( "NULL", $today ,"day");
+$num_events = count($events);
 
+echo "<br><br><br><br>______________________________---------------------num = ".$num_events;
 
-$num_events = 0;
-
-if($num_events == 0);
+if($num_events == '0')
 {
 $num_events = 'no';
+}
+
+$eventlist = '';
+for($i = 0; $i < $num_events; $i++)
+{
+$eventlist .= $events[$i];
 }
 ?>
 
