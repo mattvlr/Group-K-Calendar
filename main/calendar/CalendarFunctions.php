@@ -179,7 +179,7 @@
 
 		
 		if(($hour >= 1) && ($hour <= 11)):
-			$table.='<tr><th class="hourtitle">'.($hour).' pm</th><td class="day-event-content"></td></tr>';
+			$table.='<tr><th class="hourtitle">'.($hour).' am</th><td class="day-event-content"></td></tr>';
 			
 			switch($minutes){
 			case (($minutes >= 00) && ($minutes <= 20)):
@@ -201,7 +201,7 @@
 				break;
 			}
 		elseif(($hour >= 12) && ($hour <= 25)):
-			$table.='<tr><th class="hourtitle">'.($hour).' am</th><td class="day-event-content"></td></tr>';
+			$table.='<tr><th class="hourtitle">'.($hour).' pm</th><td class="day-event-content"></td></tr>';
 			
 			switch($minutes){
 			case (($minutes >= 00) && ($minutes <= 20)):
@@ -226,19 +226,19 @@
 		
 		for($i = $hour + 1; $i < $hour+25; $i++):
 				if(($i > 24) && ($i != 24)):
-					$table.='<tr><th class="hourtitle">'.($i-24).' pm</th><td class="day-event-content"></td></tr>';
+					$table.='<tr><th class="hourtitle">'.($i-24).' am</th><td class="day-event-content"></td></tr>';
 					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				elseif(($i > 12) && ($i != 12) && ($i != 24)):
-						$table.='<tr><th class="hourtitle">'.($i-12).' am</th><td class="day-event-content"></td></tr>';
+						$table.='<tr><th class="hourtitle">'.($i-12).' pm</th><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				elseif($i == 24):
-						$table.='<tr><th class="hourtitle">'.($i - 12).' pm</th><td class="day-event-content"></td></tr>';
+						$table.='<tr><th class="hourtitle">'.($i - 12).' am</th><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				elseif($i == 12):
-						$table.='<tr><th class="hourtitle">'.(12).' am</th><td class="day-event-content"></td></tr>';
+						$table.='<tr><th class="hourtitle">'.(12).' pm</th><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				elseif(($i != 12) && ($i != 24)):
-						$table.='<tr><th class="hourtitle">'.$i.' pm</th><td class="day-event-content"></td></tr>';
+						$table.='<tr><th class="hourtitle">'.$i.' am</th><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				endif;
 		endfor;
