@@ -3,7 +3,6 @@ $today = date("Y-m-d H:i:s");
 $events = $mysql->getEvents( "NULL", $today ,"day");
 $num_events = count($events);
 
-echo "<br><br><br><br>______________________________---------------------num = ".$num_events;
 
 if($num_events == '0')
 {
@@ -13,7 +12,8 @@ $num_events = 'no';
 $eventlist = '';
 for($i = 0; $i < $num_events; $i++)
 {
-$eventlist .= $events[$i];
+$eventlist .= $events[$i]["title"] . "&nbsp&nbsp&nbsp". $events[$i]["event_date"] ;
+$eventlist .= '<br>';
 }
 ?>
 
@@ -26,5 +26,6 @@ $eventlist .= $events[$i];
  <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
 </head>
 <body><center><h1>Upcoming Events</h1>
-<br> There are <?php echo $num_events; ?> upcoming events in the next 3 days.<br></center>
+<br> There are <?php echo $num_events; ?> upcoming events in the next 3 days.<br>
+<br> <?php echo $eventlist; ?></center>
 </div></body></html>
