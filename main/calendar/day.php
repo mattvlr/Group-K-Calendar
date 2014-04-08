@@ -136,7 +136,7 @@ echo '
 			          <option>30</option>
 			          <option>31</option>
 			        </select>
-			        <select class="form-control" id="year" style="width:75px;display:inline-block;">
+			        <select class="form-control" id="year" style="width:92px;display:inline-block;">
 			          <option>2014</option>
 			          <option>2015</option>
 			          <option>2016</option>

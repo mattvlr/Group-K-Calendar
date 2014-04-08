@@ -93,7 +93,7 @@ th.year-calendar-heading{
 	text-align:center;
 	background: #C2E0FF;
 	border:1px solid black;
-		width: 30px;
+	width: 30px;
 	height: 30px;
 }
 td.year-table{
@@ -128,7 +128,7 @@ td.year-today:hover{
 td.year-calendar-np{
 	background: #f5f5f5;
 	padding: 1px;
-	bo rder:1px solid black;
+	border: 1px solid black;
 	width: 30px;
 	height: 30px;
 }
@@ -233,12 +233,55 @@ td.calendar-day, td.calendar-day-np {
 	border-right:1px solid #999; 
 }
 div.about-box {
-  width: 600px;
-  height: 100px;
+  position: fixed;
+  float: left;
+  top: 175px;
+  left: 275px;
+  width: 660px;
+  height: 230px;
   padding: 15px 15px 0px 15px;
   margin: 0em 0em 1em 0em;
   border:1px solid #F3E553;
   background: #FCFFDD;
 }
-
-
+div.about-head{
+  position: fixed;
+  top: 125px;
+  left: 500px;
+}
+div.panel-primary {
+  position: fixed;
+  top: 175px;
+  left: 950px;
+  border-color: #008cba;
+  width: 475px;
+  height: 230px;
+}
+div.panel-body {
+  padding: 10px;
+}
+div.panel-heading {
+  padding: 15px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
+  width: 475px;
+  height: 50px;
+}
+div.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 17px;
+  color: inherit;
+}
+div.faq-box {
+  position: fixed;
+  top: 415px;
+  left: 275px;
+  width: 1150px;
+  height: 500px;
+  padding: 15px 15px 0px 15px;
+  margin: 0em 0em 1em 0em;
+  border:1px solid #F3E553;
+  background: #FCFFDD;
+}

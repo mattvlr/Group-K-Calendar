@@ -3,27 +3,34 @@
 <title>Help</title>
 <link rel="stylesheet" type="text/css" href="template.css">
 </head>
-<body><center><h1>HELP PAGE</h1></center></br></br>
+<body><center><h1>HELP PAGE</h1></center>
 
-<center><div class="container">
-	<div align="left">
-		<h3>About Kalendar</h3>
-		<div class="about-box">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <center><h3 class="panel-title">Most Frequently Asked Questions</h3></center>
+  </div></center>
+  <div class="panel-body" align="left">
+	<ol>
+	<li><a href="#how_do_i_register">How do I register for the website?</a></li>
+	<li><a href="#how_to_create_event">How do I create an event?</a></li>
+	<li><a href="#event_priority_system">How does the event priority system work?</a></li>
+	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
+	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
+	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
+	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
+	</ol>
+  </div>
+</div>
+
+<div class="">
+	<div class="about-head">
+		<h3><b>About Kalendar</b></h3>
+	</div>
+	<div class="about-box">
 		<p>Tell about the calendar...</p>
-		</div></br></br>
-		
-		<h4>Most Frequently Asked Questions</h4></br>
-		
-		<ol>
-		<li><a href="#how_do_i_register">How do I register for the website?</a></li>
-		<li><a href="#how_to_create_event">How do I create an event?</a></li>
-		<li><a href="#event_priority_system">How does the event priority system work?</a></li>
-		<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
-		<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
-		<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
-		<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
-		</ol></br></br>
-		
+	</div></br></br>
+
+	<div class="faq-box">
 		<h4><b>How do I register for the website?</b></h4>
 		<p id="how_do_i_register">To register for the website, simply...</p>
 		
@@ -36,5 +43,5 @@
 		<h4><b>What do I do if I forgot my password?</b></h4>
 		<p id="how_to_reset_password">To reset your password, click here...</p>
 	</div>
-</div></center>
+</div>
 </body></html>
