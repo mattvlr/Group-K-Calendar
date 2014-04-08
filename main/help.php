@@ -8,7 +8,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <center><h3 class="panel-title">Most Frequently Asked Questions</h3></center>
-  </div></center>
+  </div>
   <div class="panel-body" align="left">
 	<ol>
 	<li><a href="#how_do_i_register">How do I register for the website?</a></li>

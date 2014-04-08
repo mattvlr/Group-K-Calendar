@@ -24,7 +24,7 @@
 			$month = $_GET['m'];
 	}
 	if(!isset($_GET['d'])){
-			$day = date('d');
+			$day = date('j');
 	}
 	else{
 			$day = $_GET['d'];

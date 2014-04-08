@@ -2,7 +2,7 @@
 	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
 
 	/* draw table */
-	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
+	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
 
 	/* table headings */
 	$headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
@@ -15,7 +15,7 @@
 	$day_counter = 0;
 	$dates_array = array();
 	$todaymon = date("m");
-	$todaynum = date("d"); 
+	$todaynum = date("j"); 
 
 	/* row for week one */
 	$calendar.= '<tr class="calendar-row">';
@@ -91,7 +91,7 @@
 		$day_counter = 0;
 		$dates_array = array();
 		$todaymon = date("m");
-		$todaynum = date("d");
+		$todaynum = date("j");
 		$todayyear = date("Y");
 		
 			 
