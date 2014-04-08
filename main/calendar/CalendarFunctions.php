@@ -172,9 +172,9 @@
 		$start = $year . '-' . $monthnum . '-' . $day . ' 00:00:00';
 		$events = $mysql->getEvents("NULL", $start, "day");
 		$num_events = count($events);
-		echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
+		//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
 
-		print_r($events);
+		//print_r($events);
 		
 
 		
@@ -227,29 +227,19 @@
 		for($i = $hour + 1; $i < $hour+25; $i++):
 				if(($i > 24) && ($i != 24)):
 					$table.='<tr><th class="hourtitle">'.($i-24).' pm</th><td class="day-event-content"></td></tr>';
-					$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
 					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-					$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 				elseif(($i > 12) && ($i != 12) && ($i != 24)):
 						$table.='<tr><th class="hourtitle">'.($i-12).' am</th><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 				elseif($i == 24):
 						$table.='<tr><th class="hourtitle">'.($i - 12).' pm</th><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 				elseif($i == 12):
 						$table.='<tr><th class="hourtitle">'.(12).' am</th><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 				elseif(($i != 12) && ($i != 24)):
 						$table.='<tr><th class="hourtitle">'.$i.' pm</th><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:15</td><td class="day-event-content"></td></tr>';
 						$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-						$table.='<tr><td class="day-small-time">:45</td><td class="day-event-content"></td></tr>';
 				endif;
 		endfor;
 		$table.= '</table>';

@@ -76,11 +76,10 @@ echo '
 			  <br>
 			  <br>
 			  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Create Event</button>
-			  </ul></div>';
+			  </ul>.'.$draw.'</center></div>';
 
 if (!isset($status)){echo '';}
-else {echo '<center>'.$status.'</center>';}
-echo ''. $draw .'';
+else {echo ''.$status.'';}
 
 //Tha form
 $body = '<div class="eventcreation">
