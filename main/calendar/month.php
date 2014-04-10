@@ -6,8 +6,10 @@ echo '<center><div class="calendar">
             '. date("F"). " " . date("Y"). '
             </h1>
             '. draw_calendar(date("m"),date("Y")) . '
+			
           </div>
         </div>
       </div>
-    </div></center>'
+    </div></center>';
+
 ?>

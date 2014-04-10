@@ -3,15 +3,36 @@
 
 	
 	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
-				$mysql = new mysql_driver;
-		$mysql->connect();
 		
+		$mysql = new mysql_driver;
+		$mysql->connect();
 		$events = '';
 		$start = $year . '-' . $month . '-' . 1 . ' 00:00:00';
 		$events = $mysql->getEvents("NULL", $start, "day");
 		$num_events = count($events);
+		$sid = $_SESSION['id'];
+		
 		echo "<br><br><br><br><center><div style='width:70%'>";
-		print_r($events);
+		
+		$ec = 0; // number of events in the month for a user
+		for($i = 0; $i < count($events); $i++){
+			if($sid == $events[$i]['ownerid']){
+				$user_month_events[$ec] = array(
+					$priority = $events[$i]['priority'],
+					$date_created = $events[$i]['date_created'],
+					$event_date = $events[$i]['event_date'],
+					$repeat_style = $events[$i]['repeat_style'],
+					$repeat_until = $events[$i]['repeat_until'],
+					$title = $events[$i]['title'],
+					$description = $events[$i]['description']
+				);
+			print_r($user_month_events[$ec]);
+			echo "<br><br>";
+			$ec++;
+			}
+		}
+			
+		
 		echo "</div></center><br><br><br><br><br><br><br><br><br>";
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
@@ -37,20 +58,37 @@
 		$calendar.= '<td class="calendar-day-np"> </td>';
 		$days_in_this_week++;
 	endfor;
-
+	echo $month;
 	/* keep going with days.... */
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 		
+		$combined_day = ($year."-".$month."-".$list_day." 00:00:00");
+
 		    /* ADDED BY MATT AS A TEST */
 			if($todaynum == $day_counter + 1):
-				$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
-				$calendar.= '<div class="current-day">'.$list_day.'</div>';
-				$calendar.= '<div class="event_box_no_event"></div>';
+				for($i = 0; $i < $ec; $i++){
+					if($user_month_events[$i][2] == $combined_day){							
+						$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
+						$calendar.= '<div class="current-day">'.$list_day.'</div>';
+						$calendar.= '<div class="event_box_no_event">'.$user_month_events[$i][5].'</div>';
+					}
+					elseif($i == 0){
+						$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
+						$calendar.= '<div class="current-day">'.$list_day.'</div>';
+					}
+				}
 			else:
-				$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
-				/* add in the day number */
-				$calendar.= '<div class="day-number">'.$list_day.'</div>';
-				$calendar.= '<div class="event_box_no_event"></div>';
+				for($i = 0; $i < $ec; $i++){
+					if($user_month_events[$i][2] == $combined_day){
+						$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
+						$calendar.= '<div class="day-number">'.$list_day.'</div>';
+						$calendar.= '<div class="event_box_no_event">'.$user_month_events[$i][5].'</div>';
+					}
+					elseif($i == 0){
+						$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
+						$calendar.= '<div class="day-number">'.$list_day.'</div>';
+					}
+				}
 			endif;
 
 
