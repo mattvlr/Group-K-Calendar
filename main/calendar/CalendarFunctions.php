@@ -3,7 +3,16 @@
 
 	
 	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
-	
+				$mysql = new mysql_driver;
+		$mysql->connect();
+		
+		$events = '';
+		$start = $year . '-' . $month . '-' . 1 . ' 00:00:00';
+		$events = $mysql->getEvents("NULL", $start, "day");
+		$num_events = count($events);
+		echo "<br><br><br><br><center><div style='width:70%'>";
+		print_r($events);
+		echo "</div></center><br><br><br><br><br><br><br><br><br>";
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
 
@@ -174,8 +183,9 @@
 		$num_events = count($events);
 		//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
 
-		//print_r($events);
-		
+		echo "<br><br><br><br><center><div style='width:70%'>";
+		print_r($events);
+		echo "</div></center><br><br><br><br><br><br><br><br><br>";
 
 		
 		if(($hour >= 1) && ($hour <= 11)):
