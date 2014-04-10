@@ -46,7 +46,7 @@ if(isset($_SESSION['id']))
             <li class="list-group-item">
                <span class="badge">'. $num_events .'</span>
                 <a href="index.php?act=upcoming">Upcoming Events<a></li>
-            <li><a href="#">Group Invites</a></li>
+            <li><a href="act=groups">Groups</a></li>
           </ul>
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
