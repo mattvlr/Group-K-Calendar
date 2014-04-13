@@ -86,23 +86,27 @@ $body = '<div class="eventcreation">
 	<form class="form-signin" role="form" action="/main/index.php?act=day&m='. $month .'&d='. $day .'&y='. $year .'" method = "post">
 	<center><h1>Create your event!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Event Title" required autofocus>
-	<input type="text" name = "location" class="form-control" placeholder="Location" required>
+	<input type="text" name = "location" class="form-control" placeholder="Location" required><br>
 	<center><b>Event Date :</b></center><input type="date" name = "date" class="form-control" required>
 	<center><b>Event Time :</b></center><input type="time" name = "time" class="form-control" required>
 	<center><b>Priority</b></center>
 	<center><input type="radio" name="priority" value="1" checked="">Low
 	<input type="radio" name="priority" value="2">Medium
 	<input type="radio" name="priority" value="3">High</center><br>
+	
 	<center><b>Repeat Event?</b></center>
 	<center><input type="radio" name="repeat" value="yes">Yes
 	<input type="radio" name="repeat" value="no" checked ="">No</center><br>
-    <center><b>Repeat Style</b></center>
+	
+	
+	<div id="repeat" style="display:none">
+	<center><b>Repeat Style</b></center>
 	<center><input type="radio" name="repeatstyle" value="daily">Daily
 	<input type="radio" name="repeatstyle" value="weekly">Weekly
 	<input type="radio" name="repeatstyle" value="monthly">Monthly	
 	<input type="radio" name="repeatstyle" value="none" checked="">None</center><br>
+	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required></div>
 	
-	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required>
 	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea><br>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
 	</form>

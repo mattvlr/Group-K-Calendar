@@ -21,7 +21,7 @@ $eventlist = '';
 ?>
 
 <ul class="nav nav-tabs" style="margin-bottom:15px; padding-top:20px;">
-  <li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Events</a></li>
+  <li class="active"><a href="" data-toggle="tab">Upcoming Events <?php echo "(".$num_events.")";?></a></li>
   <li class=""><a href="index.php?act=pm" data-toggle="tab">Messages</a></li>
   <li class=""><a href="index.php?act=groups" data-toggle="tab">Groups</a></li>
 </ul>
