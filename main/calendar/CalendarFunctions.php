@@ -70,9 +70,9 @@
 					if($user_month_events[$i][2] == $combined_day){							
 						$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
 						$calendar.= '<div class="current-day">'.$list_day.'</div>';
-						$calendar.= '<div class="event_box_no_event">'.$user_month_events[$i][5].'</div>';
+						$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][5].'</div>';
 					}
-					elseif($i == 0){
+					elseif(($i == 0) && ($user_month_events[$i][2] == $combined_day)){
 						$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
 						$calendar.= '<div class="current-day">'.$list_day.'</div>';
 					}
@@ -82,7 +82,8 @@
 					if($user_month_events[$i][2] == $combined_day){
 						$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
 						$calendar.= '<div class="day-number">'.$list_day.'</div>';
-						$calendar.= '<div class="event_box_no_event">'.$user_month_events[$i][5].'</div>';
+						$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][5].'</div>';
+						$last_event_date = $list_day;
 					}
 					elseif($i == 0){
 						$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
