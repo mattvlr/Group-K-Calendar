@@ -371,7 +371,7 @@ class mysql_driver extends db_info
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//getEvents(group id, start time, repeat period(day/week/month/year views) ) - Returns all events from a specific group in the time $period that starts at $start 
+	//getEvents(group id, start time, repeat period(day/week/month/year views), order ) - Returns all events from a specific group in the time $period that starts at $start 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public function getEvents($group, $start, $period, $order='desc')
 	{
@@ -398,11 +398,11 @@ class mysql_driver extends db_info
 		{
 		$where .= "INTERVAL 1 YEAR) ";
 		}
-		if($order = "asc")
+		if($order == "asc")
 		{
 		$where .= "ORDER BY event_date ASC";
 		}
-		elseif($order = "desc")
+		elseif($order == "desc")
 		{
 		$where .= "ORDER BY  event_date DESC";
 		}
