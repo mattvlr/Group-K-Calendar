@@ -1,261 +1,45 @@
-p {
-	margin-top: 0;
-	padding-right: 15px;
-	padding-left: 15px; 
-}
-div.container {
-    width: 1000px;
-	padding-left: 235px;
-	padding-top: 125px;
-}
-div.calendar{
-	height:800px;
-	width:100%;
-	position:relative;
-	display: inline;
-	padding-left: 265px;
-	overflow-x: scroll;
-	z-index:999;
-	margin-right:260px;
-}
-
-#current
-{
- color:black;
- background:#CCC;	
-}
-
-/*Added by matt*/ 
-a.no-link:link{
-text-decoration:none;
-color:black;
-height: 100%;
-width: 100%;
-display:block;
-}
-a.no-link:visited{
-text-decoration:none;
-color:black;
-height: 100%;
-width: 100%;
-display:block;
-}
-a.no-link:active{
-text-decoration:none;
-color:black;
-height: 100%;
-width: 100%;
-display:block;
-}
-a.no-link:hover{
-text-decoration:none;
-color:black;
-height: 100%;
-width: 100%;
-display:block;
-}
-td.today {
-	background: #C2E0FF; 
-	min-height:180px; 
-	font-size:11px; 
-	position:relative; 
-	height:120px 
-	}
-	
-div.current-day{ 
-	background:#999; 
-	padding:5px; 
-	color:#fff; 
-	font-weight:bold; 
-	float:right;	
-	margin:-55px 0px 0px -5px; 
-	width:20px; 
-	text-align:center; 
-	position: relative;
-	top:-60px;
-	}
-	
-div.current-day:hover {
-	background: #336EC6;
-	}
-div.event_box_0{
-	position: relative;
-	display: block;
- 
-
-}
-div.event_box_1{
-	background: green;
-	color: white;
-	position: relative;
-	display: block;
-}
-div.event_box_2{
-	background: yellow;
-	position: relative;
-	display: block;
-}
-div.event_box_3{
-	background: red;
-	color: white;
-	position: relative;
-	display: block;
-}
-td.today:hover {
-	background: #FFE1C2;
-	}
-th.monthtitle{
-	font-weight:bold;
-	text-align:center;
-	border:1px solid black;
-	background: #C2E0FF;
-	height: 30px;
-}
-th.year-calendar-heading{
-	font-weight:bold;
-	text-align:center;
-	background: #C2E0FF;
-	border:1px solid black;
-	width: 30px;
-	height: 30px;
-}
-td.year-table{
-	vertical-align: top;
-	background: #f5f5f5;
-}
-td.year-calendar-day{ 
-	background:#eceff5; /* light gray */ 
-	padding: 0px; 
-	color:black; 
-	font-weight:bold; 
-	text-align: center;
-	font-size:11px;
-	border:1px solid black;
-	width: 30px;
-	height: 30px;
-	}
-td.year-today{ 
-	background: #C2E0FF; 
-	padding: 0px; 
-	color: black; 
-	font-weight:bold; 
-	text-align:center; 
-	font-size:11px;
-	border:1px solid black;
-	width: 30px;
-	height: 30px;
-	}
-td.year-today:hover{
-	background:#FFE1C2;
-}
-td.year-calendar-np{
-	background: #f5f5f5;
-	padding: 1px;
-	border: 1px solid black;
-	width: 30px;
-	height: 30px;
-}
-td.year-calendar-day:hover{
-	background:#FFE1C2;
-	color:black;
-}
-table.day{
-	border: 1px solid black;
-	min-width:20%;
-	max-width: 50%;
-	display: block;
-	margin-top: 3em;
-	min-padding-right: 260px;
-	min-padding-left: 260px;
-}
-td.day-time{
-	border: 1px solid black;
-	width: 10%;
-}
-td.day-small-time{
-	padding-right: .2em;
-	text-align: right;
-	width: 10%;
-	border: 1px solid black;
-	
-}
-td.day-event-content{
-	border: 1px solid black;
-}
-td.current-minute{
-	text-align: right;
-	width: 10%;
-	border: 1px solid black;
-	background: gray;
-	color: white;
-	padding-right: .2em;
-}
-th.current-minute{
-	border: 1px solid black;
-	background: gray;
-	color: white;
-	padding-right: .2em;
-}
-th.hourtitle{
-	padding-left: .2em;
-	font-weight:bold;
-	text-align:left;
-	border:1px solid black;
-	background: #ccc;
-}
-/* Standard included in example \/ */
-td.calendar-day	{ 
-	min-height:120px; 
-	font-size:11px; 
-	position:relative; 
-	height:120px 
-	} 
+/* I started commenting the ones I know about */
 * html div.calendar-day { 
 	height:120px; 
-	}
-td.calendar-day:hover { 
-	background:#eceff5; 
-	}
-td.calendar-day-np	{ 
-	background:#eee; 
-	min-height:180px; 
-	} 
+}
 * html div.calendar-day-np { 
 	height:180px; 
 	}
-td.calendar-day-head { 
-	background:#ccc; 
-	font-weight:bold; 
-	text-align:center; 
-	width:120px; 
-	padding:5px; 
-	border-bottom:1px solid #999; 
-	border-top:1px solid #999; 
-	border-right:1px solid #999; 
+/* a */
+a.no-link:active{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
 }
-div.day-number { 
-	background:#999; 
-	padding:5px; 
-	color:#fff; 
-	font-weight:bold; 
-	float:right; 
-	margin:-55px -5px 0 0; 
-	width:20px; 
-	text-align:center; 
-	position: relative;
-	top:-55px;
+a.no-link:hover{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
 }
-div.day-number:hover {
-	background: #336EC6;
+a.no-link:link{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
 }
-/* shared */
-td.calendar-day, td.calendar-day-np { 
-	width:120px; 
-	padding:5px; 
-	border-bottom:1px solid #999; 
-	border-right:1px solid #999; 
+a.no-link:visited{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
 }
-div.about-box {
+/* div's */
+div.about-box { 
   position: fixed;
   float: left;
   top: 21.7%;
@@ -272,31 +56,90 @@ div.about-head{
   top: 125px;
   left: 500px;
 }
-/* weird top number here... */
-div.panel-primary {
-  position: fixed;
-  top: 21.5%;
-  left: 66%;
-  border-color: #008cba;
-  width: 475px;
-  height: 230px;
+div.calendar{ /* The div that holds the month calendar */
+	height:800px;
+	width:100%;
+	position:relative;
+	display: inline;
+	padding-left: 265px;
+	overflow-x: scroll;
+	z-index:999;
+	margin-right:260px;
 }
-div.panel-body {
-  padding: 10px;
+div.current-day{ /* holds the small number for the big month calendar */
+	background:#999; 
+	padding:5px; 
+	color:#fff; 
+	font-weight:bold; 
+	width:20px; 
+	text-align:center; 
+	z-index:499;
+	position:absolute;
+	top: 0px;
+	right: 0px;
+	}
+div.current-day:hover { /* alt hover color see above */
+	background: #336EC6;
+	}
+div.container { /* can't find it being used anywhere */
+    width: 1000px;
+	padding-left: 235px;
+	padding-top: 125px;
 }
-div.panel-heading {
-  padding: 15px 15px;
-  border-bottom: 1px solid transparent;
-  border-top-right-radius: -1;
-  border-top-left-radius: -1;
-  width: 475px;
-  height: 50px;
+div.day-number { 
+	background:#999; 
+	padding:5px; 
+	color:#fff; 
+	font-weight:bold; 
+	width:20px;
+	text-align:center; 
+	z-index:499;
+	position:absolute;
+	top: 0px;
+	right: 0px;
 }
-div.panel-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 17px;
-  color: inherit;
+div.day-number:hover {
+	background: #336EC6;
+}
+div.event_box_0{
+	position: relative;
+	display: block;
+	top: -75px;
+	width: 100%;
+}
+div.event_box_0:hover{
+	background: #336EC6;
+	color: white;
+}
+div.event_box_1{
+	background: #18bc9c;
+	color: white;
+	position: relative;
+	display: block;
+	top: -75px;
+}
+div.event_box_1:hover{
+	background:#15a589;
+}
+div.event_box_2{
+	background: #f39c12;
+	color: white;
+	position: relative;
+	display: block;
+	top: -75px;
+}
+div.event_box_2:hover{
+	background:#e08e0b;
+}
+div.event_box_3{
+	background: #e43725;
+	color: white;
+	position: relative;
+	display: block;
+	top: -75px;
+}
+div.event_box_3:hover{
+	background:#e43725;
 }
 div.faq-box {
   position: fixed;
@@ -309,3 +152,181 @@ div.faq-box {
   border:1px solid #F3E553;
   background: #FCFFDD;
 }
+div.panel-body {
+  padding: 10px;
+}
+div.panel-heading {
+  padding: 15px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
+  width: 475px;
+  height: 50px;
+}
+div.panel-primary {
+  position: fixed;
+  top: 21.5%;
+  left: 66%;
+  border-color: #008cba;
+  width: 475px;
+  height: 230px;
+}
+div.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 17px;
+  color: inherit;
+}
+/* p's */
+p {
+	margin-top: 0;
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+/* table */
+table.day{
+	border: 1px solid black;
+	min-width:20%;
+	max-width: 50%;
+	display: block;
+	margin-top: 3em;
+	min-padding-right: 260px;
+	min-padding-left: 260px;
+}
+/* td's */
+td.calendar-day	{ 
+	min-height:120px; 
+	font-size:11px; 
+	position:relative; 
+	height:120px 
+} 
+td.calendar-day-head { 
+	background:#ccc; 
+	font-weight:bold; 
+	text-align:center; 
+	width:120px; 
+	padding:5px; 
+	border-bottom:1px solid #999; 
+	border-top:1px solid #999; 
+	border-right:1px solid #999; 
+}
+td.calendar-day:hover { 
+	background:#eceff5; 
+}
+td.calendar-day-np	{ 
+	background:#eee; 
+	min-height:180px; 
+} 
+td.calendar-day, td.calendar-day-np { 
+	width:120px; 
+	border-bottom:1px solid #999; 
+	border-right:1px solid #999; 
+}
+td.current-minute{
+	text-align: right;
+	width: 10%;
+	border: 1px solid black;
+	background: gray;
+	color: white;
+	padding-right: .2em;
+}
+td.day-event-content{
+	border: 1px solid black;
+}
+td.day-small-time{
+	padding-right: .2em;
+	text-align: right;
+	width: 10%;
+	border: 1px solid black;	
+}
+td.day-time{
+	border: 1px solid black;
+	width: 10%;
+}
+td.today {
+	background: #C2E0FF; 
+	min-height:180px; 
+	font-size:11px; 
+	position:relative; 
+	height:120px 
+}
+td.today:hover {
+	background: #FFE1C2;
+}
+td.year-calendar-day{ 
+	background:#eceff5; /* light gray */ 
+	padding: 0px; 
+	color:black; 
+	font-weight:bold; 
+	text-align: center;
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+}
+td.year-calendar-np{
+	background: #f5f5f5;
+	padding: 1px;
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+}
+td.year-calendar-day:hover{
+	background:#FFE1C2;
+	color:black;
+}
+td.year-table{
+	vertical-align: top;
+	background: #f5f5f5;
+}
+
+td.year-today{ 
+	background: #C2E0FF; 
+	padding: 0px; 
+	color: black; 
+	font-weight:bold; 
+	text-align:center; 
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+	}
+td.year-today:hover{
+	background:#FFE1C2;
+}
+
+
+
+
+
+/* th's */
+th.current-minute{
+	border: 1px solid black;
+	background: gray;
+	color: white;
+	padding-right: .2em;
+}
+th.hourtitle{
+	padding-left: .2em;
+	font-weight:bold;
+	text-align:left;
+	border:1px solid black;
+	background: #ccc;
+}
+th.monthtitle{
+	font-weight:bold;
+	text-align:center;
+	border:1px solid black;
+	background: #C2E0FF;
+	height: 30px;
+}
+th.year-calendar-heading{
+	font-weight:bold;
+	text-align:center;
+	background: #C2E0FF;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+}
+
+
