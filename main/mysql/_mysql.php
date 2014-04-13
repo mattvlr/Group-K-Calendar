@@ -373,40 +373,27 @@ class mysql_driver extends db_info
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//getEvents(group id, start time, repeat period(day/week/month/year views) ) - Returns all events from a specific group in the time $period that starts at $start 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function getEvents($group, $start, $period, $order='desc')
+	public function getEvents($group, $start, $period)
 	{
 		$table = "events";
 		$get =  array('eid','gid','ownerid','priority','date_created','event_date','repeat_style','repeat_until','title','location','description');
-		$where = "event_date >= '".$start."' AND event_date  <= DATE_ADD('".$start."' ,";
-		if(is_numeric($period))
+		$where = "event_date >= '".$start."' AND event_date  <= DATE_ADD(event_date , ";
+		if($period == "day")
 		{
-		$where .= "INTERVAL " . $period . " DAY) ";
-		}
-		else if($period == "day")
-		{
-		$where .= "INTERVAL 1 DAY) ";
+		$where .= "INTERVAL 1 DAY)";
 		}
 		else if($period == "week")
 		{
-		$where .= "INTERVAL 7 DAY) ";
+		$where .= "INTERVAL 7 DAY)";
 		}
 		else if($period == "month")
 		{
-		$where = "INTERVAL 1 MONTH) ";
+		$where = "INTERVAL 1 MONTH)";
 		}
 		else if($period == "year")
 		{
-		$where .= "INTERVAL 1 YEAR) ";
+		$where .= "INTERVAL 1 YEAR)";
 		}
-		if($order = "asc")
-		{
-		$where .= "ORDER BY event_date ASC";
-		}
-		elseif($order = "desc")
-		{
-		$where .= "ORDER BY  event_date DESC";
-		}
-		
 		$info = $this->selectMany('events',$get,$where);
 		
 		if($info)
@@ -415,7 +402,6 @@ class mysql_driver extends db_info
 		}
 		return false;
 	}
-
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//disconnect( ) - Disconnect from MySQL db 
