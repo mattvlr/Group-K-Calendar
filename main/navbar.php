@@ -22,7 +22,7 @@ $navbar = '<div class="navbar navbar-default navbar-fixed-top" role="navigation"
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <img src="http://i.imgur.com/pamXbHx.png" style="position:absolute; padding-top:5px; left:-5px;"/>
+          <img src="http://i.imgur.com/pamXbHx.png" style="position:absolute; padding-top:5px; left:-17px;"/>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">

@@ -54,7 +54,11 @@ if(isset($_SESSION['id']))
  	<div class="col-sm-4 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 			<li '.$dash.'>
+<<<<<<< HEAD
                 <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:210px;">'. $num_events .'</span></a></li>
+=======
+                <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:215px;">'. $num_events .'</span></a></li>
+>>>>>>> 92b25b43c4814835fe39a29bcbbdc209b710e14f
           </ul>
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
