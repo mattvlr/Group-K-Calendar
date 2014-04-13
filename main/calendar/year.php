@@ -1,10 +1,14 @@
+<html>
+<head>
 <title>Year</title>
 <?php
 require_once('CalendarFunctions.php');
-echo '<center><div class="calendar">
+
+echo '<div class="calendar" style="position:fixed;">
             '. draw_year(2014) . '
-          </div>
-        </div>
       </div>
-    </div></center>'
+    </div>'
 ?>
+
+</body>
+</html>
