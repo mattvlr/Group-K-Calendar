@@ -8,7 +8,7 @@
 
 <?php
 $today = date("Y-m-d H:i:s");
-$events = $mysql->getEvents( "NULL", $today ,3,'desc');
+$events = $mysql->getEvents( "NULL", $today ,3,'asc');
 if($events != false)
 {
 $num_events = count($events);
