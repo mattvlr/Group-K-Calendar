@@ -18,7 +18,7 @@ $msgs = 'no';
 <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
 </head>
 <body><center><h1>Messaging</h1>
-<br> You have <?php echo $msgs; ?> unread messages<br>
+<br> You have <?php echo $msgs; ?> unread messages.<br>
 <?php
 echo $messagelist;
 ?>

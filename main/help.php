@@ -11,9 +11,9 @@
   </div>
   <div class="panel-body" align="left">
 	<ol>
-	<li><a href="#how_do_i_register">How do I register for the website?</a></li>
 	<li><a href="#how_to_create_event">How do I create an event?</a></li>
 	<li><a href="#event_priority_system">How does the event priority system work?</a></li>
+	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
 	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
 	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
 	<li><a href="#how_to_reset_password">What do I do if I forgot my password?</a></li>
@@ -31,11 +31,8 @@
 	</div></br></br>
 
 	<div class="faq-box">
-		<h4><b>How do I register for the website?</b></h4>
-		<p id="how_do_i_register">To register for the website, simply...</p>
-		
 		<h4><b>How do I create an event?</b></h4>
-		<p id="how_to_create_event">To create an event, go to...</p>
+		<p id="how_to_create_event">To create an event, start by going <a href="?act=day">here</a> to the day view.</p>
 		
 		<h4><b>How does the event priority system work?</b></h4>
 		<p id="event_priority_system">The priority system works by...</p>

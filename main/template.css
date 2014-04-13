@@ -235,8 +235,8 @@ td.calendar-day, td.calendar-day-np {
 div.about-box {
   position: fixed;
   float: left;
-  top: 175px;
-  left: 275px;
+  top: 21.7%;
+  left: 19.15%;
   width: 660px;
   height: 230px;
   padding: 15px 15px 0px 15px;
@@ -249,10 +249,11 @@ div.about-head{
   top: 125px;
   left: 500px;
 }
+/* weird top number here... */
 div.panel-primary {
   position: fixed;
-  top: 175px;
-  left: 950px;
+  top: 21.5%;
+  left: 66%;
   border-color: #008cba;
   width: 475px;
   height: 230px;
@@ -276,8 +277,8 @@ div.panel-title {
 }
 div.faq-box {
   position: fixed;
-  top: 415px;
-  left: 275px;
+  top: 52%;
+  left: 19.15%;
   width: 1150px;
   height: 500px;
   padding: 15px 15px 0px 15px;

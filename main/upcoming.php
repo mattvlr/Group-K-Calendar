@@ -62,7 +62,6 @@ Test
       <td><?php echo $events[$i]["location"]; ?></td>
       <td><?php echo $owner ?></td>
     </tr>
-
 <?php 
 } 
 ?>

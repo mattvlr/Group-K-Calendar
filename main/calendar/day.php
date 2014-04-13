@@ -87,20 +87,23 @@ $body = '<div class="eventcreation">
 	<center><h1>Create your event!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Event Title" required autofocus>
 	<input type="text" name = "location" class="form-control" placeholder="Location" required>
-	<center>Event Date :</center><input type="date" name = "date" class="form-control" required>
-	<center>Event Time :</center><input type="time" name = "time" class="form-control" required>
-	<center>Priority</center>
+	<center><b>Event Date :</b></center><input type="date" name = "date" class="form-control" required>
+	<center><b>Event Time :</b></center><input type="time" name = "time" class="form-control" required>
+	<center><b>Priority</b></center>
 	<center><input type="radio" name="priority" value="1" checked="">Low
 	<input type="radio" name="priority" value="2">Medium
 	<input type="radio" name="priority" value="3">High</center><br>
-	<center>Repeat Event?</center>
+	<center><b>Repeat Event?</b></center>
 	<center><input type="radio" name="repeat" value="yes">Yes
 	<input type="radio" name="repeat" value="no" checked ="">No</center><br>
-    <center>Repeat Style</center>
-	<center><input type="radio" name="repeatstyle" value="weekly" checked ="">Weekly
-	<input type="radio" name="repeatstyle" value="monthly">Monthly</center><br>
-	<center>Repeat Until :</center><input type="date" name = "repeatuntil" class="form-control" required>
-	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea>
+    <center><b>Repeat Style</b></center>
+	<center><input type="radio" name="repeatstyle" value="daily">Daily
+	<input type="radio" name="repeatstyle" value="weekly">Weekly
+	<input type="radio" name="repeatstyle" value="monthly">Monthly	
+	<input type="radio" name="repeatstyle" value="none" checked="">None</center><br>
+	
+	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required>
+	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea><br>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
 	</form>
 	</div>';
