@@ -8,8 +8,15 @@
 
 <?php
 $today = date("Y-m-d H:i:s");
-$events = $mysql->getEvents( "NULL", $today ,"day");
+$events = $mysql->getEvents( "NULL", $today ,3,'desc');
+if($events != false)
+{
 $num_events = count($events);
+}
+else
+{
+$events = 0;
+}
 
 if($num_events == '0')
 {
@@ -21,7 +28,7 @@ $eventlist = '';
 ?>
 
 <ul class="nav nav-tabs" style="margin-bottom:15px; padding-top:20px;">
-  <li class="active"><a href="" data-toggle="tab">Upcoming Events <?php echo "(".$num_events.")";?></a></li>
+  <li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Events</a></li>
   <li class=""><a href="index.php?act=pm" data-toggle="tab">Messages</a></li>
   <li class=""><a href="index.php?act=groups" data-toggle="tab">Groups</a></li>
 </ul>
@@ -42,31 +49,45 @@ $eventlist = '';
             </tr>
             </thead>
           <tbody>
-        <?php
+<?php
 
-       for($i = 0; $i < $num_events; $i++)
+
+for($i = 0; $i < $num_events; $i++)
 {
 $owner = $mysql->getUsername($events[$i]["ownerid"])['username'];
-$date = $events[$i]["event_date"];
+$date = explode(" ",$events[$i]["event_date"],2 );
+$time = $date[1];
+$date = $date[0];
+
+if($events[$i]["priority"] == '0')
+{
+echo '<tr>';
+}
+elseif($events[$i]["priority"] == '1')
+{
+echo '<tr class="success">';
+}
+elseif($events[$i]["priority"] == '2')
+{
+echo '<tr class="warning">';
+}
+elseif($events[$i]["priority"] == '3')
+{
+echo '<tr class="danger">';
+}
 ?>
-Test
-
-    <tr>
+    
       <td><?php echo $i; ?></td>
-      <td><?php echo $i+1; ?></td>
       <td><?php echo $events[$i]["title"]; ?></td>
-      <td><?php echo $events[$i]["event_date"]; ?></td>
-      <td>8:00AM</td>
-      <td>Somewhere</td>
-      <td>Matt</td>
-      <td><?php echo explode(" ",$date)[0]?></td>
-      <td><?php echo explode(" ",$date)[1]?></td>
+      <td><?php echo $date;?></td>
+		<td><?php echo $time;?></td>
       <td><?php echo $events[$i]["location"]; ?></td>
-      <td><?php echo $owner ?></td></tr>
+      <td><?php echo $owner;?></td>
+    </tr>
 
-        <?php 
-        } 
-        ?>
+<?php 
+} 
+?>
 
         </tbody>
         </table> 
