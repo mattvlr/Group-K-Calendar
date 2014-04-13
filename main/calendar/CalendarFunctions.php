@@ -64,7 +64,20 @@
 		
 		$combined_day = ($year."-".$month."-".$list_day." 00:00:00");
 
-		    /* ADDED BY MATT AS A TEST */
+		if($todaynum == $day_counter + 1):						
+			$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
+			$calendar.= '<div class="current-day">'.$list_day.'</div>';
+		else:	
+			$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
+			$calendar.= '<div class="day-number">'.$list_day.'</div>';		
+		endif;
+		for($i = 0; $i < $ec; $i++){
+			if($user_month_events[$i][2] == $combined_day){	
+				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][5].'</div>';
+			}
+		}
+		
+		    /* ADDED BY MATT AS A TEST 
 			if($todaynum == $day_counter + 1):
 				for($i = 0; $i < $ec; $i++){
 					if($user_month_events[$i][2] == $combined_day){							
@@ -90,8 +103,8 @@
 						$calendar.= '<div class="day-number">'.$list_day.'</div>';
 					}
 				}
-			endif;
-
+			endif;*/
+	
 
 			/** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
 			$calendar.= str_repeat('<p> </p>',2);
