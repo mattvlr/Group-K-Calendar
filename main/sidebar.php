@@ -15,6 +15,8 @@ if(isset($_SESSION['id']))
 	$y = '';
 	$d = '';
 
+	$dash = '';
+
 	if(isset($_GET['act']) && $_GET['act'] == 'year')
 	{
 	$y = 'class="active"';
@@ -27,6 +29,20 @@ if(isset($_SESSION['id']))
 	{
 	$m = 'class="active"';
 	}
+
+	if(isset($_GET['act']) && $_GET['act'] == 'pm')
+	{
+	$dash = 'class="active"';
+	}
+	else if(isset($_GET['act']) && $_GET['act'] == 'upcoming')
+	{
+	$dash = 'class="active"';
+	}
+	else if(isset($_GET['act']) && $_GET['act'] == 'groups')
+	{
+	$dash = 'class="active"';
+	}
+
 	//Generate views section
 	$views = "";
 	$sidebar = "";
@@ -35,18 +51,10 @@ if(isset($_SESSION['id']))
 			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 
 	$sidebar .= '
-        <div class="col-sm-4 col-md-2 sidebar">
+ 	<div class="col-sm-4 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-			<li class="list-group-item">
-              <span class="badge"><div id="time"></div></span>
-                Current Time:</li>
-            <li class="list-group-item">
-              <span class="badge">14</span>
-                <a href="index.php?act=pm">Messages</a></li>
-            <li class="list-group-item">
-               <span class="badge">'. $num_events .'</span>
-                <a href="index.php?act=upcoming">Upcoming Events<a></li>
-            <li><a href="?act=groups">Groups</a></li>
+			<li '.$dash.'>
+                <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:225px;">'. $num_events .'</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
@@ -84,18 +92,13 @@ if(isset($_SESSION['id']))
 		}
 		$drawsc = draw_small_month($mc,$yc,1);
 		
-		$sidebar .= '<div id="sidebar-small-month">'. $drawsc.'</div>
+		$sidebar .= '<div style="position:fixed;bottom:5%;"><div id="sidebar-small-month">'. $drawsc.'</div>
 			 <div id="left" style="float:left;width:20px">
 			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 			 <div id="right" style="float:right">
 			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
-		
-				<br>
-		 	 	<br>
-				<!--AJAX Test <a href="/main/calendar/ajaxtest.php">Link</a><br>
-				Modal Test  <a href="/main/calendar/modaltest.php">Link</a><br>
-				-->
-				</div>';
+				</div>
+			</div>';
 
 }
 else    //Sidebar only for logged in users?
