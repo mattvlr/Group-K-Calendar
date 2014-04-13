@@ -392,7 +392,7 @@ class mysql_driver extends db_info
 		}
 		else if($period == "month")
 		{
-		$where = "INTERVAL 1 MONTH) ";
+		$where .= "INTERVAL 1 MONTH) ";
 		}
 		else if($period == "year")
 		{
