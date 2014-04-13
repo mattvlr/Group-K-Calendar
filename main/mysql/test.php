@@ -58,7 +58,7 @@ print_r($events);
 
 echo "<br>__________DONE.";
 */
-
+/*
 $today = date("Y-m-d H:i:s");
 $events = $mysql->getEvents( "NULL", $today ,"day");
 $num_events = count($events);
@@ -76,5 +76,15 @@ for($i = 0; $i < $num_events; $i++)
 $eventlist .= $events[$i]["title"] . '<br>';
 }
 
-echo $eventlist;
+echo $eventlist;*/
+
+$name = $mysql->getUsername('4');
+if($name != false)
+{
+echo $name['username'] . '<br>';
+}
+else
+{
+echo "name not found<br>";
+}
 ?>

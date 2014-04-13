@@ -23,6 +23,7 @@ class mysql_driver extends db_info
 		}
 	}
 	
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//arrayPairToQuery( associative array ) - Format Associative array into Query String
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -354,6 +355,18 @@ class mysql_driver extends db_info
 			}
 		}
 
+		return false;
+	}
+	
+	public function getUsername($uid )
+	{	
+		$what = array('username');
+		$where = 'id = "' . $uid. '"';
+		$uname = $this->select('user',$what,$where);
+		if($uname != false)
+		{
+			return $uname;
+		}
 		return false;
 	}
 	

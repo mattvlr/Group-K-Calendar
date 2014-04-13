@@ -49,14 +49,18 @@ $eventlist = '';
 
 for($i = 0; $i < $num_events; $i++)
 {
+$owner = $mysql->getUsername($events[$i]["ownerid"])['username'];
+$date = $events[$i]["event_date"];
 ?>
+Test
+
     <tr>
-      <td><?php echo $i; ?></td>
+      <td><?php echo $i+1; ?></td>
       <td><?php echo $events[$i]["title"]; ?></td>
-      <td><?php echo $events[$i]["event_date"]; ?></td>
-      <td>8:00AM</td>
-      <td>Somewhere</td>
-      <td>Matt</td>
+      <td><?php echo explode(" ",$date)[0]?></td>
+      <td><?php echo explode(" ",$date)[1]?></td>
+      <td><?php echo $events[$i]["location"]; ?></td>
+      <td><?php echo $owner ?></td>
     </tr>
 
 <?php 
