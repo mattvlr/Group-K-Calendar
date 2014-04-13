@@ -98,14 +98,12 @@ $body = '<div class="eventcreation">
 	<center><input type="radio" name="repeat" value="yes">Yes
 	<input type="radio" name="repeat" value="no" checked ="">No</center><br>
 	
-	
-	<div id="repeat" style="display:none">
 	<center><b>Repeat Style</b></center>
 	<center><input type="radio" name="repeatstyle" value="daily">Daily
 	<input type="radio" name="repeatstyle" value="weekly">Weekly
 	<input type="radio" name="repeatstyle" value="monthly">Monthly	
 	<input type="radio" name="repeatstyle" value="none" checked="">None</center><br>
-	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required></div>
+	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required>
 	
 	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea><br>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
