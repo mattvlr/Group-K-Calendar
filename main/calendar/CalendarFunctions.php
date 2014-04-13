@@ -8,19 +8,21 @@
 		$mysql->connect();
 		$events = '';
 		$start = $year . '-' . $month . '-' . 1 . ' 00:00:00';
-		$events = $mysql->getEvents("NULL", $start, "day");
+		$events = $mysql->getEvents("NULL", $start, "month", "asc");
 		$num_events = count($events);
 		$sid = $_SESSION['id'];
-		
+	
 		echo "<br><br><br><br><center><div style='width:70%'>";
-		
 		$ec = 0; // number of events in the month for a user
-		for($i = 0; $i < count($events); $i++){
+		for($i = 0; $i < $num_events; $i++){
 			if($sid == $events[$i]['ownerid']){
+				$aday = substr($events[$i]['event_date'],8,2);
+				$amonth = substr($events[$i]['event_date'],5,2);
+				$ayear = substr($events[$i]['event_date'],0,4);
 				$user_month_events[$ec] = array(
 					$events[$i]['priority'],
 					$events[$i]['date_created'],
-					$events[$i]['event_date'],
+					$aday, $amonth, $ayear, // a == array
 					$events[$i]['repeat_style'],
 					$events[$i]['repeat_until'],
 					$events[$i]['title'],
@@ -33,7 +35,7 @@
 		}
 			
 		
-		echo "</div></center><br><br><br><br><br><br><br><br><br>";
+		echo "</div></center><br><br>";
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
 
@@ -62,7 +64,7 @@
 	/* keep going with days.... */
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 		
-		$combined_day = ($year."-".$month."-".$list_day." 00:00:00");
+		$combined_day = ($year."-".$month."-".$list_day);
 
 		if($todaynum == $day_counter + 1):						
 			$calendar.= '<td class="today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$todaynum.'&y='.$year.'"></a>';
@@ -72,8 +74,9 @@
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';		
 		endif;
 		for($i = 0; $i < $ec; $i++){
-			if($user_month_events[$i][2] == $combined_day){	
-				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][5].'</div>';
+			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
+			if($event_date_test == $combined_day){	
+				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][7].'</div>';
 			}
 		}
 		
