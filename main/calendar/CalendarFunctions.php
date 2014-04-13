@@ -18,13 +18,13 @@
 		for($i = 0; $i < count($events); $i++){
 			if($sid == $events[$i]['ownerid']){
 				$user_month_events[$ec] = array(
-					$priority = $events[$i]['priority'],
-					$date_created = $events[$i]['date_created'],
-					$event_date = $events[$i]['event_date'],
-					$repeat_style = $events[$i]['repeat_style'],
-					$repeat_until = $events[$i]['repeat_until'],
-					$title = $events[$i]['title'],
-					$description = $events[$i]['description']
+					$events[$i]['priority'],
+					$events[$i]['date_created'],
+					$events[$i]['event_date'],
+					$events[$i]['repeat_style'],
+					$events[$i]['repeat_until'],
+					$events[$i]['title'],
+					$events[$i]['description']
 				);
 			print_r($user_month_events[$ec]);
 			echo "<br><br>";
