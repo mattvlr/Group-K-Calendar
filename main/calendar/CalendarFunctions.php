@@ -177,7 +177,7 @@
 	}
 	function draw_year($year){ //uses draw_small_month to show whole year -Matt
 		$table = '<br><br>';
-		$table.= '<table border="1px"><tr><th colspan="4" class="monthtitle">'.$year.'</td></tr>';
+		$table.= '<center><table border="1px"><tr><th colspan="4" class="monthtitle">'.$year.'</td></tr>';
 		
 		$table.='<tr><td class="year-table">'.draw_small_month(1,$year,0).'</td><td class="year-table">'.draw_small_month(2,$year,0).'</td><td class="year-table">'.draw_small_month(3,$year,0).'</td><td class="year-table">'.draw_small_month(4,$year,0).'</td></tr>';
 		
@@ -186,7 +186,7 @@
 		$table.='<tr><td class="year-table">'.draw_small_month(9,$year,0).'</td><td class="year-table">'.draw_small_month(10,$year,0).'</td><td class="year-table">'.draw_small_month(11,$year,0).'</td><td class="year-table">'.draw_small_month(12,$year,0).'</td></tr>';
 		
 		
-		$table.='</table>';
+		$table.='</table></center>';
 		return $table;
 	}
 	

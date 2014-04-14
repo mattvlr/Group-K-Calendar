@@ -56,13 +56,13 @@ div.about-head{
   top: 125px;
   left: 500px;
 }
-div.calendar{ /* The div that holds the month calendar */
-	height:800px;
+div.calendar{ /* The div that holds the year calendar */
+	height:100%;
 	width:100%;
 	position:relative;
 	display: inline;
 	padding-left: 265px;
-	overflow-x: scroll;
+	overflow-x: auto;
 	z-index:999;
 	margin-right:260px;
 }
@@ -104,8 +104,9 @@ div.day-number:hover {
 div.event_box_0{
 	position: relative;
 	display: block;
-	top: -75px;
+	text-align:center; 
 	width: 100%;
+	top: -45%;
 }
 div.event_box_0:hover{
 	background: #336EC6;
@@ -115,8 +116,9 @@ div.event_box_1{
 	background: #18bc9c;
 	color: white;
 	position: relative;
+	text-align:center; 
 	display: block;
-	top: -75px;
+	top: -45%;
 }
 div.event_box_1:hover{
 	background:#15a589;
@@ -125,8 +127,9 @@ div.event_box_2{
 	background: #f39c12;
 	color: white;
 	position: relative;
+	text-align:center; 
 	display: block;
-	top: -75px;
+	top: -45%;
 }
 div.event_box_2:hover{
 	background:#e08e0b;
@@ -135,8 +138,9 @@ div.event_box_3{
 	background: #e43725;
 	color: white;
 	position: relative;
+	text-align:center; 
 	display: block;
-	top: -75px;
+	top: -45%;
 }
 div.event_box_3:hover{
 	background:#e43725;
