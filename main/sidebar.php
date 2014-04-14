@@ -1,16 +1,23 @@
 
 <?php 
-require_once('/calendar/CalendarFunctions.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/main/calendar/CalendarFunctions.php');
 
 if(isset($_SESSION['id']))
 {
 	//highlight the currently selected view
 	
 	$today = date("Y-m-d H:i:s");
-	$events = $mysql->getEvents( "NULL", $today ,"day");
+	$events = $mysql->getEvents( "NULL", $today, 3 ,'asc');
+
+	if($events != false)
+	{
 	$num_events = count($events);
-	
-	
+	}
+	else
+	{
+	$num_events = 0;
+	}
+
 	$m = '';
 	$y = '';
 	$d = '';
@@ -54,7 +61,7 @@ if(isset($_SESSION['id']))
  	<div class="col-sm-4 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
 			<li '.$dash.'>
-                <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:210px;">'. $num_events .'</span></a></li>
+                <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:215px;">'. $num_events .'</span></a></li>
           </ul>
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
@@ -92,7 +99,7 @@ if(isset($_SESSION['id']))
 		}
 		$drawsc = draw_small_month($mc,$yc,1);
 		
-		$sidebar .= '<div style="position:fixed;bottom:5%;"><div id="sidebar-small-month">'. $drawsc.'</div>
+		$sidebar .= '<div style="position:fixed;top:280px;"><div id="sidebar-small-month">'. $drawsc.'</div>
 			 <div id="left" style="float:left;width:20px">
 			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
 			 <div id="right" style="float:right">
