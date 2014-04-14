@@ -6,6 +6,38 @@
 	height:180px; 
 	}
 /* a */
+a.event_no_link:active{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:hover{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:link{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:visited{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
 a.no-link:active{ /* Link with no link attributes */
 text-decoration:none;
 color:black;

@@ -92,6 +92,10 @@ if(isset($_GET['act']))
 	{
 		$body = require("upcoming.php");
 	}
+	if($_GET['act']== 'event')
+	{
+		$body = require("calendar/event.php");
+	}
 
 }
 else

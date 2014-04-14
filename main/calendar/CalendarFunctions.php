@@ -12,14 +12,14 @@
 		$num_events = count($events);
 		$sid = $_SESSION['id'];
 	
-		echo "<br><br><center><div style='width:70%'>";
+		echo "<center><div style='width:70%'>";
 		$ec = 0; // number of events in the month for a user
 		for($i = 0; $i < $num_events; $i++){
 			if($sid == $events[$i]['ownerid']){
 				$aday = substr($events[$i]['event_date'],8,2);
 				$amonth = substr($events[$i]['event_date'],5,2);
 				$ayear = substr($events[$i]['event_date'],0,4);
-				$atime = substr($events[$i]['event_date'],11,8);
+				$atime = substr($events[$i]['event_date'],11,5);
 				$user_month_events[$ec] = array(
 					$events[$i]['priority'],
 					$events[$i]['date_created'],
@@ -75,10 +75,12 @@
 			$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';		
 		endif;
-		for($i = 0; $i < $ec; $i++){
+		for($i = 0; $i < $ec; $i++){ //goes through the event list and adds event divs for that day
 			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
 			if($event_date_test == $combined_day){	
-				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</div>';
+				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"><a class="event_no_link" href="/main/index.php?act=event&el[]='.
+					$user_month_events[$i][0].'&el[]='.$user_month_events[$i][1].'&el[]='.$user_month_events[$i][2].'&el[]='.$user_month_events[$i][3].'
+					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
 			}
 		}
 		
