@@ -28,7 +28,8 @@
 					$events[$i]['repeat_until'],
 					$events[$i]['title'],
 					$events[$i]['description'],
-					$atime
+					$atime,
+					$events[$i]['location']
 				);
 			//print_r($user_month_events[$ec]);
 			//echo "<br><br>";
@@ -80,7 +81,7 @@
 			if($event_date_test == $combined_day){	
 				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"><a class="event_no_link" href="/main/index.php?act=event&el[]='.
 					$user_month_events[$i][0].'&el[]='.$user_month_events[$i][1].'&el[]='.$user_month_events[$i][2].'&el[]='.$user_month_events[$i][3].'
-					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
+					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'&el[]='.$user_month_events[$i][10].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
 			}
 		}
 		
@@ -212,8 +213,7 @@
 
 		echo "<br><br><br><br><center><div style='width:70%'>";
 		print_r($events);
-		echo "</div></center><br><br><br><br><br><br><br><br><br>";
-
+		echo "</div></center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 		
 		if(($hour >= 1) && ($hour <= 11)):
 			$table.='<tr><th class="hourtitle">'.($hour).' am</th><td class="day-event-content"></td></tr>';

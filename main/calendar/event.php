@@ -1,6 +1,6 @@
-
 <?php
-		//print_r($_GET); // comment out
+
+		echo '<br><br>';
 		$priority = $_GET['el'][0];
 		$date_created = $_GET['el'][1];
 		$day = $_GET['el'][2];
@@ -9,12 +9,31 @@
 		$title = $_GET['el'][5];
 		$description = $_GET['el'][6];
 		$time = $_GET['el'][7];
+		$location = $_GET['el'][8];
+
+$form = '	
+<form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=login" method = "post"><br>
+			<b>Event Title:</b><input type="text" name = "title" class="form-control" value="' . $title . '"><br>
+			<b>Date:</b><input type="text" name = "date" class="form-control" value="' . $month . ' ' . $day . ', ' . $year . '"><br>
+			<b>Time:</b><input type="text" name = "time" class="form-control" value="' . $time . '"><br>
+			<b>Location:</b><input type="text" name = "location" class="form-control" value="' . $location . '"><br>
+			<b>Description:</b><textarea class="form-control" rows="3" id="textArea">'.$description.'</textarea><br>
+				
+			<input type="hidden" name="login" value = "true"><br><br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button><br>
+</form>';
 		
-		echo '<title>'.$title.'</title><br><br><br>
-			  <center><div style="text-align: center; width:50%;"> This is my poorly designed event page
-              if someone wants to clean it up, please do. Also I left out location on accident. -Matt <br>';
-		echo '<br><br><h1>'.$title.'</h1>';
-		echo 'Event Date: '. $month .' '. $day .' '. $year .' at '. $time;
-		echo '<p>Description: '. $description .' </p>';
 ?>
-</div></center>
+
+<html>
+<head>
+<link href="/bootstrap/css/dashboard.css" rel="stylesheet">
+<link href="/bootstrap/css/signin.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="template.css">
+</head>
+
+<body><center><h1>Event Details</h1></center>
+<?php
+echo $form;
+?>
+</div></body></html>

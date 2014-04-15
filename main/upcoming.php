@@ -28,14 +28,39 @@ $eventlist = '';
 ?>
 
 <ul class="nav nav-tabs" style="margin-bottom:15px; padding-top:20px;">
-  <li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Events</a></li>
+
+<?php
+if($num_events == '1')
+{
+	?><li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Event</a></li><?php
+}
+else
+{
+	?><li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Events</a></li><?php
+}
+?>
+
   <li class=""><a href="index.php?act=pm" data-toggle="tab">Messages</a></li>
   <li class=""><a href="index.php?act=groups" data-toggle="tab"><?php echo $_SESSION["first_name"];?>'s Groups</a></li>
 </ul>
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade active in" id="home" style="padding-left:20px;">
-        There are <?php echo $num_events; ?> upcoming events in the next 3 days.
-        <br>
+        <?php
+		if($num_events == '1')
+		{
+		?>
+		There is <?php echo $num_events; ?> upcoming event in the next 3 days.
+        <br><br>
+		<?php
+		}
+		else
+		{
+		?>
+		There are <?php echo $num_events; ?> upcoming events in the next 3 days.
+        <br><br>
+		<?php
+		}
+		?>
 
         <table class="table table-striped table-hover" style="position:fixed; left:260px;">
           <thead>
@@ -77,7 +102,7 @@ echo '<tr class="danger">';
 }
 ?>
     
-      <td style="width:2%;"><?php echo $i+1; ?></td>
+      <td style="width:2%;" border="1"><?php echo $i+1 .'.'; ?></td>
       <td style="width:125px;"><?php echo $events[$i]["title"]; ?></td>
       <td style="width:75px;"><?php echo $date;?></td>
 		  <td style="width:75px;"><?php echo $time;?></td>
