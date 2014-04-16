@@ -62,6 +62,11 @@ $eventinfo = array(		'gid' => $gid,
 if($mysql->insert('events',$eventinfo))
 {
 	$status = 'Event Successfully added!!';
+	require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+				$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
+				$activation_email = 'You have added an event to your calendar.<br/><br/>';					
+				Send_Mail($email,"Event Added",$activation_email);
+
 }
 else
 {
