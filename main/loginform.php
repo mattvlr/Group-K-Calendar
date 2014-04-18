@@ -43,7 +43,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 		$status = "<font color='green'>Login success!</font>";
 		$_SESSION = $mysql->getSessionInfo($id);
 		$_SESSION['id']= $id;
-		header("Location: index.php?act=onlogin");
+		header("Location: index.php?act=home");
 	}
 	else  // not logged in
 	{
