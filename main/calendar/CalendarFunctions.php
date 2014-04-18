@@ -76,6 +76,12 @@
 			$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';		
 		endif;
+		$hlist = getHolidayList(2014);
+		for($i = 0; $i < count($hlist); $i++){
+			if(($hlist[$i][2] == $month) && ($hlist[$i][1] == $list_day)){
+				$calendar.= '<div class="event_box_0">'.$hlist[$i][0].'</div>';
+			}
+		}
 		for($i = 0; $i < $ec; $i++){ //goes through the event list and adds event divs for that day
 			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
 			if($event_date_test == $combined_day){	
@@ -109,7 +115,7 @@
 
 	/* end the table */
 	$calendar.= '</table>';
-	
+
 	/* all done, return result */
 	return $calendar;
 	}
@@ -394,5 +400,58 @@
 	//format data in assoc array and return it.
 	$arr = array("pday" => $pday,"pmonth" => $pmonth,"pyear" => $pyear,"nday" => $nday,"nmonth" => $nmonth, "nyear" => $nyear);
 	return $arr;
+}
+function getHolidayDate($year,$holiday){//a lot of holidays fall for example on the 3rd Monday in February, this computes the correct
+		             // day for a holiday. Returns a day for that holiday
+		if($holiday == "MLK"):
+		$string = 'January'.' '.$year.' '.'third monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+		
+		if($holiday == "PRES"):
+		$string = 'February'.' '.$year.' '.'third monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+		
+		if($holiday == "MEM"):
+		$string = 'May'.' '.$year.' '.'fourth monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+		
+		if($holiday == "LAB"):
+		$string = 'September'.' '.$year.' '.'first monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+		
+		if($holiday == "COL"):
+		$string = 'October'.' '.$year.' '.'second monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+		
+		if($holiday == "THANK"):
+		$string = 'November'.' '.$year.' '.'last monday';
+		$day = date('d', strtotime($string));
+		return $day;
+		endif;
+}
+function getHolidayList($year){
+	$list[0] = array("New Year's Day",1,01);
+	$list[1] = array("MLK Day",getHolidayDate($year,"MLK"),01);
+	$list[2] = array("President's Day",getHolidayDate($year,"PRES"),02);
+	$list[10] = array("TEST HOLIDAY",22,04);
+	$list[3] = array("Memorial Day",getHolidayDate($year,"MEM"),05);
+	$list[4] = array("Independence Day",4,07);
+	$list[5] = array("Labor Day",getHolidayDate($year,"LAB"),09);
+	$list[6] = array("Columbus Day",getHolidayDate($year,"COL"),10);
+	$list[0] = array("Halloween",31,10);
+	$list[7] = array("Veterans Day",11,11);
+	$list[8] = array("Thanksgiving Day",getHolidayDate($year,"THANK"),11);
+	$list[9] = array("Christmas Day",25,12);
+	return $list;
 }
 ?>
