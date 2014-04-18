@@ -2,35 +2,36 @@
 //Check for sessions
 if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
 {
-//$introduction = ", " . $first_name . " " . $last_name;
-$nav_pages ='<li><a href="?act=home">'. $_SESSION['username'] .'</a>
-            <li><a href="?act=settings">Settings</a></li>
-            <li><a href="?act=help">Help</a></li>
-            <li><a href="?act=logout">Logout</a></li>';
+$nav_pages = '
+<div class="navbar navbar-fixed-top">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $_SESSION['username'] . '<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="?act=settings">Settings</a></li>
+          <li><a href="?act=help">Help</a></li>
+          <li class="divider"></li>
+          <li><a href="?act=logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+</div>';
 }
 else
 {
   $nav_pages = '';
 }
 
-$navbar = '<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+$navbar = '
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <img src="http://i.imgur.com/pamXbHx.png" style="position:absolute; padding-top:5px; left:-18px;"/>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
           ' . $nav_pages . '
           </ul>
-          <form class="navbar-form navbar-right">
-          '/*<input type="text" class="form-control" placeholder="Search...">*/.'
-          </form>
         </div>
       </div>
     </div>';
