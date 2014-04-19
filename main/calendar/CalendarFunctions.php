@@ -54,7 +54,7 @@
 	$dates_array = array();
 	$todaymon = date("m");
 	$todaynum = date("j"); 
-
+	$hlist = getHolidayList($year);
 	/* row for week one */
 	$calendar.= '<tr class="calendar-row">';
 
@@ -63,7 +63,6 @@
 		$calendar.= '<td class="calendar-day-np"> </td>';
 		$days_in_this_week++;
 	endfor;
-	echo $month;
 	/* keep going with days.... */
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 		
@@ -76,18 +75,21 @@
 			$calendar.= '<td class="calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'"></a>';
 			$calendar.= '<div class="day-number">'.$list_day.'</div>';		
 		endif;
-		$hlist = getHolidayList(2014);
+		
 		for($i = 0; $i < count($hlist); $i++){
 			if(($hlist[$i][2] == $month) && ($hlist[$i][1] == $list_day)){
-				$calendar.= '<div class="event_box_0">'.$hlist[$i][0].'</div>';
+				$calendar.= '<div class="event_box_h">'.$hlist[$i][0].'</div>';
 			}
 		}
+		$event_day_counter = 0;
 		for($i = 0; $i < $ec; $i++){ //goes through the event list and adds event divs for that day
 			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
-			if($event_date_test == $combined_day){	
+			if(($event_date_test == $combined_day) && ($event_day_counter <= 5)){	
 				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"><a class="event_no_link" href="/main/index.php?act=event&el[]='.
 					$user_month_events[$i][0].'&el[]='.$user_month_events[$i][1].'&el[]='.$user_month_events[$i][2].'&el[]='.$user_month_events[$i][3].'
-					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'&el[]='.$user_month_events[$i][10].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
+					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'&el[]='.
+					$user_month_events[$i][10].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
+				$event_day_counter++;
 			}
 		}
 		
@@ -440,18 +442,27 @@ function getHolidayDate($year,$holiday){//a lot of holidays fall for example on 
 		endif;
 }
 function getHolidayList($year){
+	//Federal Holiday's (except Halloween)
 	$list[0] = array("New Year's Day",1,01);
 	$list[1] = array("MLK Day",getHolidayDate($year,"MLK"),01);
 	$list[2] = array("President's Day",getHolidayDate($year,"PRES"),02);
-	$list[10] = array("TEST HOLIDAY",22,04);
 	$list[3] = array("Memorial Day",getHolidayDate($year,"MEM"),05);
 	$list[4] = array("Independence Day",4,07);
 	$list[5] = array("Labor Day",getHolidayDate($year,"LAB"),09);
 	$list[6] = array("Columbus Day",getHolidayDate($year,"COL"),10);
-	$list[0] = array("Halloween",31,10);
 	$list[7] = array("Veterans Day",11,11);
 	$list[8] = array("Thanksgiving Day",getHolidayDate($year,"THANK"),11);
 	$list[9] = array("Christmas Day",25,12);
+	//Fun Other Holiday's
+	$list[10] = array("New Year's Day",1,01);
+	$list[11] = array("Groundhog Day",2,02);
+	$list[12] = array("Valentine's Day",14,02);
+	$list[13] = array("St. Patrick's Day",17,03);
+	$list[14] = array("Cinco de Mayo",5,05);
+	$list[15] = array("Mother's Day",11,05);
+	$list[16] = array("Father's Day",15,06);
+	$list[17] = array("Halloween",31,02);
+    $list[18] = array("Test Holiday Day",25,04);
 	return $list;
 }
 ?>

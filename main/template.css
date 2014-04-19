@@ -177,6 +177,19 @@ div.event_box_3{
 div.event_box_3:hover{
 	background:#e43725;
 }
+div.event_box_h{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 100%;
+	top: -45%;
+	background: #336EC6;
+	color: white;
+}
+div.event_box_h:hover{
+	background: #eceff5;
+	color: black;
+}
 div.faq-box {
   position: fixed;
   top: 52%;
