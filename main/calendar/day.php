@@ -75,7 +75,7 @@ else
 }
 
 echo '
-			 <div style="position:absolute; left:260px; width:1650px;"><div style="position:fixed; left:515px; top: 50px;">
+			 <div style="position:absolute; left:260px; width:1650px;"><div style="position:fixed; left:515px; top: 50px z-index:4;">
 			  <ul class="pager">
 			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
 			  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Event</button>

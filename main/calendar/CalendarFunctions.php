@@ -60,9 +60,6 @@ function getDayEventList($day,$month,$year){
 					$atime,
 					$events[$i]['location']
 				);
-			print_r($user_day_events[$ec]);
-			echo "<br><br>";
-
 			$ec++;
 			}
 		}
@@ -245,31 +242,105 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
 		
 		$events = getDayEventList($day,$monthnum,$year);
-		$time = $events[0][9];
-		$time2 = explode(":", $time);
-		echo $time2[0];
-		echo '<br>';
-		echo $time2[1];
 		
-		for($i = 12; $i < 36; $i++):
-				if(($i > 24) && ($i != 24)):
-					$table.='<tr><th class="hourtitle">'.($i-24).' pm</th><td class="day-event-content"></td></tr>';
-					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-				elseif(($i > 12) && ($i != 12) && ($i != 24)):
-					$table.='<tr><th class="hourtitle">'.($i-12).' am</th><td class="day-event-content"></td></tr>';
-					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-				elseif($i == 24):
-					$table.='<tr><th class="hourtitle">'.(12).' pm</th><td class="day-event-content"></td></tr>';
-					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-				elseif($i == 12):
+		if($events != null){
+			for($i = 0; $i < 24; $i++):
+						if($i == 0):
+								$table.='<tr><th class="hourtitle">'.(12).' am</th><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt < 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+								$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt >= 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+						elseif($i == 12):
+								$table.='<tr><th class="hourtitle">'.(12).' pm</th><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt < 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+								$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt >= 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+						elseif(($i > 12)):
+								$table.='<tr><th class="hourtitle">'.($i-12).' pm</th><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt < 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+								$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt >= 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+						elseif($i <= 12):
+								$table.='<tr><th class="hourtitle">'.($i).' am</th><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt < 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+								$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content">';
+								for($j = 0; $j < count($events); $j++):
+									$eHt = substr($events[$j][9],0,2); //event hour time
+									$eMt = substr($events[$j][9],3,2);
+									if(($i == $eHt) && ($eMt >= 30)){
+										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+									}
+								endfor;
+								$table.='</td></tr>';
+						endif;
+				endfor;
+		}
+		else{
+		for($i = 0; $i < 24; $i++):
+				if($i == 0):
 					$table.='<tr><th class="hourtitle">'.(12).' am</th><td class="day-event-content"></td></tr>';
 					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
-				elseif(($i != 12) && ($i != 24)):
-					$table.='<tr><th class="hourtitle">'.$i.' pm</th><td class="day-event-content"></td></tr>';
+				elseif($i == 12):
+					$table.='<tr><th class="hourtitle">'.(12).' pm</th><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
+				elseif(($i > 12)):
+					$table.='<tr><th class="hourtitle">'.($i-12).' pm</th><td class="day-event-content"></td></tr>';
+					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
+				elseif($i <= 12):
+					$table.='<tr><th class="hourtitle">'.($i).' am</th><td class="day-event-content"></td></tr>';
 					$table.='<tr><td class="day-small-time">:30</td><td class="day-event-content"></td></tr>';
 				endif;
 		endfor;
-		
+		}
 		$table.= '</table>';
 		return $table;
 	}
