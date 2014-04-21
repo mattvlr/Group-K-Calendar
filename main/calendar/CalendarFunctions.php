@@ -10,7 +10,6 @@
 		$num_events = count($events);
 		$sid = $_SESSION['id'];
 	
-		echo "<center><div style='width:70%'>";
 		$ec = 0; // number of events in the month for a user
 		for($i = 0; $i < $num_events; $i++){
 			if($sid == $events[$i]['ownerid']){
@@ -43,7 +42,6 @@ function getDayEventList($day,$month,$year){
 		$num_events = count($events);
 		$sid = $_SESSION['id'];
 		$user_day_events = '';
-		echo "<center><div style='width:70%'>";
 		$ec = 0; // number of events in the day for a user
 		for($i = 0; $i < $num_events; $i++){
 			if($sid == $events[$i]['ownerid']){
@@ -237,26 +235,15 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 	}
 	
 	function draw_day($day,$month,$year){
-		//$mysql = new mysql_driver;
-		//$mysql->connect();
-		
+
 		$monthnum = $month;
 		$month = month_convert($month);
 		$hour = date('g');
 		$minutes = date('i');
-		$table = "";
+		$table = "<br><br>";
 		$table.= '<table class="day">';
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
 		
-		//$events = '';
-		//$start = $year . '-' . $monthnum . '-' . $day . ' 00:00:00';
-		//$events = $mysql->getEvents("NULL", $start, "day");
-		//$num_events = count($events);
-		//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
-
-		//echo "<br><br><br><br><center><div style='width:70%'>";
-		//print_r($events);
-		echo "</div></center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 		$events = getDayEventList($day,$monthnum,$year);
 		if(($hour >= 1) && ($hour <= 11)):
 			$table.='<tr><th class="hourtitle">'.($hour).' am</th><td class="day-event-content"></td></tr>';

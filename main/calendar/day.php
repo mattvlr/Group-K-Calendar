@@ -75,13 +75,13 @@ else
 }
 
 echo '
-			  <div style="position:absolute; left:510px; top: 400px;">
+			 <div style="position:absolute; left:260px; width:1650px;"><div style="position:fixed; left:515px; top: 50px;">
 			  <ul class="pager">
 			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
 			  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Event</button>
 			  <li><a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'">Tomorrow</a></li>
 			  </ul></div>
-			  <div style="position:absolute; left:260px; width:1650px;">'.$draw.'</div>';
+			  '.$draw.'</div>';
 
 if (!isset($status)){echo '';}
 else {echo ''.$status.'';}
