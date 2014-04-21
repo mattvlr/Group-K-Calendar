@@ -18,11 +18,6 @@ else
 $events = 0;
 }
 
-if($num_events == '0')
-{
-$num_events = 'no';
-}
-
 $eventlist = '';
 
 ?>
@@ -30,7 +25,11 @@ $eventlist = '';
 <ul class="nav nav-tabs" style="margin-bottom:15px; padding-top:20px;">
 
 <?php
-if($num_events == '1')
+if($num_events == '0')
+{
+	?><li class="active"><a href="" data-toggle="tab">0 Upcoming Events</a></li><?php
+}
+elseif($num_events == '1')
 {
 	?><li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Event</a></li><?php
 }
@@ -105,7 +104,7 @@ echo '<tr class="danger">';
       <td style="width:2%;" border="1"><?php echo $i+1 .'.'; ?></td>
       <td style="width:125px;"><?php echo $events[$i]["title"]; ?></td>
       <td style="width:75px;"><?php echo $date;?></td>
-		  <td style="width:75px;"><?php echo $time;?></td>
+	  <td style="width:75px;"><?php echo $time;?></td>
       <td style="width:100px;"><?php echo $events[$i]["location"]; ?></td>
       <td style="width:200px;"><?php echo $owner;?></td>
     </tr>

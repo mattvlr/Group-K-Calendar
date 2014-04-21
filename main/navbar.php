@@ -5,8 +5,8 @@ if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
 $nav_pages = '
 <div class="navbar navbar-fixed-top">
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $_SESSION['username'] . '<b class="caret"></b></a>
+	  <li><a href="?act=home">' . $_SESSION['username'] . '</a></li>
+      <li><a href="#" class="dropdown dropdown-toggle" data-toggle="dropdown"><b class="caret" align="left"></b></a>
         <ul class="dropdown-menu">
           <li><a href="?act=settings">Settings</a></li>
           <li><a href="?act=help">Help</a></li>

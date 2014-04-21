@@ -15,7 +15,7 @@
 $form = '	
 <form class="form-signin" role="form" action="' . $_SERVER['PHP_SELF'] . '?act=login" method = "post"><br>
 			<b>Event Title:</b><input type="text" name = "title" class="form-control" value="' . $title . '"><br>
-			<b>Date:</b><input type="text" name = "date" class="form-control" value="' . $month . '/' . $day . '/' . $year . '"><br>
+			<b>Date:</b><input type="date" name = "date" class="form-control" value="' . $month . '/' . $day . '/' . $year . '"><br>
 			<b>Time:</b><input type="time" name = "time" class="form-control" value="' . $time . '"><br>
 			<b>Location:</b><input type="text" name = "location" class="form-control" value="' . $location . '"><br>
 			<b>Description:</b><textarea class="form-control" rows="3" id="textArea">'.$description.'</textarea><br>
