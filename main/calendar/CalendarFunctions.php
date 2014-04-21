@@ -483,7 +483,7 @@ function getHolidayList($year){
 	$list[14] = array("Cinco de Mayo",5,05);
 	$list[15] = array("Mother's Day",11,05);
 	$list[16] = array("Father's Day",15,06);
-	$list[17] = array("Halloween",31,02);
+	$list[17] = array("Halloween",31,10);
     $list[18] = array("Test Holiday Day",25,04);
 	return $list;
 }
