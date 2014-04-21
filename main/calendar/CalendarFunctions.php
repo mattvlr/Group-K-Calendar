@@ -1,9 +1,7 @@
 <?php 
 	require_once($_SERVER['DOCUMENT_ROOT'] .'/main/mysql/_mysql.php');
 
-	
-	function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
-		
+	function getMonthEventList($month,$year){
 		$mysql = new mysql_driver;
 		$mysql->connect();
 		$events = '';
@@ -31,13 +29,49 @@
 					$atime,
 					$events[$i]['location']
 				);
-			//print_r($user_month_events[$ec]);
-			//echo "<br><br>";
 			$ec++;
 			}
 		}
-			
-		
+	return $user_month_events;
+}
+function getDayEventList($day,$month,$year){
+		$mysql = new mysql_driver;
+		$mysql->connect();
+		$events = '';
+		$start = $year . '-' . $month . '-' . $day . ' 00:00:00';
+		$events = $mysql->getEvents("NULL", $start, "day", "asc");
+		$num_events = count($events);
+		$sid = $_SESSION['id'];
+		$user_day_events = '';
+		echo "<center><div style='width:70%'>";
+		$ec = 0; // number of events in the day for a user
+		for($i = 0; $i < $num_events; $i++){
+			if($sid == $events[$i]['ownerid']){
+				$aday = substr($events[$i]['event_date'],8,2);
+				$amonth = substr($events[$i]['event_date'],5,2);
+				$ayear = substr($events[$i]['event_date'],0,4);
+				$atime = substr($events[$i]['event_date'],11,5);
+				$user_day_events[$ec] = array(
+					$events[$i]['priority'],
+					$events[$i]['date_created'],
+					$aday, $amonth, $ayear, // a == array
+					$events[$i]['repeat_style'],
+					$events[$i]['repeat_until'],
+					$events[$i]['title'],
+					$events[$i]['description'],
+					$atime,
+					$events[$i]['location']
+				);
+			print_r($user_day_events[$ec]);
+			echo "<br><br>";
+
+			$ec++;
+			}
+		}
+	return $user_day_events;
+}
+function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
+		$user_month_events = getMonthEventList($month,$year);	
 		echo "</div></center>";
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
@@ -82,6 +116,7 @@
 			}
 		}
 		$event_day_counter = 0;
+		$ec = count($user_month_events);
 		for($i = 0; $i < $ec; $i++){ //goes through the event list and adds event divs for that day
 			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
 			if(($event_date_test == $combined_day) && ($event_day_counter <= 5)){	
@@ -202,8 +237,8 @@
 	}
 	
 	function draw_day($day,$month,$year){
-		$mysql = new mysql_driver;
-		$mysql->connect();
+		//$mysql = new mysql_driver;
+		//$mysql->connect();
 		
 		$monthnum = $month;
 		$month = month_convert($month);
@@ -213,16 +248,16 @@
 		$table.= '<table class="day">';
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
 		
-		$events = '';
-		$start = $year . '-' . $monthnum . '-' . $day . ' 00:00:00';
-		$events = $mysql->getEvents("NULL", $start, "day");
-		$num_events = count($events);
+		//$events = '';
+		//$start = $year . '-' . $monthnum . '-' . $day . ' 00:00:00';
+		//$events = $mysql->getEvents("NULL", $start, "day");
+		//$num_events = count($events);
 		//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-------------------------------------------------------------------------------------------------------------------------start : " . $start . "  num_events = ". $num_events;
 
-		echo "<br><br><br><br><center><div style='width:70%'>";
-		print_r($events);
+		//echo "<br><br><br><br><center><div style='width:70%'>";
+		//print_r($events);
 		echo "</div></center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-		
+		$events = getDayEventList($day,$monthnum,$year);
 		if(($hour >= 1) && ($hour <= 11)):
 			$table.='<tr><th class="hourtitle">'.($hour).' am</th><td class="day-event-content"></td></tr>';
 			
@@ -442,13 +477,13 @@ function getHolidayDate($year,$holiday){//a lot of holidays fall for example on 
 		endif;
 }
 function getHolidayList($year){
-	//Federal Holiday's (except Halloween)
+	//Federal Holiday's
 	$list[0] = array("New Year's Day",1,01);
 	$list[1] = array("MLK Day",getHolidayDate($year,"MLK"),01);
 	$list[2] = array("President's Day",getHolidayDate($year,"PRES"),02);
 	$list[3] = array("Memorial Day",getHolidayDate($year,"MEM"),05);
 	$list[4] = array("Independence Day",4,07);
-	$list[5] = array("Labor Day",getHolidayDate($year,"LAB"),09);
+	$list[5] = array("Labor Day",getHolidayDate($year,"LAB"),09); //broken, not sure why
 	$list[6] = array("Columbus Day",getHolidayDate($year,"COL"),10);
 	$list[7] = array("Veterans Day",11,11);
 	$list[8] = array("Thanksgiving Day",getHolidayDate($year,"THANK"),11);
@@ -465,4 +500,5 @@ function getHolidayList($year){
     $list[18] = array("Test Holiday Day",25,04);
 	return $list;
 }
+
 ?>
