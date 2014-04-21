@@ -1,6 +1,6 @@
 <?php 
 //Check for sessions
-if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
+if(isset($_SESSION["username"]))
 {
 $nav_pages = '
 <div class="navbar navbar-fixed-top">
@@ -36,8 +36,8 @@ $navbar = '
       </div>
     </div>';
 
-if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
-{
+//if(isset($_SESSION["first_name"]) && isset($_SESSION["last_name"]))
+//{
   echo $navbar;
-}
+//}
 ?>
