@@ -44,6 +44,10 @@ if(isset($_GET['act']))
 	{
 		$body = require("help.php");
 	}
+	if($_GET['act']== 'group')
+	{
+		$body = require("group.php");
+	}
 	if($_GET['act']== 'groups')
 	{
 		$body = require("groups.php");

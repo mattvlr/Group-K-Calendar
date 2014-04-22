@@ -27,19 +27,14 @@
 	}
 	
 	$status = '';
+	$status2 = '';
 	
 	$body = '<div class="eventcreation">
 	<form class="form-signin" role="form" action="/main/index.php?act=groups" method = "post">
 	<center><h1>Create your group!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Group Title" required autofocus>
-	
-	<center><b>Priority</b></center>
-	<center><input type="radio" name="priority" value="0" checked="">None
-	<input type="radio" name="priority" value="1">Low
-	<input type="radio" name="priority" value="2">Medium
-	<input type="radio" name="priority" value="3">High</center><br>
 
-	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea><br>
+	<textarea class="form-control" rows="5" name="description" placeholder="Group Description" required></textarea><br>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
 	</form>
 	</div>';
@@ -50,7 +45,6 @@
 
 	$groupinfo = array(	'ownerid' => $id,
 						'date_created' => $date,
-						'priority' => $_POST['priority'],
 						'title' => $_POST['title'],
 						'description' => $_POST['description']
 						);
@@ -63,25 +57,47 @@
 	{
 		$status = 'Error occurred, group not added';
 	}
-	
 	echo ''.$status.'';
+	
+	$group = $mysql->select('groups', array('gid','ownerid','date_created','title','description'), "ownerid = ".$id."");
+	$array = array("".$group['gid']."","".$id."", "".$date."", "3");
+	
+	if ($mysql->insert('group_user',$array))
+	{
+		$status2 = 'success';
+	}
+	else
+	{
+		$status2 = 'fuck';
+	}
+	echo ''.$status2.'';
 }
 
 	if ($num_groups == 0){
 		echo '<center><h1>You do not own any groups</h1></center>';}
 	else{
-		echo '<center><h1>Your Groups:</h1></center>';
+		echo '<div id="one" style="width:1000px"><center><h1>Groups:</h1></center>';
 		
-		echo '<center><div class="list-group">';
+		echo '<div class="list-group" style="width:500px;float:left;">';
+		echo '<center><h4>Groups Owned:</h4></center>';
+		
+		for($i = 0; $i < $num_groups; $i++){
+  			echo '<a href="/main/index.php?act=group&id='.$groups_created[$i]['gid'].'" class="list-group-item">
+    			<p align="middle">'.$groups_created[$i]['title'].'</p>
+    			<p align="middle">Created : '.$groups_created[$i]['date_created'].'</p>
+  				</a>';}
+  			echo '</div>';
+		
+		echo '<div class="list-group2" style="width:500px;float:right;">';
+		echo '<center><h4>Groups Joined:</h4></center>';
 		
 		for($i = 0; $i < $num_groups; $i++){
   			echo '<a data-toggle="modal" data-target="#myModal" class="list-group-item">
     			<p align="middle">Title : '.$groups_created[$i]['title'].'</p>
     			<p align="middle">Date Created : '.$groups_created[$i]['date_created'].'</p>
-    			<p align="middle">Priority : '.$groups_created[$i]['priority'].'</p>
     			<p align="middle">Description : '.$groups_created[$i]['description'].'</p>
   				</a>';}
-  			echo '</div></center>';
+  			echo '</div></div>';
   		}
 	?>  
 	
