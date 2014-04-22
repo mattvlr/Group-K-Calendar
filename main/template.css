@@ -362,6 +362,13 @@ th.hourtitle{
 	border:1px solid black;
 	background: #ccc;
 }
+th.currenthour{
+	padding-left: .2em;
+	font-weight:bold;
+	text-align:left;
+	border:1px solid black;
+	background: #FF0000;
+}
 th.monthtitle{
 	font-weight:bold;
 	text-align:center;
