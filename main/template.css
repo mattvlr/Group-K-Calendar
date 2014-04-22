@@ -133,6 +133,16 @@ div.day-number {
 div.day-number:hover {
 	background: #336EC6;
 }
+div.day_event_box_0{
+	position: relative;
+	display: block;
+	text-align:center; 
+	wid th: 100%;
+}
+div.day_event_box_0:hover{
+	background: #336EC6;
+	color: white;
+}
 div.event_box_0{
 	position: relative;
 	display: block;
@@ -143,6 +153,16 @@ div.event_box_0{
 div.event_box_0:hover{
 	background: #336EC6;
 	color: white;
+}
+div.day_event_box_1{
+	background: #18bc9c;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+}
+div.day_event_box_1:hover{
+	background:#15a589;
 }
 div.event_box_1{
 	background: #18bc9c;
@@ -155,6 +175,16 @@ div.event_box_1{
 div.event_box_1:hover{
 	background:#15a589;
 }
+div.day_event_box_2{
+	background: #f39c12;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+}
+div.day_event_box_2:hover{
+	background:#e08e0b;
+}
 div.event_box_2{
 	background: #f39c12;
 	color: white;
@@ -166,8 +196,18 @@ div.event_box_2{
 div.event_box_2:hover{
 	background:#e08e0b;
 }
-div.event_box_3{
+div.day_event_box_3{ 
+	background:#e74c3c;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+}
+div.day_event_box_3:hover{
 	background: #e43725;
+}
+div.event_box_3{
+	background:#e74c3c;
 	color: white;
 	position: relative;
 	text-align:center; 
@@ -175,7 +215,7 @@ div.event_box_3{
 	top: -45%;
 }
 div.event_box_3:hover{
-	background:#e43725;
+	background: #e43725;
 }
 div.event_box_h{
 	position: relative;
@@ -236,7 +276,7 @@ p {
 table.day{
 	border: 1px solid black;
 	min-width:20%;
-	max-width: 50%;
+	max-width: 70%;
 	display: block;
 	margin-top: 3em;
 	min-padding-right: 260px;

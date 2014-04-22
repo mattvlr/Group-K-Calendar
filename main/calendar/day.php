@@ -3,7 +3,11 @@
 <title>Day</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-
+		<script>
+		//	$(document).ready(function(){
+			//	$(this).scrollTop($.now()*100);
+		//	});
+			</script>
 </head>
 
 <body>
@@ -75,7 +79,9 @@ else
 }
 
 echo '
-			 <div style="position:absolute; left:260px; width:1650px;"><div style="position:fixed; left:515px; top: 50px z-index:4;">
+			 <div class="day_content" style="position:absolute; left:260px; width:1650px;">
+
+			 <div style="position:fixed; left:515px; top: 50px;">
 			  <ul class="pager">
 			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
 			  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Event</button>

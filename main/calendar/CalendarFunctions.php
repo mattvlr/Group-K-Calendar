@@ -251,7 +251,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -260,7 +260,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -270,7 +270,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -279,7 +279,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -289,7 +289,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -298,7 +298,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -308,7 +308,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -317,7 +317,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30)){
-										$table.='<div class="event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
 								$table.='</td></tr>';
