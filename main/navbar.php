@@ -4,8 +4,10 @@ if(isset($_SESSION["username"]))
 {
 $nav_pages = '
     <ul class="nav navbar-nav navbar-right">
-	  <li><a href="?act=home" style=width:85px;>' . $_SESSION['username'] . '</a></li>
-      <li style="padding-top:8px; width:60px;"><a href="" class="dropdown dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+    <li class=""><a href="?act=upcoming">Upcoming Events</a></li>
+    <li class=""><a href="?act=groups">Groups</a></li>
+       <li class="dropdown" style="padding-right:10px;">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $_SESSION['username'] . '<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="?act=settings">Settings</a></li>
           <li><a href="?act=help">Help</a></li>

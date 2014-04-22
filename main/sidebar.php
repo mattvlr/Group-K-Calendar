@@ -1,6 +1,9 @@
 
+<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+
 <?php 
-require_once('/calendar/CalendarFunctions.php');
+
+require_once('/Applications/XAMPP/xamppfiles/htdocs/main/calendar/CalendarFunctions.php');
 
 if(isset($_SESSION['id']))
 {
@@ -59,10 +62,6 @@ if(isset($_SESSION['id']))
 		 
 	$sidebar .= '
  	<div class="col-sm-4 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-			<li '.$dash.'>
-                <a href="index.php?act=upcoming">Dashboard<span class="badge" style="position:fixed;left:215px;">'. $num_events .'</span></a></li>
-          </ul>
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
 		

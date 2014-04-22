@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="template.css">
 <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
 </head>
-<body><div style="padding-left:260px;">
+<body><div style="padding-left:260px; padding-top:20px;">
 
 <?php
 $today = date("Y-m-d H:i:s");
@@ -22,41 +22,23 @@ $eventlist = '';
 
 ?>
 
-<ul class="nav nav-tabs" style="margin-bottom:15px; padding-top:20px;">
-
-<?php
-if($num_events == '0')
-{
-	?><li class="active"><a href="" data-toggle="tab">0 Upcoming Events</a></li><?php
-}
-elseif($num_events == '1')
-{
-	?><li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Event</a></li><?php
-}
-else
-{
-	?><li class="active"><a href="" data-toggle="tab"><?php echo $num_events;?> Upcoming Events</a></li><?php
-}
-?>
-
-  <li class=""><a href="index.php?act=pm" data-toggle="tab">Messages</a></li>
-  <li class=""><a href="index.php?act=groups" data-toggle="tab"><?php echo $_SESSION["first_name"];?>'s Groups</a></li>
-</ul>
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade active in" id="home" style="padding-left:20px;">
-        <?php
+    <?php
 		if($num_events == '1')
 		{
 		?>
 		There is <?php echo $num_events; ?> upcoming event in the next 3 days.
-        <br><br>
+    <br>
+    <br>
 		<?php
 		}
 		else
 		{
 		?>
 		There are <?php echo $num_events; ?> upcoming events in the next 3 days.
-        <br><br>
+    <br>
+    <br>
 		<?php
 		}
 		?>

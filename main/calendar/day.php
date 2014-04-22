@@ -2,7 +2,6 @@
 <head>
 <title>Day</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
 		<script>
 		//	$(document).ready(function(){
 			//	$(this).scrollTop($.now()*100);
