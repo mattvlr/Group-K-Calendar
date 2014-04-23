@@ -56,7 +56,7 @@ z-index: 500;
 }
 a.no-link:link{ /* Link with no link attributes */
 text-decoration:none;
-color:black;
+color:#ccc;
 height: 100%;
 width: 100%;
 display:block;
@@ -64,7 +64,7 @@ z-index: 500;
 }
 a.no-link:visited{ /* Link with no link attributes */
 text-decoration:none;
-color:black;
+color:#ccc;
 height: 100%;
 width: 100%;
 display:block;
@@ -362,9 +362,9 @@ td.today:hover {
 	background: #FFE1C2;
 }
 td.year-calendar-day{ 
-	background:#eceff5; /* light gray */ 
+	background:#696969; /* light gray */ 
 	padding: 0px; 
-	color:black; 
+	color: #ccc; 
 	font-weight:bold; 
 	text-align: center;
 	font-size:11px;
@@ -373,25 +373,25 @@ td.year-calendar-day{
 	height: 30px;
 }
 td.year-calendar-np{
-	background: #f5f5f5;
+	background: #282828;
 	padding: 1px;
 	border: 1px solid black;
 	width: 30px;
 	height: 30px;
 }
 td.year-calendar-day:hover{
-	background:#FFE1C2;
+	background:#A52A2A;
 	color:black;
 }
 td.year-table{
 	vertical-align: top;
-	background: #f5f5f5;
+	background: #282828;
 }
 
 td.year-today{ 
-	background: #696969; 
+	background: #282828; 
 	padding: 0px; 
-	color: #ccc; 
+	color: black; 
 	font-weight:bold; 
 	text-align:center; 
 	font-size:11px;
@@ -400,10 +400,10 @@ td.year-today{
 	height: 30px;
 	}
 td.year-today:hover{
-	background:#FFE1C2;
+	background:#A52A2A;
 }
 td.year-day-view{ 
-	background: #FFE1C2; 
+	background: #A52A2A; 
 	padding: 0px; 
 	color: black; 
 	font-weight:bold; 
