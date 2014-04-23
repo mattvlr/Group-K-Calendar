@@ -404,6 +404,44 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		return $a;
 	}
 	
+function sidebarNav($month,$year)
+	{
+
+	//next and prev days +1 -1
+	$pmonth = $month-1;
+	$nmonth = $month+1;
+	
+	$pyear = $year;
+	$nyear = $year;
+	
+	//is the prev month within the current year
+	if($pmonth < 1)
+	{
+		$pyear = $year - 1;
+		$pmonth = 12;
+	}
+	elseif($pmonth > 12)
+	{
+		$pyear = $year + 1;
+		$pmonth = 1;
+	}
+	//is the next month within the year
+	if($nmonth < 1)
+	{
+		$nyear = $year - 1;
+		$nmonth = 12;
+	}
+	elseif($nmonth > 12)
+	{
+		$nyear = $year + 1;
+		$nmonth = 1;
+	}
+	
+	//format data in assoc array and return it.
+	$arr = array("pmonth" => $pmonth,"pyear" => $pyear,"nmonth" => $nmonth, "nyear" => $nyear);
+	return $arr;
+}
+	
 	////////////////////////////////////////////////////////////////////By peter
 //Function nav($day,$month, $year);  Takes in day month and year, returns
 // the previous day month and year, and next day month and year

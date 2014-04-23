@@ -78,32 +78,21 @@ if(isset($_SESSION['id']))
 	else{
 			$mc = $_GET['m'];
 	}
+	if(!isset($_GET['d'])){
+			$dc = date('d');
+	}
+	else{
+			$dc = $_GET['d'];
+	}
 	$acts = $_GET['act']; 
-	
-	
-		if(isset($_GET['tar'])){
-			if($_GET['tar'] == 'f'){
-			$mc++;
-			if($mc > 12):
-				$mc = 1;		
-				$yc++;
-			endif;
-			}
-			elseif($_GET['tar'] == 'b'){
-			$mc--;
-			if($mc < 1):
-				$mc = 12;
-				$yc--;
-			endif;
-			}
-		}
-		$drawsc = draw_small_month($mc,$yc,1);
 		
+		$drawsc = draw_small_month($mc,$yc,1);
+		$nav = sidebarNav($mc,$yc);
 		$sidebar .= '<div style="position:fixed;top:280px;"><div id="sidebar-small-month">'. $drawsc.'</div>
 			 <div id="left" style="float:left;width:20px">
-			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=b">&#8592;(prev)</a></div>
+			 <a href="?act='.$acts.'&m='.$nav['pmonth'].'&y='.$nav['pyear'].'">&#8592;(prev)</a></div>
 			 <div id="right" style="float:right">
-			 <a href="?act='.$acts.'&month='.$mc.'&year='.$yc.'&tar=f">(next)&#8594;</a></div>
+			 <a href="?act='.$acts.'&m='.$nav['nmonth'].'&y='.$nav['nyear'].'">(next)&#8594;</a></div>
 				</div>
 			</div>';
 
