@@ -2,8 +2,26 @@
 //Check for sessions
 if(isset($_SESSION["username"]))
 {
+
+$curtheme = ''; //current theme
+$opptheme = ''; //opposite theme
+$oppThemeText = '';
+if($_SESSION['theme'] == 1){
+	$currtheme = 1;
+	$opptheme = 0;
+	$oppThemeText = 'Light';
+}
+else{
+	$currtheme = 0;
+	$opptheme = 1;
+	$oppThemeText = 'Dark';
+}
+if(isset($_GET['theme'])){
+	$_SESSION['theme'] = $_GET['theme'];
+}
 $nav_pages = '
     <ul class="nav navbar-nav navbar-right">
+	<li class=""><a href="index.php?'.$_SERVER['QUERY_STRING'].'&theme='.$opptheme.'">Theme - '.$oppThemeText.'</a></li>
     <li class=""><a href="?act=upcoming">Upcoming Events</a></li>
     <li class=""><a href="?act=groups">Groups</a></li>
        <li class="dropdown" style="padding-right:10px;">

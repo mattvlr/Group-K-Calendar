@@ -327,7 +327,7 @@ class mysql_driver extends db_info
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public function getSessionInfo($id)  //take id from cookie and return array of session info
 	{
-		$fields = array('username','first_name','last_name','avatar','permission');
+		$fields = array('username','first_name','last_name','avatar','permission','theme');
 		$where = "id='" . $id . "'";
 		$info = $this->select('user',$fields,$where);
 		if(!$info)

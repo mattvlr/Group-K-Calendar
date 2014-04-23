@@ -1,8 +1,6 @@
 <html>
 <head>
 <title>Upcoming Events</title>
-<link rel="stylesheet" type="text/css" href="template.css">
-<link href="/bootstrap/css/dashboard.css" rel="stylesheet">
 </head>
 <body><div style="padding-left:260px; padding-top:20px;">
 

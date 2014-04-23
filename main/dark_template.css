@@ -1,0 +1,462 @@
+/* I started commenting the ones I know about */
+* html div.calendar-day { 
+	height:120px; 
+}
+* html div.calendar-day-np { 
+	height:180px; 
+	}
+/* a */
+a.event_no_link:active{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:hover{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:link{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.event_no_link:visited{
+text-decoration:none;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+color: inherit;
+}
+a.no-link:active{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+}
+a.no-link:hover{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+}
+a.no-link:link{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+}
+a.no-link:visited{ /* Link with no link attributes */
+text-decoration:none;
+color:black;
+height: 100%;
+width: 100%;
+display:block;
+z-index: 500;
+}
+/* div's */
+div.about-box { 
+  position: fixed;
+  float: left;
+  top: 21.7%;
+  left: 19.15%;
+  width: 660px;
+  height: 230px;
+  padding: 15px 15px 0px 15px;
+  margin: 0em 0em 1em 0em;
+  border:1px solid #eceff5;
+  background: #eceff5;
+  color: black;
+}
+div.about-head{
+  position: fixed;
+  top: 125px;
+  left: 500px;
+}
+div.calendar{ /* The div that holds the year calendar */
+	height:100%;
+	width:100%;
+	position:relative;
+	display: inline;
+	padding-left: 265px;
+	overflow-x: auto;
+	z-index:999;
+	margin-right:260px;
+}
+div.current-day{ /* holds the small number for the big month calendar */
+	background:#999; 
+	padding:5px; 
+	color:#fff; 
+	font-weight:bold; 
+	width:20px; 
+	text-align:center; 
+	z-index:499;
+	position:absolute;
+	top: 0px;
+	right: 0px;
+	}
+div.current-day:hover { /* alt hover color see above */
+	background: #336EC6;
+	}
+div.container { /* can't find it being used anywhere */
+    width: 1000px;
+	padding-left: 235px;
+	padding-top: 125px;
+}
+div.day-number { 
+	background:#999; 
+	padding:5px; 
+	color:#fff; 
+	font-weight:bold; 
+	width:20px;
+	text-align:center; 
+	z-index:499;
+	position:absolute;
+	top: 0px;
+	right: 0px;
+}
+div.day-number:hover {
+	background: #336EC6;
+}
+div.day_event_box_0{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 828px;
+}
+div.day_event_box_0:hover{
+	background: #336EC6;
+	color: white;
+}
+div.event_box_0{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 100%;
+	top: -45%;
+	color: white;
+}
+div.event_box_0:hover{
+	background: #336EC6;
+	color: white;
+}
+div.day_event_box_1{
+	background: #008000;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	width: 828px;
+}
+div.day_event_box_1:hover{
+	background:#228B22;
+}
+div.event_box_1{
+	background: #008000;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	top: -45%;
+}
+div.event_box_1:hover{
+	background:#228B22;
+}
+div.day_event_box_2{
+	background: #FF8C00;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	width: 828px;
+}
+div.day_event_box_2:hover{
+	background:#FFA500;
+}
+div.event_box_2{
+	background: #FF8C00;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	top: -45%;
+}
+div.event_box_2:hover{
+	background:#FFA500;
+}
+div.day_event_box_3{ 
+	background:#A52A2A;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	width: 828px;
+}
+div.day_event_box_3:hover{
+	background: #B22222;
+}
+div.event_box_3{
+	background:#A52A2A;
+	color: white;
+	position: relative;
+	text-align:center; 
+	display: block;
+	top: -45%;
+}
+div.event_box_3:hover{
+	background: #B22222;
+}
+div.event_box_h{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 100%;
+	top: -45%;
+	background: #336EC6;
+	color: white;
+}
+div.day_event_box_h{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 828px;
+	background: #336EC6;
+	color: white;
+}
+div.event_box_h:hover{
+	background: #eceff5;
+	color: black;
+}
+div.day_event_box_h:hover{
+	background: #eceff5;
+	color: black;
+}
+div.faq-box {
+  position: fixed;
+  top: 52%;
+  left: 19.15%;
+  width: 1150px;
+  height: 500px;
+  padding: 15px 15px 0px 15px;
+  margin: 0em 0em 1em 0em;
+  border:1px solid #eceff5;
+  background: #eceff5;
+  color: black;
+}
+div.panel-body {
+  padding: 10px;
+}
+div.panel-heading {
+  padding: 15px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: -1;
+  border-top-left-radius: -1;
+  width: 475px;
+  height: 50px;
+}
+div.panel-primary {
+  position: fixed;
+  top: 21.5%;
+  left: 66%;
+  border-color: #414141;
+  width: 475px;
+  height: 230px;
+}
+div.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 17px;
+  color: inherit;
+}
+/* p's */
+p {
+	margin-top: 0;
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+/* table */
+table.day{
+	border: 1px solid black;
+	min-width:20%;
+	max-width: 70%;
+	display: block;
+	margin-top: 3em;
+	min-padding-right: 260px;
+	min-padding-left: 260px;
+}
+/* td's */
+td.calendar-day	{ 
+	min-height:120px; 
+	font-size:11px; 
+	position:relative; 
+	height:120px; 
+	background-color: #696969;
+} 
+td.calendar-day-head { 
+	background:#414141; 
+	font-weight:bold; 
+	text-align:center; 
+	width:120px; 
+	padding:5px; 
+	border-bottom:1px solid #999; 
+	border-top:1px solid #999; 
+	border-right:1px solid #999; 
+}
+td.calendar-day:hover { 
+	background:#414141; 
+}
+td.calendar-day-np	{ 
+	background:#414141; 
+	min-height:180px; 
+} 
+td.calendar-day, td.calendar-day-np { 
+	width:120px; 
+	border-bottom:1px solid #999; 
+	border-right:1px solid #999; 
+}
+td.current-minute{
+	text-align: right;
+	width: 10%;
+	border: 1px solid black;
+	background: gray;
+	color: white;
+	padding-right: .2em;
+}
+td.day-event-content{
+	border: 1px solid black;
+}
+td.day-small-time{
+	padding-right: .2em;
+	text-align: right;
+	width: 10%;
+	border: 1px solid black;	
+}
+td.day-time{
+	border: 1px solid black;
+	width: 10%;
+}
+td.today {
+	background: #ccc; 
+	min-height:180px; 
+	font-size:11px; 
+	position:relative; 
+	height:120px 
+}
+td.today:hover {
+	background: #FFE1C2;
+}
+td.year-calendar-day{ 
+	background:#eceff5; /* light gray */ 
+	padding: 0px; 
+	color:black; 
+	font-weight:bold; 
+	text-align: center;
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+}
+td.year-calendar-np{
+	background: #f5f5f5;
+	padding: 1px;
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+}
+td.year-calendar-day:hover{
+	background:#FFE1C2;
+	color:black;
+}
+td.year-table{
+	vertical-align: top;
+	background: #f5f5f5;
+}
+
+td.year-today{ 
+	background: #696969; 
+	padding: 0px; 
+	color: #ccc; 
+	font-weight:bold; 
+	text-align:center; 
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+	}
+td.year-today:hover{
+	background:#FFE1C2;
+}
+td.year-day-view{ 
+	background: #FFE1C2; 
+	padding: 0px; 
+	color: black; 
+	font-weight:bold; 
+	text-align:center; 
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+	}
+td.year-day-view:hover{
+	background:#414141;
+}
+
+
+
+
+
+/* th's */
+th.current-minute{
+	border: 1px solid black;
+	background: gray;
+	color: white;
+	padding-right: .2em;
+}
+th.hourtitle{
+	padding-left: .2em;
+	font-weight:bold;
+	text-align:left;
+	border:1px solid black;
+	background: #ccc;
+	color:#696969;
+}
+th.currenthour{
+	padding-left: .2em;
+	font-weight:bold;
+	text-align:left;
+	border:1px solid black;
+	background: #FF0000;
+}
+th.monthtitle{
+	font-weight:bold;
+	text-align:center;
+	border:1px solid black;
+	background: #414141;
+	height: 30px;
+}
+th.year-calendar-heading{
+	font-weight:bold;
+	text-align:center;
+	background: #414141;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+}
+
+

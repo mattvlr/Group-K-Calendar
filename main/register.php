@@ -18,7 +18,8 @@ if( isset($_POST["create"]) && isset($_POST['email']) && isset($_POST['password'
 						'passhash' => $passhash,
 						'salt' => $salt,
 						'dob' => $_POST['dob'],
-						'activation' => $activation
+						'activation' => $activation,
+						'theme' => 0
 					);	
 	if($mysql->insert('user',$userinfo))
 	{

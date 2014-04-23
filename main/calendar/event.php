@@ -46,9 +46,7 @@ if($mysql->insert('events',$eventinfo2))
 
 <html>
 <head>
-<link href="/bootstrap/css/dashboard.css" rel="stylesheet">
-<link href="/bootstrap/css/signin.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="template.css">
+<link href="/bootstrap/css/dark_signin.css" rel="stylesheet">
 </head>
 
 <body><center><h1>Event Details</h1></center>

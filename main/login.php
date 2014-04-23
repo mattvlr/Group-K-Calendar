@@ -10,7 +10,7 @@ $privledge = '0';  //set to 0 for guest
 $mysql = new mysql_driver;
 $mysql->connect();
 
-if(isset($_SESSION["id"]) && isset($_SESSION["username"]) && isset($_SESSION["first_name"]) && isset($_SESSION["last_name"])  && isset($_SESSION["permission"]))
+if(isset($_SESSION["id"]) && isset($_SESSION["username"]) && isset($_SESSION["first_name"]) && isset($_SESSION["last_name"])  && isset($_SESSION["permission"]) && isset($_SESSION["theme"]))
 {
 	$username = $_SESSION['username'];
 	$first_name = $_SESSION['first_name'];
@@ -18,6 +18,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["username"]) && isset($_SESSION["fi
 	$avatar = $_SESSION['avatar'];
 	$permission = $_SESSION['permission'];
 	$id = $_SESSION['id'];
+	$theme = $_SESSION['theme'];
 }
 else if(isset($_COOKIE['id']))
 {
@@ -33,7 +34,7 @@ else if(isset($_COOKIE['id']))
 	$last_name = $sess['last_name'];
 	$avatar = $sess['avatar'];
 	$permission = $sess['permission'];
-	
+	$theme = $sess['theme'];
 
 	$_SESSION['id'] = $_COOKIE['id'];
 	$_SESSION['username'] = $username;
@@ -41,6 +42,7 @@ else if(isset($_COOKIE['id']))
 	$_SESSION['last_name'] = $last_name;
 	$_SESSION['avatar'] = $avatar;
 	$_SESSION['permission'] = $permission;
+	$_SESSION['theme'] = $theme;
 	}
 }
 else

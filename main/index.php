@@ -11,16 +11,25 @@ require_once('mysql/_db.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" type="text/css" href="template.css">
+
     <script src="/main/calendar/CalendarJsFunctions.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    <!-- Custom styles for this template -->
-    <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
+	<?php 
 
+		if($_SESSION['theme'] == 1){ 
+			echo '<link href="/bootstrap/css/dark.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="dark_template.css">
+			<link href="/bootstrap/css/dark_dashboard.css" rel="stylesheet">'; 
+		}
+		else { 
+			echo '<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="template.css">
+			<link href="/bootstrap/css/dashboard.css" rel="stylesheet">';
+		} ?>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -30,7 +39,6 @@ require_once('mysql/_db.php');
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body onload="startTime()"></body>
 <?php
 require_once('navbar.php');
 require_once('sidebar.php');
