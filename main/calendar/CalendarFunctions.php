@@ -171,8 +171,14 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		$todaymon = date("m");
 		$todaynum = date("j");
 		$todayyear = date("Y");
-		
-			 
+		$dayview = '';
+		$monthview = '';
+		$yearview ='';
+		if(isset($_GET['d'])){
+			 $dayview = $_GET['d'];
+			 $monthview = $_GET['m'];
+			 $yearview = $_GET['y'];
+		}
 		/* row for week one */
 		$calendar.= '<tr class="calendar-row">';
 
@@ -193,6 +199,9 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 			
 			if(($todaynum == $list_day) && ($todaymon == $month) && ($todayyear == $year)):
 				$calendar.= '<td class="year-today"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
+			elseif(($list_day == $dayview) && ($month == $monthview) && ($year == $yearview)):
+				$calendar.= '<td class="year-day-view"><a class="no-link" href="/main/index.php?act=day&m'.
+				$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
 			else:
 				$calendar.= '<td class="year-calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
 			endif;
@@ -237,12 +246,19 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		$month = month_convert($month);
 		$hour = date('g');
 		$minutes = date('i');
-		$table = "<br><br>";
+	
+		$table= "<br><br>";
 		$table.= '<table class="day">';
 		$table.= '<tr><th class="monthtitle" colspan="2">'.$month. " " . $day . " " . $year.'</th></tr>';
+		$holidaylist = getHolidayList($year);
+			for($i = 0; $i < count($holidaylist); $i++){
+				if(($holidaylist[$i][1] == $day) && ($holidaylist[$i][2] == $monthnum)){
+					$table.= '<tr><th class="hourtitle">All Day:</th><td><div class="day_event_box_h">'.$holidaylist[$i][0].'</div></td></tr>';
+				}
+			}
 		
 		$events = getDayEventList($day,$monthnum,$year);
-		
+
 		if($events != null){
 			for($i = 0; $i < 24; $i++):
 						if($i == 0):
@@ -250,7 +266,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt < 30)){
+									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -259,7 +275,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt >= 30)){
+									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -269,7 +285,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt < 30)){
+									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -278,7 +294,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt >= 30)){
+									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -288,7 +304,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt < 30)){
+									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -297,7 +313,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt >= 30)){
+									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -307,7 +323,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt < 30)){
+									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -316,7 +332,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 								for($j = 0; $j < count($events); $j++):
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
-									if(($i == $eHt) && ($eMt >= 30)){
+									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
 										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
 									}
 								endfor;
@@ -517,6 +533,7 @@ function getHolidayList($year){
 	$list[16] = array("Father's Day",15,06);
 	$list[17] = array("Halloween",31,10);
     $list[18] = array("Test Holiday Day",25,04);
+	$list[19] = array("Demo Day!!!!",29,04);
 	return $list;
 }
 

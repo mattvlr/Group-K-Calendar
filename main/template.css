@@ -229,7 +229,19 @@ div.event_box_h{
 	background: #336EC6;
 	color: white;
 }
+div.day_event_box_h{
+	position: relative;
+	display: block;
+	text-align:center; 
+	width: 828px;
+	background: #336EC6;
+	color: white;
+}
 div.event_box_h:hover{
+	background: #eceff5;
+	color: black;
+}
+div.day_event_box_h:hover{
 	background: #eceff5;
 	color: black;
 }
@@ -385,6 +397,20 @@ td.year-today{
 	}
 td.year-today:hover{
 	background:#FFE1C2;
+}
+td.year-day-view{ 
+	background: #FFE1C2; 
+	padding: 0px; 
+	color: black; 
+	font-weight:bold; 
+	text-align:center; 
+	font-size:11px;
+	border:1px solid black;
+	width: 30px;
+	height: 30px;
+	}
+td.year-day-view:hover{
+	background:#C2E0FF;
 }
 
 

@@ -80,7 +80,7 @@ else
 echo '
 			 <div class="day_content" style="position:absolute; left:260px; width:1650px;">
 
-			 <div style="position:fixed; left:515px; top: -10px; z-index:1050;">
+			 <div style="position:fixed; left:565px; top: -10px; z-index:1050;">
 			  <ul class="pager">
 			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
 			  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Event</button>
