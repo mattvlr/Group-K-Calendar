@@ -96,8 +96,8 @@ $body = '<div class="eventcreation">
 	<center><h1>Create your event!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Event Title" required autofocus>
 	<input type="text" name = "location" class="form-control" placeholder="Location" required><br>
-	<center><b>Event Date :</b></center><input type="date" name = "date" class="form-control" required>
-	<center><b>Event Time :</b></center><input type="time" name = "time" class="form-control" required>
+	<center><b>Event Date :</b></center><input type="date" name ="date" class="form-control" required>
+	<center><b>Event Time :</b></center><input type="time" name ="time" class="form-control" required>
 	<center><b>Priority</b></center>
 	<center><input type="radio" name="priority" value="1" checked="">Low
 	<input type="radio" name="priority" value="2">Medium
