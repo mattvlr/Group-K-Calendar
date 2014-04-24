@@ -422,7 +422,7 @@ class mysql_driver extends db_info
 	public function getGroupsCreated($user)
 	{
 		$get =  array('gid','ownerid','date_created','title','description');
-		$where = "ownerid = ".$user." ORDER BY date_created ASC";
+		$where = "ownerid = ".$user." ORDER BY gid ASC";
 		
 		$info = $this->selectMany('groups',$get,$where);
 		

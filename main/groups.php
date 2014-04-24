@@ -9,6 +9,8 @@
   <div class="tab-pane fade active in" id="home" style="padding-left:20px;">
   
   	<?php
+  	
+  	//Getting the groups you own
 	$groups_created = $mysql->getGroupsCreated($id);
 	if($groups_created != false)
 	{
@@ -19,10 +21,12 @@
 	$num_groups = 0;
 	}
 	
+	//Error testing
 	$status = '';
 	$status2 = '';
 	
-	$body = '<div class="eventcreation">
+	//Group creation form
+	$body = '<div class="groupcreation">
 	<form class="form-signin" role="form" action="/main/index.php?act=groups" method = "post">
 	<center><h1>Create your group!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Group Title" required autofocus>
@@ -32,29 +36,32 @@
 	</form>
 	</div>';
 
+	//Things that need to happen after the form is submitted
 	if (isset($_POST['title']) && isset($_POST['description'])){
 	
 	$date = date("Y-m-d");
 
+	//Getting data for groups table
 	$groupinfo = array(	'ownerid' => $id,
 						'date_created' => $date,
 						'title' => $_POST['title'],
 						'description' => $_POST['description']
 						);
 						
+	//Putting data in the groups table
 	if($mysql->insert('groups',$groupinfo))
-	{
+{
 		$status = 'Group Created!!';
-	}
-	else
-	{
-		$status = 'Error occurred, group not added';
-	}
-	echo ''.$status.'';
+		
+	//Associating group that just got created with the group_user table
+	$groups = $mysql->getGroupsCreated($id);
+	$gid = $groups[(count($groups)-1)]['gid'];
+	$array = array( 'gid' => $gid,
+					'userid' => $id,
+					'date_joined' => $date,
+					'permission' => "1");
 	
-	$group = $mysql->select('groups', array('gid','ownerid','date_created','title','description'), "ownerid = ".$id."");
-	$array = array("".$group['gid']."","".$id."", "".$date."", "3");
-	
+	//Putting data in the group_user table
 	if ($mysql->insert('group_user',$array))
 	{
 		$status2 = 'success';
@@ -64,10 +71,22 @@
 		$status2 = 'fuck';
 	}
 	echo ''.$status2.'';
+	
+}
+	else
+	{
+		$status = 'Error occurred, group not added';
+	}
+	echo ''.$status.'';
+	
+
+	
 }
 
+	//Generating the groups page with your groups
 	if ($num_groups == 0){
-		echo '<center><h1>You do not own any groups</h1></center>';}
+		echo '<center><h1>You do not own any groups</h1>';
+		echo '<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center>';}
 	else{
 		echo '<div id="one" style="width:1000px"><center><h1>Groups:</h1></center>';
 		
@@ -79,7 +98,7 @@
     			<p align="middle">'.$groups_created[$i]['title'].'</p>
     			<p align="middle">Created : '.$groups_created[$i]['date_created'].'</p>
   				</a>';}
-  			echo '</div>';
+  			echo '<center><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center></div>';
 		
 		echo '<div class="list-group2" style="width:500px;float:right;">';
 		echo '<center><h4>Groups Joined:</h4></center>';
@@ -93,10 +112,7 @@
   			echo '</div></div>';
   		}
 	?>  
-	
-</div>
-
-	<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button>
+	</div></div>
 	
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
