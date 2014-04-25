@@ -78,15 +78,15 @@ else
 }
 
 echo '
-			<div class="btn-group btn-group-justified" style="width:100%;padding-left:260px;padding-top:18px;position:fixed; z-index:1050;">
-			  <a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'" class="btn btn-default">«Yesterday</a>
+			<div class="btn-group btn-group-justified" style="width:100%;padding-left:260px;top:58px;position:fixed; z-index:2;">
+			  <a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'" class="btn btn-default">« Yesterday</a>
 			  <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">Create Event</a>
-			  <a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'" class="btn btn-default">Tomorrow»</a>
+			  <a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'" class="btn btn-default">Tomorrow »</a>
 			</div>
 
 
 
-			 <div class="day_content" style="position:absolute; left:260px; width:1650px;">
+			 <div class="day_content" style="position:absolute; top:12px;left:260px; width:1650px;">
 			  '.$draw.'</div>';
 
 if (!isset($status)){echo '';}

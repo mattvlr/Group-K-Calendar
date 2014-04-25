@@ -56,7 +56,7 @@ else
 $navbar = '
 	<div class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
-          <img src="http://i.imgur.com/pamXbHx.png" style="position:absolute; padding-top:5px; left:-18px;"/>
+          <img src="http://i.imgur.com/pamXbHx.png" style="position:absolute; padding-top:5px; left:-5px;"/>
         </div>
           ' . $nav_pages . '
     </div>';

@@ -62,7 +62,7 @@ if(isset($_SESSION['id']))
 			 <li '.$y.'><a href="?act=year">Year</a></li>';
 		 
 	$sidebar .= '
- 	<div class="col-sm-4 col-md-2 sidebar">
+ 	<div class="col-sm-4 col-md-2 sidebar" style="position:fixed; top:40px">
           <ul class="nav nav-sidebar">
 		'.$views.'</ul>';
 		
