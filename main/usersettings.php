@@ -58,4 +58,4 @@ $form = '
 <?php
 echo $form;
 ?>
-</div></body></html>
+</body></html>
