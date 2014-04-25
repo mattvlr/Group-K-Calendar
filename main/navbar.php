@@ -2,7 +2,6 @@
 //Check for sessions
 if(isset($_SESSION["username"]))
 {
-
 $curtheme = ''; //current theme
 $opptheme = ''; //opposite theme
 $oppThemeText = '';
@@ -19,11 +18,25 @@ else{
 if(isset($_GET['theme'])){
 	$_SESSION['theme'] = $_GET['theme'];
 }
+
+$upcomingactive = "";
+$groupsactive = "";
+
+if(($_GET['act']) == "upcoming"){
+  $upcomingactive = "active";
+  $groupsactive = "";
+}
+elseif(($_GET['act']) == "groups"){
+  $upcomingactive = "";
+  $groupsactive = "active";
+}
+
+
 $nav_pages = '
     <ul class="nav navbar-nav navbar-right">
-	<li class=""><a href="index.php?'.$_SERVER['QUERY_STRING'].'&theme='.$opptheme.'">Theme - '.$oppThemeText.'</a></li>
-    <li class=""><a href="?act=upcoming">Upcoming Events</a></li>
-    <li class=""><a href="?act=groups">Groups</a></li>
+	  <li class=""><a href="index.php?'.$_SERVER['QUERY_STRING'].'&theme='.$opptheme.'">Theme - '.$oppThemeText.'</a></li>
+    <li class="'. $upcomingactive .'"><a href="?act=upcoming">Upcoming Events</a></li>
+    <li class="'. $groupsactive .'"><a href="?act=groups">Groups</a></li>
        <li class="dropdown" style="padding-right:10px;">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $_SESSION['username'] . '<b class="caret"></b></a>
         <ul class="dropdown-menu">

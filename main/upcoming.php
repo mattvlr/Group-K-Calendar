@@ -21,7 +21,9 @@ $eventlist = '';
 ?>
 
 <div id="myTabContent" class="tab-content">
-  <div class="tab-pane fade active in" id="home" style="padding-left:20px;">
+  <div class="tab-pane fade active in" id="home">
+    <div class="alert alert-dismissable alert-info">
+  <button type="button" class="close" data-dismiss="alert">×</button>
     <?php
 		if($num_events == '1')
 		{
@@ -40,6 +42,7 @@ $eventlist = '';
 		<?php
 		}
 		?>
+    </div>
 
         <table class="table table-striped table-hover" style="position:fixed; left:260px;">
           <thead>

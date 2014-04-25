@@ -4,7 +4,7 @@
 <?php 
 
 //require_once('/Applications/XAMPP/xamppfiles/htdocs/main/calendar/CalendarFunctions.php');
- require_once('/calendar/CalendarFunctions.php');
+require_once('/calendar/CalendarFunctions.php');
 
 if(isset($_SESSION['id']))
 {

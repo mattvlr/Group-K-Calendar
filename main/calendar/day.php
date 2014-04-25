@@ -78,13 +78,15 @@ else
 }
 
 echo '
+			<div class="btn-group btn-group-justified" style="width:100%;padding-left:260px;padding-top:18px;position:fixed; z-index:1050;">
+			  <a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'" class="btn btn-default">«Yesterday</a>
+			  <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">Create Event</a>
+			  <a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'" class="btn btn-default">Tomorrow»</a>
+			</div>
+
+
+
 			 <div class="day_content" style="position:absolute; left:260px; width:1650px;">
-			 <div style="position:fixed; left:43%; top: -10px; z-index:1050;">
-			  <ul class="pager">
-			  <li><a href="/main/index.php?act=day&m='. $nav['pmonth'] .'&d='. $nav['pday'] .'&y='. $nav['pyear'] .'">Yesterday</a></li>
-			  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Event</button>
-			  <li><a href="/main/index.php?act=day&m='. $nav['nmonth'] .'&d='. $nav['nday'] .'&y='. $nav['nyear'].'">Tomorrow</a></li>
-			  </ul></div>
 			  '.$draw.'</div>';
 
 if (!isset($status)){echo '';}
