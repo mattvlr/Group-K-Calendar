@@ -19,7 +19,6 @@ require_once('mysql/_db.php');
     <!-- <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
 	<?php 
-
 		if($_SESSION['theme'] == 1){ 
 			echo '<link href="/bootstrap/css/dark.css" rel="stylesheet">
 			<link rel="stylesheet" type="text/css" href="dark_template.css">

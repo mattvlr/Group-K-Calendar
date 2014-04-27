@@ -76,7 +76,8 @@
             <li><a href="yeartest.php">Year Test</a></li>
             <li><a href="daytest.php">Day Test</a></li> 
           </ul>
-          <?php echo draw_small_month(date("m"),date("Y")); ?>
+          <?php 
+		  echo draw_small_month(date("m"),date("Y")); ?>
           <br>
           Check out the login form <a href="login.php">here.</a>
         </div>

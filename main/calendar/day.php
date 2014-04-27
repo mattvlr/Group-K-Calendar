@@ -44,7 +44,7 @@ $repeat_style = '';
 $repeat_until = '';
 $date = date("Y-m-d");
 if ($_POST['repeat'] == 'no'){$repeat_style = 'none'; $repeat_until = $_POST['date'];}
-else if ($_POST['repeatstyle'] == 'weekly'){$repeat_style = 'week'; $repeat_until = $_POST['repeatuntil'];}
+else if ($_POST['repeatstyle'] == 'daily') {$repeat_style = 'day'; $repeat_until = $_POST['repeatuntil'];}
 else if ($_POST['repeatstyle'] == 'monthly'){$repeat_style = 'month'; $repeat_until = $_POST['repeatuntil'];}
 $gid = '1';
 $event_date = ''.$_POST['date']." ".$_POST['time'].':00';
@@ -62,19 +62,95 @@ $eventinfo = array(		'gid' => $gid,
 					);
 
 //Putting stuff into database and making sure nothing went wrong
-if($mysql->insert('events',$eventinfo))
-{
-	$status = 'Event Successfully added!!';
-	require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
-				$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-				$activation_email = 'You have added an event to your calendar.<br/><br/>';					
-				Send_Mail($email,"Event Added",$activation_email);
+	if($eventinfo['repeat_style'] == 'none'){
+		if($mysql->insert('events',$eventinfo)){
+			$status = 'Event Successfully added!!';
+			require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
+						$activation_email = 'You have added an event to your calendar.<br/><br/>';					
+						Send_Mail($email,"Event Added",$activation_email);
 
-}
-else
-{
-	$status = 'Error occurred, event not added';
-}
+		}
+		else{
+			$status = 'Error occurred, event not added';
+		}
+	}
+	elseif($eventinfo['repeat_style'] == 'day'){
+		//getting conditions to check against in loop
+		$day = substr($eventinfo['event_date'],8,2);
+		$month = substr($eventinfo['event_date'],5,2);
+		$year = substr($eventinfo['event_date'],0,4);
+		$time = substr($eventinfo['event_date'],11,8);
+		
+		$end_day = substr($eventinfo['repeat_until'],8,2);
+		$end_month = substr($eventinfo['repeat_until'],5,2);
+		$end_year = substr($eventinfo['repeat_until'],0,4);
+		$flag = 0;
+		
+		$first = strtotime($year.'-'.$month.'-'.$day);
+		$second = strtotime($end_year.'-'.$end_month.'-'.$end_day);
+		$datediff = abs($first - $second);
+		$num_of_days = floor($datediff/(60*60*24));
+		
+		for($i = 0; $i <= $num_of_days; $i++){
+			$eventinfo['event_date'] = ($year."-".$month."-".$day." ".$time); //update the event date
+			if($mysql->insert('events',$eventinfo)){
+				$status = 'Event Successfully added!!';
+				if($flag == 0){
+				require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
+						$activation_email = 'You have added a daily event to your calendar.<br/><br/>';					
+						Send_Mail($email,"Event Added",$activation_email);
+						$flag = 1;
+				}
+			}
+			else{
+				$status = 'Error occurred, event not added';
+			}
+			$day++;
+			$days_left_in_month = date('t',mktime(0,0,0,$month,1,$year));
+			if($day > $days_left_in_month){
+				$day = 1;
+				$month++;
+			}
+			if($month > 12){
+				$month = 1;
+				$year++;
+			}
+		}
+	}
+	elseif($eventinfo['repeat_style'] == 'month'){ //works!!!
+		$day = substr($eventinfo['event_date'],8,2);
+		$month = substr($eventinfo['event_date'],5,2);
+		$year = substr($eventinfo['event_date'],0,4);
+		$time = substr($eventinfo['event_date'],11,8);
+		
+		$end_month = substr($eventinfo['repeat_until'],5,2);
+		$end_year = substr($eventinfo['repeat_until'],0,4);
+		$num_of_months = ($end_year-$year) * 12 + ($end_month-$month);
+		$flag = 0;
+		for($i = 0; $i <= $num_of_months; $i++){
+		$eventinfo['event_date'] = ($year."-".$month."-".$day." ".$time); //update the event date
+			if($mysql->insert('events',$eventinfo)){
+				$status = 'Event Successfully added!!';
+				if($flag == 0){
+				require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
+						$activation_email = 'You have added a monthy event to your calendar.<br/><br/>';					
+						Send_Mail($email,"Event Added",$activation_email);
+						$flag = 1;}
+			}
+			else{
+				$status = 'Error occurred, event not added';
+			}
+			$month++;
+			if($month > 12){
+				$month = 1;
+				$year++;
+			}	
+		}
+	}
+	
 }
 
 echo '
@@ -111,7 +187,6 @@ $body = '<div class="eventcreation">
 	
 	<center><b>Repeat Style</b></center>
 	<center><input type="radio" name="repeatstyle" value="daily">Daily
-	<input type="radio" name="repeatstyle" value="weekly">Weekly
 	<input type="radio" name="repeatstyle" value="monthly">Monthly	
 	<input type="radio" name="repeatstyle" value="none" checked="">None</center><br>
 	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required>

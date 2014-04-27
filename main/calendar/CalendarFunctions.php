@@ -66,8 +66,8 @@ function getDayEventList($day,$month,$year){
 	return $user_day_events;
 }
 function draw_calendar($month,$year){ //I changed this lightly to color the current day -Matt
-		$user_month_events = getMonthEventList($month,$year);	
-		echo "</div></center>";
+	$user_month_events = getMonthEventList($month,$year);	
+	echo "</div></center>";
 	/* draw table */
 	$calendar = '<table cellpadding="0" cellspacing="0" class="calendar" border="2">';
 
@@ -114,11 +114,21 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		$ec = count($user_month_events);
 		for($i = 0; $i < $ec; $i++){ //goes through the event list and adds event divs for that day
 			$event_date_test = ($user_month_events[$i][4]."-".$user_month_events[$i][3]."-".$user_month_events[$i][2]);
+			
 			if(($event_date_test == $combined_day) && ($event_day_counter <= 5)){	
-				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"><a class="event_no_link" href="/main/index.php?act=event&el[]='.
-					$user_month_events[$i][0].'&el[]='.$user_month_events[$i][1].'&el[]='.$user_month_events[$i][2].'&el[]='.$user_month_events[$i][3].'
-					&el[]='.$user_month_events[$i][4].'&el[]='.$user_month_events[$i][7].'&el[]='.$user_month_events[$i][8].'&el[]='.$user_month_events[$i][9].'&el[]='.
-					$user_month_events[$i][10].'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>';
+				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"> 
+				<a class="event_no_link" href="/main/index.php?act=event 
+					&el[]='.$user_month_events[$i][0]. //priority
+					'&el[]='.$user_month_events[$i][1]. //date_created
+					'&el[]='.$user_month_events[$i][2]. //day
+					'&el[]='.$user_month_events[$i][3]. //month
+					'&el[]='.$user_month_events[$i][4]. //year
+					'&el[]='.$user_month_events[$i][7]. //title
+					'&el[]='.$user_month_events[$i][8]. //description
+					'&el[]='.$user_month_events[$i][9]. //time
+					'&el[]='.$user_month_events[$i][10]. //location
+				'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>'; //link to event page
+					
 				$event_day_counter++;
 			}
 		}
@@ -206,20 +216,12 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 				$calendar.= '<td class="year-calendar-day"><a class="no-link" href="/main/index.php?act=day&m='.$month.'&d='.$list_day.'&y='.$year.'">'.$list_day.'</a>';
 			endif;
 			
-			/** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-			//$calendar.= str_repeat('<p> </p>',2);
+
 			
 			$calendar.= '</td>';
 			$days_in_this_week = 0;
 			$days_in_this_week++; $running_day++; /*$cur_day++;*/ $day_counter++;
 		endfor;
-		//$daysleft = (36-$cur_day-$x);
-		//if(($month == 2) && ($days_in_month != 29)): //fuck Feb
-		//$calendar.='<';
-		//endif;
-		//for($i = 1; $i < 38 - ($x + $days_in_month); $i++): //fills in empty boxes at bottom
-		//		$calendar.='<td class="year-calendar-np"> </td>';
-		//endfor;
 
 			$calendar.='</tr>';
 			$calendar.='</table>';
@@ -267,7 +269,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -276,7 +289,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -286,7 +310,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -295,7 +330,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -305,7 +351,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -314,7 +371,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -324,7 +392,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt < 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
@@ -333,7 +412,18 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 									$eHt = substr($events[$j][9],0,2); //event hour time
 									$eMt = substr($events[$j][9],3,2);
 									if(($i == $eHt) && ($eMt >= 30) && ($day == $events[$j][2])){
-										$table.='<div class="day_event_box_'.$events[$j][0].'">'.$events[$j][7].'</div>';
+										$table.='<div class="day_event_box_'.$events[$j][0].'">
+										<a class="event_no_link" href="/main/index.php?act=event
+											&el[]='.$events[$j][0]. //priority
+											'&el[]='.$events[$j][1]. //date_created
+											'&el[]='.$events[$j][2]. //day
+											'&el[]='.$events[$j][3]. //month
+											'&el[]='.$events[$j][4]. //year
+											'&el[]='.$events[$j][7]. //title
+											'&el[]='.$events[$j][8]. //description
+											'&el[]='.$events[$j][9]. //time
+											'&el[]='.$events[$j][10]. //location
+									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
 								$table.='</td></tr>';
