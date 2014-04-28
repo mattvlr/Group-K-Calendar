@@ -58,8 +58,8 @@ if(isset($_SESSION['id']))
 	$views = "";
 	$sidebar = "";
 	$views= '<li '.$d.'><a href="?act=day&m='.date("m")."&d=" . date("d") . "&y=" . date("Y").'">Today</a></li>
-			 <li '.$m.'><a href="?act=month">Month</a></li>
-			 <li '.$y.'><a href="?act=year">Year</a></li>';
+			 <li '.$m.'><a href="?act=month&m='.date("m")."&y=" . date("Y").'">Month</a></li>
+			 <li '.$y.'><a href="?act=year&y=' . date("Y").'">Year</a></li>';
 		 
 	$sidebar .= '
  	<div class="col-sm-4 col-md-2 sidebar" style="position:fixed; top:40px">
@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
 	$acts = $_GET['act']; 
 		
 		$drawsc = draw_small_month($mc,$yc,1);
-		$nav = sidebarNav($mc,$yc);
+		$nav = monthNav($mc,$yc);
 		$sidebar .= '<div style="position:fixed;top:280px;"><div id="sidebar-small-month">'. $drawsc.'</div>
 			 <div id="left" style="float:left;width:20px">
 			 <a href="?act='.$acts.'&m='.$nav['pmonth'].'&y='.$nav['pyear'].'">&#8592;(prev)</a></div>

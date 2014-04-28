@@ -494,7 +494,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 		return $a;
 	}
 	
-function sidebarNav($month,$year)
+function monthNav($month,$year)
 	{
 
 	//next and prev days +1 -1
@@ -529,6 +529,16 @@ function sidebarNav($month,$year)
 	
 	//format data in assoc array and return it.
 	$arr = array("pmonth" => $pmonth,"pyear" => $pyear,"nmonth" => $nmonth, "nyear" => $nyear);
+	return $arr;
+}
+
+function yearNav($year)
+	{
+	$pyear = $year-1;
+	$nyear = $year+1;
+	
+	//format data in assoc array and return it.
+	$arr = array("pyear" => $pyear, "nyear" => $nyear);
 	return $arr;
 }
 	
