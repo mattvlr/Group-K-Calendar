@@ -26,7 +26,8 @@
 					$events[$i]['title'],
 					$events[$i]['description'],
 					$atime,
-					$events[$i]['location']
+					$events[$i]['location'],
+					$events[$i]['eid']
 				);
 			$ec++;
 			}
@@ -58,7 +59,8 @@ function getDayEventList($day,$month,$year){
 					$events[$i]['title'],
 					$events[$i]['description'],
 					$atime,
-					$events[$i]['location']
+					$events[$i]['location'],
+					$events[$i]['eid']
 				);
 			$ec++;
 			}
@@ -127,6 +129,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 					'&el[]='.$user_month_events[$i][8]. //description
 					'&el[]='.$user_month_events[$i][9]. //time
 					'&el[]='.$user_month_events[$i][10]. //location
+					'&el[]='.$user_month_events[$i][11]. // eid
 				'">'.$user_month_events[$i][7].' - '.$user_month_events[$i][9].'</a></div>'; //link to event page
 					
 				$event_day_counter++;
@@ -280,6 +283,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -300,6 +304,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -321,6 +326,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -341,6 +347,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -362,6 +369,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -382,6 +390,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -403,6 +412,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;
@@ -423,6 +433,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 											'&el[]='.$events[$j][8]. //description
 											'&el[]='.$events[$j][9]. //time
 											'&el[]='.$events[$j][10]. //location
+											'&el[]='.$events[$j][11]. // eid
 									        '">'.$events[$j][8].' - '. $events[$j][9].' - '.$events[$j][7].'</a></div>';
 									}
 								endfor;

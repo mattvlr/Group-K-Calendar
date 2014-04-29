@@ -64,8 +64,7 @@
 								<b>Group Details:</b><br/><br/>
 								Name: '.$_POST['title'].'<br/>
 								Description: '.$_POST['description'].'<br/><br/>
-								To change any of these group details, please click <a href="#">here</a>.';	
-								
+								To change any of these group details, use the Edit Group button on the Groups page.';	
 			Send_Mail($email,"Group Created",$activation_email);
 		
 		}else{

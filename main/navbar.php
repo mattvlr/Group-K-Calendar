@@ -42,6 +42,7 @@ $nav_pages = '
         <ul class="dropdown-menu">
           <li><a href="?act=settings">Settings</a></li>
           <li><a href="?act=help">Help</a></li>
+		  <li><a href="?act=contact">Contact</a></li>
           <li class="divider"></li>
           <li><a href="?act=logout">Logout</a></li>
         </ul>
