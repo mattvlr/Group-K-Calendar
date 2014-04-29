@@ -117,7 +117,7 @@ function draw_calendar($month,$year){ //I changed this lightly to color the curr
 			
 			if(($event_date_test == $combined_day) && ($event_day_counter <= 5)){	
 				$calendar.= '<div class="event_box_'.$user_month_events[$i][0].'"> 
-				<a class="event_no_link" href="/main/index.php?act=event 
+				<a class="event_no_link" href="/main/index.php?act=event
 					&el[]='.$user_month_events[$i][0]. //priority
 					'&el[]='.$user_month_events[$i][1]. //date_created
 					'&el[]='.$user_month_events[$i][2]. //day

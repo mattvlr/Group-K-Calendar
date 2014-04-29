@@ -4,7 +4,7 @@
 		$priority = $_GET['el'][0];
 		$date_created = $_GET['el'][1];
 		$day = $_GET['el'][2];
-		//$month = month_convert($_GET['el'][3]);
+		//$month2 = month_convert($_GET['el'][3]);
 		$month = $_GET['el'][3];
 		$year = $_GET['el'][4];
 		$title = $_GET['el'][5];
@@ -17,21 +17,25 @@
 
 if(isset($_POST['title2']) && isset($_POST['location2']) && isset($_POST['date2']) && isset($_POST['time2']) && isset($_POST['description2'])){	
 		
-//Putting stuff into database and making sure nothing went wrong
-if($mysql->update('events', title=$_POST['title2'] AND event_date=$event_date AND location=$_POST['location2'] AND description=$_POST['description2']), $eid)
-{
-	$status = 'Event successfully modified!';
-	require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
-				$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-				$activation_email = 'You have changed the details of your event.<br/><br/>';					
-				Send_Mail($email, "Event Details Modified", $activation_email);
-}else{
-	$status = 'Error occurred, event not added';
-}
+	//Putting stuff into database and making sure nothing went wrong
+	if($mysql->update('events', 'title='.$_POST['title2'] . ' AND ' . 'event_date='.$event_date . ' AND ' . 'location='.$_POST['location2'] . ' AND ' . 'description='.$_POST['description2'], $eid))
+	{
+		$status = 'Event successfully modified!';
+		require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+					$email = $mysql->select('user','email','id='.$_SESSION['id']);
+					$activation_email = 'You have changed the details of your event.<br/><br/>';					
+					Send_Mail($email, "Event Details Modified", $activation_email);
+	}else{
+		$status = 'Event modification failed!';
+		require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+					$email = $mysql->select('user','email','id='.$_SESSION['id']);
+					$activation_email = 'Event details could not be modified.<br/><br/>';					
+					Send_Mail($email, "Event Details Not Modified", $activation_email);
+	}
 }
 
 $form = '	
-<form class="form-signin" role="form" action="/main/index.php?act=day&m='. $month .'&d='. $day .'&y='. $year .'" method = "post"><br>
+<form class="form-signin" role="form" action="#" method = "post"><br>
 			<b>Event Title:</b><input type="text" name = "title2" class="form-control" value="' . $title . '"><br>
 			<b>Date:</b><input type="date" name="date2" class="form-control" value="' . $date . '"><br>
 			<b>Time:</b><input type="time" name="time2" class="form-control" value="' . $time . '"><br>

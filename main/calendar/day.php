@@ -67,7 +67,14 @@ $eventinfo = array(		'gid' => $gid,
 			$status = 'Event Successfully added!!';
 			require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
 						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-						$activation_email = 'You have added an event to your calendar.<br/><br/>';					
+						$activation_email = 'You have added an event to your calendar. This event will not repeat.<br/><br/>
+						<b>Event Details:</b><br/><br/>
+						Title: '.$_POST['title'].'<br/>
+						Date: '.$_POST['date'].'<br/>
+						Time: '.$_POST['time'].'<br/>
+						Location: '.$_POST['location'].'<br/>
+						Description: '.$_POST['description'].'<br/><br/>
+						To change any of these event details, please click <a href="#">here</a>.';					
 						Send_Mail($email,"Event Added",$activation_email);
 
 		}
@@ -99,7 +106,14 @@ $eventinfo = array(		'gid' => $gid,
 				if($flag == 0){
 				require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
 						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-						$activation_email = 'You have added a daily event to your calendar.<br/><br/>';					
+						$activation_email = 'You have added an event to your calendar. This event will repeat daily.<br/><br/>
+						<b>Event Details:</b><br/><br/>
+						Title: '.$_POST['title'].'<br/>
+						Date: '.$_POST['date'].'<br/>
+						Time: '.$_POST['time'].'<br/>
+						Location: '.$_POST['location'].'<br/>
+						Description: '.$_POST['description'].'<br/><br/>
+						To change any of these event details, please click <a href="#">here</a>.';					
 						Send_Mail($email,"Event Added",$activation_email);
 						$flag = 1;
 				}
@@ -136,7 +150,14 @@ $eventinfo = array(		'gid' => $gid,
 				if($flag == 0){
 				require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
 						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-						$activation_email = 'You have added a monthy event to your calendar.<br/><br/>';					
+						$activation_email = 'You have added an event to your calendar. This event will repeat monthly.<br/><br/>
+						<b>Event Details:</b><br/><br/>
+						Title: '.$_POST['title'].'<br/>
+						Date: '.$_POST['date'].'<br/>
+						Time: '.$_POST['time'].'<br/>
+						Location: '.$_POST['location'].'<br/>
+						Description: '.$_POST['description'].'<br/><br/>
+						To change any of these event details, please click <a href="#">here</a>.';					
 						Send_Mail($email,"Event Added",$activation_email);
 						$flag = 1;}
 			}

@@ -12,13 +12,10 @@
   	
   	//Getting the groups you own
 	$groups_created = $mysql->getGroupsCreated($id);
-	if($groups_created != false)
-	{
-	$num_groups = count($groups_created);
-	}
-	else
-	{
-	$num_groups = 0;
+	if($groups_created != false){
+		$num_groups = count($groups_created);
+	}else{
+		$num_groups = 0;
 	}
 	
 	//Error testing
@@ -38,58 +35,52 @@
 
 	//Things that need to happen after the form is submitted
 	if (isset($_POST['title']) && isset($_POST['description'])){
-	
-	$date = date("Y-m-d");
-
-	//Getting data for groups table
-	$groupinfo = array(	'ownerid' => $id,
-						'date_created' => $date,
-						'title' => $_POST['title'],
-						'description' => $_POST['description']
-						);
-						
-	//Putting data in the groups table
-	if($mysql->insert('groups',$groupinfo))
-{
-		$status = 'Group Created!!';
 		
-	//Associating group that just got created with the group_user table
-	$groups = $mysql->getGroupsCreated($id);
-	$gid = $groups[(count($groups)-1)]['gid'];
-	$array = array( 'gid' => $gid,
-					'userid' => $id,
-					'date_joined' => $date,
-					'permission' => "1");
-	
-	//Putting data in the group_user table
-	if ($mysql->insert('group_user',$array))
-	{
-		$status2 = 'success';
-	}
-	else
-	{
-		$status2 = 'fuck';
-	}
-	echo ''.$status2.'';
-	
-}
-	else
-	{
-		$status = 'Error occurred, group not added';
-	}
-	echo ''.$status.'';
-	
+		$date = date("Y-m-d");
 
-	
+		//Getting data for groups table
+		$groupinfo = array(	'ownerid' => $id,
+							'date_created' => $date,
+							'title' => $_POST['title'],
+							'description' => $_POST['description']
+							);
+							
+		//Associating group that just got created with the group_user table
+		$groups = $mysql->getGroupsCreated($id);
+		$gid = $groups[(count($groups)-1)]['gid'];
+		$array = array( 'gid' => $gid,
+						'userid' => $id,
+						'date_joined' => $date,
+						'permission' => "1");					
+							
+		//Putting data in the groups table
+		if(($mysql->insert('groups',$groupinfo)) && ($mysql->insert('group_user',$array))){
+			echo '<script>alert("Group successfully created!");</script>';
+			$status = 'Group Created!!';
+			
+			require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
+			$email = $mysql->select('user','email','id='.$groupinfo['ownerid']);
+			$activation_email = 'You have successfully created a group!<br/><br/>
+								<b>Group Details:</b><br/><br/>
+								Name: '.$_POST['title'].'<br/>
+								Description: '.$_POST['description'].'<br/><br/>
+								To change any of these group details, please click <a href="#">here</a>.';	
+								
+			Send_Mail($email,"Group Created",$activation_email);
+		
+		}else{
+			echo '<script>alert("Error occurred -- Group not created!");</script>';
+			$status = 'Error occurred, group not added';
+		}
+		//echo ''.$status.'';
 }
 
 	//Generating the groups page with your groups
 	if ($num_groups == 0){
 		echo '<center><h1>You do not own any groups</h1>';
-		echo '<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center>';}
-	else{
-		echo '<div id="one" style="width:1000px"><center><h1>Groups:</h1></center>';
-		
+		echo '<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center>';
+	}else{
+		echo '<div id="one" style="width:1000px"><center><h1>Groups</h1></center>';
 		echo '<div class="list-group" style="width:500px;float:left;">';
 		echo '<center><h4>Groups Owned:</h4></center>';
 		
@@ -97,7 +88,10 @@
   			echo '<a href="/main/index.php?act=group&id='.$groups_created[$i]['gid'].'" class="list-group-item">
     			<p align="middle">'.$groups_created[$i]['title'].'</p>
     			<p align="middle">Created : '.$groups_created[$i]['date_created'].'</p>
-  				</a>';}
+				<p align="middle">Description : '.$groups_created[$i]['description'].'</p>
+  				</a>';
+				}
+				
   			echo '<center><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center></div>';
 		
 		echo '<div class="list-group2" style="width:500px;float:right;">';
