@@ -17,7 +17,7 @@
 
 if(isset($_POST['title2']) && isset($_POST['location2']) && isset($_POST['date2']) && isset($_POST['time2']) && isset($_POST['description2'])){	
 		
-	//Putting stuff into database and making sure nothing went wrong
+//Putting stuff into database and making sure nothing went wrong
 	if($mysql->update('events', 'title='.$_POST['title2'] . ' AND ' . 'event_date='.$event_date . ' AND ' . 'location='.$_POST['location2'] . ' AND ' . 'description='.$_POST['description2'], $eid))
 	{
 		$status = 'Event successfully modified!';

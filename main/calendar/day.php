@@ -2,11 +2,6 @@
 <head>
 <title>Day</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script>
-		//	$(document).ready(function(){
-			//	$(this).scrollTop($.now()*100);
-		//	});
-			</script>
 </head>
 
 <body>
@@ -67,14 +62,7 @@ $eventinfo = array(		'gid' => $gid,
 			$status = 'Event Successfully added!!';
 			require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
 						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-						$activation_email = 'You have added an event to your calendar. This event will not repeat.<br/><br/>
-						<b>Event Details:</b><br/><br/>
-						Title: '.$_POST['title'].'<br/>
-						Date: '.$_POST['date'].'<br/>
-						Time: '.$_POST['time'].'<br/>
-						Location: '.$_POST['location'].'<br/>
-						Description: '.$_POST['description'].'<br/><br/>
-						To change any of these event details, please click <a href="#">here</a>.';					
+						$activation_email = 'You have added an event to your calendar.<br/><br/>';					
 						Send_Mail($email,"Event Added",$activation_email);
 
 		}
@@ -106,7 +94,7 @@ $eventinfo = array(		'gid' => $gid,
 				if($flag == 0){
 				require_once('smtp/Send_Mail.php'); //need to add a link back to the event from the email.
 						$email = $mysql->select('user','email','id='.$eventinfo['ownerid']);
-						$activation_email = 'You have added an event to your calendar. This event will repeat daily.<br/><br/>
+						$activation_email = 'You have added an event to your calendar. This event will not repeat.<br/><br/>
 						<b>Event Details:</b><br/><br/>
 						Title: '.$_POST['title'].'<br/>
 						Date: '.$_POST['date'].'<br/>
@@ -183,7 +171,7 @@ echo '
 
 
 
-			 <div class="day_content" style="position:absolute; top:12px;left:260px; width:1650px;">
+			 <div class="day_content" style="position:absolute; top:12px;left:260px; width:110%;">
 			  '.$draw.'</div>';
 
 if (!isset($status)){echo '';}
@@ -192,28 +180,35 @@ else {echo ''.$status.'';}
 //Tha form
 $body = '<div class="eventcreation">
 	<form class="form-signin" role="form" action="/main/index.php?act=day&m='. $month .'&d='. $day .'&y='. $year .'" method = "post">
-	<center><h1>Create your event!</h1></center>
-	<input type="text" name = "title" class="form-control" placeholder="Event Title" required autofocus>
-	<input type="text" name = "location" class="form-control" placeholder="Location" required><br>
-	<center><b>Event Date :</b></center><input type="date" name ="date" class="form-control" required>
-	<center><b>Event Time :</b></center><input type="time" name ="time" class="form-control" required>
+	
+
+	<b>Title</b><input type="text" name = "title" class="form-control" required autofocus>
+	<b>Location</b><input type="text" name = "location" class="form-control"required>
+	<b>Date</b><input type="date" name ="date" class="form-control" required>
+	<b>Time</b><input type="time" name ="time" class="form-control" required>
+
+
+	<b>Description</b><textarea class="form-control" rows="5" name="description" required></textarea>
+
 	<center><b>Priority</b></center>
 	<center><input type="radio" name="priority" value="1" checked="">Low
 	<input type="radio" name="priority" value="2">Medium
 	<input type="radio" name="priority" value="3">High</center><br>
 	
 	<center><b>Repeat Event?</b></center>
-	<center><input type="radio" name="repeat" value="yes">Yes
-	<input type="radio" name="repeat" value="no" checked ="">No</center><br>
+	<center><input type="radio" name="repeat" value="yes" id="repeatyes" onclick="javascript:yesnoCheck();">Yes
+	<input type="radio" name="repeat" value="no" checked ="yes" id="repeatno" onclick="javascript:yesnoCheck();">No</center><br>
 	
 	<center><b>Repeat Style</b></center>
 	<center><input type="radio" name="repeatstyle" value="daily">Daily
 	<input type="radio" name="repeatstyle" value="monthly">Monthly	
 	<input type="radio" name="repeatstyle" value="none" checked="">None</center><br>
 	<center><b>Repeat Until :</b></center><input type="date" name = "repeatuntil" class="form-control" required>
-	
-	<textarea class="form-control" rows="5" name="description" placeholder="description of event" required></textarea><br>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="submit">Create</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
 	</form>
 	</div>';
 ?>	
@@ -231,14 +226,8 @@ $body = '<div class="eventcreation">
 	    <?php
 		echo ''.$body.'';
 		?>
-		
-		<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-      </div>
     </div>
   </div>
 </div>
 </body>
-</html>
-
 </html>

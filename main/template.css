@@ -442,16 +442,18 @@ th.monthtitle{
 	font-weight:bold;
 	text-align:center;
 	border:1px solid black;
-	background: #C2E0FF;
+	background: #18bc9c;
 	height: 30px;
+	color:#ffffff;
 }
 th.year-calendar-heading{
 	font-weight:bold;
 	text-align:center;
-	background: #C2E0FF;
+	background: #18bc9c;
 	border:1px solid black;
 	width: 30px;
 	height: 30px;
+	color:#ffffff;
 }
 
 
