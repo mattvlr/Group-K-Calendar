@@ -25,19 +25,21 @@
 	//Group creation form
 	$body = '<div class="groupcreation">
 	<form class="form-signin" role="form" action="/main/index.php?act=groups" method = "post">
-	<center><h1>Create your group!</h1></center>
 	<input type="text" name = "title" class="form-control" placeholder="Group Title" required autofocus>
 
 	<textarea class="form-control" rows="5" name="description" placeholder="Group Description" required></textarea><br>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="submit">Create</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
 	</form>
 	</div>';
 
 	//Things that need to happen after the form is submitted
 	if (isset($_POST['title']) && isset($_POST['description'])){
-		
-		$date = date("Y-m-d");
+	$date = date("Y-m-d");
 
+	
 		//Getting data for groups table
 		$groupinfo = array(	'ownerid' => $id,
 							'date_created' => $date,
@@ -87,10 +89,7 @@
   			echo '<a href="/main/index.php?act=group&id='.$groups_created[$i]['gid'].'" class="list-group-item">
     			<p align="middle">'.$groups_created[$i]['title'].'</p>
     			<p align="middle">Created : '.$groups_created[$i]['date_created'].'</p>
-				<p align="middle">Description : '.$groups_created[$i]['description'].'</p>
-  				</a>';
-				}
-				
+  				</a>';}
   			echo '<center><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create new group</button></center></div>';
 		
 		echo '<div class="list-group2" style="width:500px;float:right;">';
@@ -101,7 +100,9 @@
     			<p align="middle">Title : '.$groups_created[$i]['title'].'</p>
     			<p align="middle">Date Created : '.$groups_created[$i]['date_created'].'</p>
     			<p align="middle">Description : '.$groups_created[$i]['description'].'</p>
-  				</a>';}
+  				</a>';
+				}
+				
   			echo '</div></div>';
   		}
 	?>  
@@ -121,9 +122,6 @@
 		echo ''.$body.'';
 		?>
 		
-		<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-      </div>
     </div>
   </div>
 </div>
