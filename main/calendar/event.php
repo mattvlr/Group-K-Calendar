@@ -60,7 +60,13 @@ $form = '
 
 <html>
 <head>
-<link href="/bootstrap/css/dark_signin.css" rel="stylesheet">
+	<?php 
+		if($_SESSION['theme'] == 1){ 
+			echo '<link href="/bootstrap/css/dark_signin.css" rel="stylesheet">'; 
+		}
+		else { 
+			echo '<link href="/bootstrap/css/signin.css" rel="stylesheet">';
+		} ?>
 </head>
 
 <body><center><h1>Event Details</h1></center>
